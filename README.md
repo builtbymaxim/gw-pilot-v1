@@ -25,3 +25,12 @@ python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --enable-nli --tau 0.63 
 - SPI rule: balanced (number + (unit OR target/baseline) OR ≥2 signals) with strict excludes.
 - AI assist: BART-MNLI gated on target syntax; disable if AUC < 0.70.
 - CI_light: supply Scope-1+2 totals via --ci-values for now.
+
+## Pilot v1.1 — DWS results (rules-first; AI gated)
+| Year | VUI_norm | SPI_rule | CI    | GW   | Band   |
+|------|----------|----------|-------|------|--------|
+| 2022 | 0.080    | 0.172    | 0.818 | 0.386| Medium |
+| 2023 | 0.430    | 0.112    | 0.970 | 0.526| Medium |
+| 2024 | 0.444    | 0.101    | 0.965 | 0.536| Medium |
+
+Notes: AI assist (BART-MNLI) gated on dated targets; evaluated=0 for all three years, so hybrid = 0.6·SPI_rule. CI based on Scope-1+2 totals.
