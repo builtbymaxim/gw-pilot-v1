@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+*.log
+.ipynb_checkpoints/
+.cache/
+.env
+# PDFs & large binaries
+data/*.pdf
+# Model caches (leave out of repo)
+~/.cache/huggingface/
+# Optional: ignore heavy images
+outputs/*.png

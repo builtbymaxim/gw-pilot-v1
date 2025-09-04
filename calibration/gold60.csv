@@ -1,0 +1,6 @@
+sentence,text_section,label_specific_target(0/1)
+S1: We will reduce Scope 1 and 2 emissions by 50% by 2030 from a 2019 baseline.,metrics_targets,1
+S2: We expect to make significant progress on climate initiatives over the coming years.,strategy,0
+S3: Scope 1+2 emissions (tCO2e): 150,000 in 2023 versus 200,000 in 2022.,metrics_targets,1
+S4: By 2035, suppliers must disclose Scope 3 categories 1–4.,governance,1
+S5: FY2024 saw continued integration of ESG into governance structures.,governance,0

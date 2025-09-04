@@ -1,0 +1,54 @@
+project:
+  name: 'GW_Pilot_DWS'
+  seed: 7
+sectioning:
+  target_sections: ['strategy','governance','metrics_targets','risk_management']
+  heading_aliases:
+    strategy: ['Strategy','Sustainability Strategy','Our Approach','Non-Financial Statement']
+    governance: ['Governance','ESG Governance','Responsibilities','Oversight','Corporate Governance']
+    metrics_targets: ['TCFD Metrics & Targets','Metrics and Targets','Climate Metrics and Targets','Emissions Metrics and Targets']
+    risk_management: ['Climate Risk','TCFD Risk Management','TCFD – Risk Management','Risk management (TCFD)']
+  keyword_fallback:
+    strategy: ['strategy','approach','materiality','roadmap']
+    governance: ['board','committee','oversight','remuneration','governance']
+    metrics_targets: ['target','by 20','tco2e','%','kpi','scope','gwh','mwh','kt','mt','€','mn','bn','million','billion']
+    risk_management: ['climate risk','transition risk','physical risk','scenario analysis','TCFD']
+  min_density: 0.02
+  min_words_per_section: 100
+vui:
+  divisor_per_1000: 30.0
+  lm_uncertainty: ['may','might','could','uncertain','uncertainty','possible','possibly','potential','potentially','estimate','estimated','approximately','about','around']
+  hedges: ['expect','expects','expected','planning','plan','plans','intend','seeks','target','ambition','aspire','significant','material','endeavor','aim','over the coming years','over time','in due course']
+
+spi:
+  unit_patterns: ['%','tco2e','tco₂e','gwh','mwh','kt','mt','€','\\bmn\\b','\\bbn\\b','million','billion']
+  target_patterns:
+    - '\\bby\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
+    - '\\buntil\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
+    - '\\bno\\s+later\\s+than\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
+    - '\\bat\\s+the\\s+latest\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
+    - '\\bby\\s+(?:year[-\\s]?end|YE)\\s*(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
+    - '\\bby\\s+end[-\\s]?of\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
+    - '\\bthrough\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
+  baseline_patterns: ['\\bbase year\\s+20\\d{2}\\b','\\bbaseline\\s+20\\d{2}\\b','\\bvs\\.?\\b','\\brelative to\\s+20\\d{2}\\b']
+  strict_excludes: ['\\bFY\\s?20\\d{2}\\b','\\bQ[1-4]\\s?20\\d{2}\\b','\\b(in|during|as of)\\s+20\\d{2}\\b']
+
+nli:
+  model: 'facebook/bart-large-mnli'
+  hypothesis: 'This sentence states a measurable target.'
+  gated_regex: '(?ix)\\b(by|until|no\\s+later\\s+than|at\\s+the\\s+latest)\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b|\\bby\\s+(?:year[-\\s]?end|YE)\\s*(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b|\\bby\\s+end[-\\s]?of\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b|\\bthrough\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
+  tau: null
+
+
+ci:
+  winsor_pct: [1,99]
+  unit_map: {'t':1,'kt':1000,'mt':1000000}
+weights:
+  vui: 0.45
+  r_spi: 0.35
+  r_ci: 0.20
+bands:
+  low: 0.30
+  med: 0.60
+logging:
+  include_regex_hits: true
