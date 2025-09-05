@@ -14,3 +14,4 @@ outputs/*.png
 
 .DS_Store
 !outputs/overlay_2022_2024.png
+!outputs/cross_issuer_scatter_noCI.png
