@@ -1,6 +1,10 @@
 from typing import List, Dict
 from pdfminer.high_level import extract_text
 import spacy
+import logging
+for name in ("pdfminer", "pdfminer.layout", "pdfminer.pdfinterp", "pdfminer.pdfpage", "pdfminer.converter"):
+    logging.getLogger(name).setLevel(logging.ERROR)
+
 
 def extract_pages(pdf_path: str) -> List[Dict]:
     full = extract_text(pdf_path) or ""
