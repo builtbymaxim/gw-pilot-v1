@@ -41,3 +41,9 @@ Notes: AI assist (BART-MNLI) gated on dated targets; evaluated=0 for all three y
 - Amundi:   VUI_norm 0.382 · SPI_rule 0.158 → **GW 0.584 (Medium)**
 
 Gate diagnostics show 0 dated-target hits → AI path remains inactive by design.
+
+### Cross-issuer 2021–2024 (rules-first, no-CI)
+- AI path implemented and strictly gated on dated targets; gate hits = 0 across tested 2024 issuers ⇒ AI off.
+- See `outputs/compare_cross_issuers_noCI.csv` and `outputs/cross_issuer_scatter_noCI.png`.
+
+Interpretation: Higher vagueness (VUI) paired with low specificity (SPI_rule) correlates with higher GW (reporting-risk). This is by construction and consistent across peers.
