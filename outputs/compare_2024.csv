@@ -1,0 +1,7 @@
+issuer,year,VUI_norm,SPI_rule,SPI_hybrid,CI,GW,band
+amundi,2024,0.382,0.157,0.157,,0.584,medium
+dws,2022,0.08,0.172,0.103,0.818,0.386,medium
+dws,2023,0.43,0.112,0.067,0.97,0.526,medium
+dws,2024,0.444,0.101,0.061,0.709,0.587,medium
+schroders,2024,0.381,0.107,0.107,,0.605,high
+testissuer,2024,0.444,0.101,0.101,,0.643,high
