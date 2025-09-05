@@ -34,3 +34,10 @@ python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --enable-nli --tau 0.63 
 | 2024 | 0.444    | 0.101    | 0.965 | 0.536| Medium |
 
 Notes: AI assist (BART-MNLI) gated on dated targets; evaluated=0 for all three years, so hybrid = 0.6·SPI_rule. CI based on Scope-1+2 totals.
+
+### Peer smoke-tests (rule-only)
+2024 results (no CI; weights renormalized):
+- Schroders: VUI_norm 0.381 · SPI_rule 0.107 → **GW 0.605 (High)**
+- Amundi:   VUI_norm 0.382 · SPI_rule 0.158 → **GW 0.584 (Medium)**
+
+Gate diagnostics show 0 dated-target hits → AI path remains inactive by design.
