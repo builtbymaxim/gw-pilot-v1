@@ -45,7 +45,11 @@ def main():
     ap.add_argument("--tau", type=float, default=None)
     ap.add_argument("--ci-values", default=None, help='Comma list: e.g. "2021:2694,2022:2194,2023:2126"')
     ap.add_argument("--loose-sentences", action="store_true", help="Use regex/newline-based splitting for messy PDFs")
+    ap.add_argument("--issuer", default="dws", help="issuer shortname for output filenames")
     args = ap.parse_args()
+
+    # file name prefix (empty for DWS)
+    prefix = "" if args.issuer.lower() in ("", "dws") else f"{args.issuer.lower()}_"
 
     os.makedirs(args.outdir, exist_ok=True)
     cfg = yaml.safe_load(open(args.config))
@@ -60,8 +64,6 @@ def main():
 
     # 2) Audit: section map (pages + counts)
     section_map = summarize_buckets(buckets)
-    with open(os.path.join(args.outdir, f"section_map_{args.year}.json"), "w") as f:
-        json.dump(section_map, f, indent=2)
 
     # 3) Collect sentences per target section, enforce ≥100 words/section
     target_secs = cfg["sectioning"]["target_sections"]
@@ -87,7 +89,7 @@ def main():
     # Flatten for metrics (within included target sections only)
     all_sents = [s for sec in included_sections for s in section_sentences.get(sec, [])]
 
-    # --- Diagnostic: gated-regex hits BEFORE running NLI ---
+    # 4) Diagnostic: gated-regex hits BEFORE running NLI
     gate_pat = re.compile(cfg["nli"]["gated_regex"], re.I | re.X)
     gate_hits = []
     for s in all_sents:
@@ -95,16 +97,14 @@ def main():
         if gate_pat.search(txt):
             gate_hits.append({"page": s.get("page"), "text": txt[:300]})
     diag = {"total_sentences": len(all_sents), "gate_hits_count": len(gate_hits), "gate_hits_sample": gate_hits[:30]}
-    with open(os.path.join(args.outdir, f"regex_hits_{args.year}.json"), "w") as f:
-        json.dump(diag, f, indent=2)
 
-    # 4) VUI (target sections only)
+    # 5) VUI (target sections only)
     vui = compute_vui(all_sents, cfg)
 
-    # 5) SPI rule
+    # 6) SPI rule
     spi_rule = compute_spi_rule(all_sents, cfg)
 
-    # 6) Optional AI assist (lazy import)
+    # 7) Optional AI assist (lazy import)
     ai_spi = {"ai_spi": 0.0, "positives": 0, "evaluated": 0}
     spi_hybrid = spi_rule["spi_rule"]
     if args.enable_nli and not args.rule_only:
@@ -115,7 +115,7 @@ def main():
             ai_spi = compute_ai_spi(all_sents, nli, tau, cfg["nli"]["gated_regex"])
             spi_hybrid = 0.6 * spi_rule["spi_rule"] + 0.4 * ai_spi["ai_spi"]
 
-    # 7) CI_light (robust parsing of --ci-values)
+    # 8) CI_light (robust parsing of --ci-values)
     ci_val = None
     ci_meta = None
     if args.ci_values:
@@ -139,11 +139,11 @@ def main():
             ci_val = ci_res["ci_by_year"].get(args.year, None)
             ci_meta = ci_res
 
-    # 8) GW aggregation
+    # 9) GW aggregation
     weights = cfg["weights"]; bands = cfg["bands"]
     gw_res = aggregate_gw(vui["vui_norm"], spi_hybrid, ci_val, weights, bands)
 
-    # 9) Per-section metrics (for memo/audit)
+    # 10) Per-section metrics (for memo/audit)
     per_section = {}
     for sec in included_sections:
         sents = section_sentences.get(sec, [])
@@ -156,7 +156,7 @@ def main():
             "spi_rule": compute_spi_rule(sents, cfg),
         }
 
-    # 10) Persist outputs
+    # 11) Persist outputs (prefix-aware; single write per artifact)
     out = {
         "year": args.year,
         "included_sections": included_sections,
@@ -171,7 +171,12 @@ def main():
         "per_section": per_section,
         "section_map": section_map,
     }
-    with open(os.path.join(args.outdir, f"run_{args.year}.json"), "w") as f:
+
+    with open(os.path.join(args.outdir, f"{prefix}section_map_{args.year}.json"), "w") as f:
+        json.dump(section_map, f, indent=2)
+    with open(os.path.join(args.outdir, f"{prefix}regex_hits_{args.year}.json"), "w") as f:
+        json.dump(diag, f, indent=2)
+    with open(os.path.join(args.outdir, f"{prefix}run_{args.year}.json"), "w") as f:
         json.dump(out, f, indent=2)
 
     # stdout summary
