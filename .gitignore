@@ -11,3 +11,6 @@ data/*.pdf
 ~/.cache/huggingface/
 # Optional: ignore heavy images
 outputs/*.png
+
+.DS_Store
+!outputs/overlay_2022_2024.png
