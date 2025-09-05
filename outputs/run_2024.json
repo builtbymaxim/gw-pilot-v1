@@ -1,4 +1,16 @@
 {
+  "meta": {
+    "config_sha1": "6be4c8b710dd2f16bfc329f4d7bbe488ad9b7272",
+    "effective_weights": {
+      "vui": 0.45,
+      "r_spi": 0.35,
+      "r_ci": 0.2
+    },
+    "winsor": [
+      1,
+      99
+    ]
+  },
   "year": 2024,
   "included_sections": [
     "strategy",
@@ -323,5 +335,10 @@
       "fallback_pages": 42,
       "heading_pages": 3
     }
+  },
+  "regex_gate": {
+    "total_sentences": 4210,
+    "gate_hits_count": 0,
+    "gate_hits_sample": []
   }
 }

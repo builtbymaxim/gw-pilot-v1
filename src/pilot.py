@@ -1,4 +1,3 @@
-# src/pilot.py
 import argparse, json, yaml, os
 from typing import Dict, List
 import regex as re
@@ -16,8 +15,7 @@ def word_count(text: str) -> int:
 
 
 def summarize_buckets(buckets: Dict[str, List[Dict]]) -> Dict:
-    out = {
-        "meta": {"config_sha1": cfg_sha1, "effective_weights": gw_res.get("effective_weights", {}), "winsor": cfg["ci"]["winsor_pct"]},}
+    out = {}
     for sec, pages in buckets.items():
         if sec == "unassigned":
             continue
@@ -49,9 +47,7 @@ def main():
     ap.add_argument("--issuer", default="dws", help="issuer shortname for output filenames")
     args = ap.parse_args()
 
-    # file name prefix (empty for DWS)
     prefix = "" if args.issuer.lower() in ("", "dws") else f"{args.issuer.lower()}_"
-
     os.makedirs(args.outdir, exist_ok=True)
     cfg = yaml.safe_load(open(args.config))
 
@@ -63,13 +59,13 @@ def main():
         for k, v in fb.items():
             buckets[k].extend(v)
 
-    # 2) Audit: section map (pages + counts)
+    # 2) Section summary
     section_map = summarize_buckets(buckets)
 
-    # 3) Collect sentences per target section, enforce ≥100 words/section
+    # 3) Collect sentences per target section
     target_secs = cfg["sectioning"]["target_sections"]
     min_words = int(cfg["sectioning"]["min_words_per_section"])
-    splitter = (lambda txt: split_sentences_loose(txt)) if args.loose_sentences else (lambda txt: split_sentences(txt, "en_core_web_sm"))
+    splitter = split_sentences_loose if args.loose_sentences else (lambda txt: split_sentences(txt, "en_core_web_sm"))
 
     section_sentences = {}
     section_wordcounts = {}
@@ -87,10 +83,10 @@ def main():
         section_sentences[sec] = sents
         included_sections.append(sec)
 
-    # Flatten for metrics (within included target sections only)
+    # Flatten
     all_sents = [s for sec in included_sections for s in section_sentences.get(sec, [])]
 
-    # 4) Diagnostic: gated-regex hits BEFORE running NLI
+    # --- Gate diagnostics (before NLI) ---
     gate_pat = re.compile(cfg["nli"]["gated_regex"], re.I | re.X)
     gate_hits = []
     for s in all_sents:
@@ -99,24 +95,24 @@ def main():
             gate_hits.append({"page": s.get("page"), "text": txt[:300]})
     diag = {"total_sentences": len(all_sents), "gate_hits_count": len(gate_hits), "gate_hits_sample": gate_hits[:30]}
 
-    # 5) VUI (target sections only)
+    # 4) VUI
     vui = compute_vui(all_sents, cfg)
 
-    # 6) SPI rule
+    # 5) SPI (rule)
     spi_rule = compute_spi_rule(all_sents, cfg)
 
-    # 7) Optional AI assist (lazy import)
+    # 6) Optional AI assist
     ai_spi = {"ai_spi": 0.0, "positives": 0, "evaluated": 0}
     spi_hybrid = spi_rule["spi_rule"]
     if args.enable_nli and not args.rule_only:
         tau = args.tau if args.tau is not None else cfg["nli"]["tau"]
         if tau is not None:
-            from src.nli import NLIWrapper, compute_ai_spi  # lazy import
+            from src.nli import NLIWrapper, compute_ai_spi
             nli = NLIWrapper(cfg["nli"]["model"], cfg["nli"]["hypothesis"])
             ai_spi = compute_ai_spi(all_sents, nli, tau, cfg["nli"]["gated_regex"])
             spi_hybrid = 0.6 * spi_rule["spi_rule"] + 0.4 * ai_spi["ai_spi"]
 
-    # 8) CI_light (robust parsing of --ci-values)
+    # 7) CI_light
     ci_val = None
     ci_meta = None
     if args.ci_values:
@@ -140,11 +136,11 @@ def main():
             ci_val = ci_res["ci_by_year"].get(args.year, None)
             ci_meta = ci_res
 
-    # 9) GW aggregation
+    # 8) GW aggregation
     weights = cfg["weights"]; bands = cfg["bands"]
     gw_res = aggregate_gw(vui["vui_norm"], spi_hybrid, ci_val, weights, bands)
 
-    # 10) Per-section metrics (for memo/audit)
+    # 9) Per-section metrics
     per_section = {}
     for sec in included_sections:
         sents = section_sentences.get(sec, [])
@@ -157,8 +153,11 @@ def main():
             "spi_rule": compute_spi_rule(sents, cfg),
         }
 
-    # 11) Persist outputs (prefix-aware; single write per artifact)
+    # 10) Persist outputs (with provenance meta)
+    import hashlib, yaml as _y
+    cfg_sha1 = hashlib.sha1(_y.safe_dump(cfg, sort_keys=True).encode()).hexdigest()
     out = {
+        "meta": {"config_sha1": cfg_sha1, "effective_weights": gw_res.get("effective_weights", {}), "winsor": cfg["ci"]["winsor_pct"]},
         "year": args.year,
         "included_sections": included_sections,
         "section_wordcounts": section_wordcounts,
@@ -171,14 +170,15 @@ def main():
         "gw": gw_res,
         "per_section": per_section,
         "section_map": section_map,
+        "regex_gate": diag,
     }
 
+    with open(os.path.join(args.outdir, f"{prefix}run_{args.year}.json"), "w") as f:
+        json.dump(out, f, indent=2)
     with open(os.path.join(args.outdir, f"{prefix}section_map_{args.year}.json"), "w") as f:
         json.dump(section_map, f, indent=2)
     with open(os.path.join(args.outdir, f"{prefix}regex_hits_{args.year}.json"), "w") as f:
         json.dump(diag, f, indent=2)
-    with open(os.path.join(args.outdir, f"{prefix}run_{args.year}.json"), "w") as f:
-        json.dump(out, f, indent=2)
 
     # stdout summary
     print(json.dumps({
