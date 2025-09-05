@@ -16,7 +16,8 @@ def word_count(text: str) -> int:
 
 
 def summarize_buckets(buckets: Dict[str, List[Dict]]) -> Dict:
-    out = {}
+    out = {
+        "meta": {"config_sha1": cfg_sha1, "effective_weights": gw_res.get("effective_weights", {}), "winsor": cfg["ci"]["winsor_pct"]},}
     for sec, pages in buckets.items():
         if sec == "unassigned":
             continue
