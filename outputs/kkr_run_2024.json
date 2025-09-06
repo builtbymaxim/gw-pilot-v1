@@ -1,0 +1,306 @@
+{
+  "meta": {
+    "config_sha1": "1e24c30834978a43b552f5f2536aed58d707248c",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
+    },
+    "winsor": [
+      1,
+      99
+    ]
+  },
+  "year": 2024,
+  "included_sections": [
+    "strategy",
+    "governance",
+    "metrics_targets"
+  ],
+  "section_wordcounts": {
+    "strategy": 50769,
+    "governance": 28658,
+    "metrics_targets": 22133
+  },
+  "vui": {
+    "vui_hits": 1868,
+    "words": 96141,
+    "vui_per_1000": 19.429795820721647,
+    "vui_norm": 0.6476598606907216
+  },
+  "spi_rule": {
+    "specific": 458,
+    "total": 7930,
+    "spi_rule": 0.05775535939470366
+  },
+  "ai_spi": {
+    "ai_spi": 0.125,
+    "positives": 1,
+    "evaluated": 8
+  },
+  "spi_hybrid": 0.0846532156368222,
+  "ci_value": null,
+  "ci_meta": null,
+  "gw": {
+    "gw": 0.7647728897974211,
+    "band": "high",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
+    }
+  },
+  "per_section": {
+    "strategy": {
+      "words": 49399,
+      "count_sentences": 3714,
+      "vui": {
+        "vui_hits": 1119,
+        "words": 49399,
+        "vui_per_1000": 22.652280410534626,
+        "vui_norm": 0.7550760136844875
+      },
+      "spi_rule": {
+        "specific": 121,
+        "total": 3714,
+        "spi_rule": 0.03257942918686053
+      }
+    },
+    "governance": {
+      "words": 28154,
+      "count_sentences": 2081,
+      "vui": {
+        "vui_hits": 548,
+        "words": 28154,
+        "vui_per_1000": 19.46437451161469,
+        "vui_norm": 0.6488124837204896
+      },
+      "spi_rule": {
+        "specific": 49,
+        "total": 2081,
+        "spi_rule": 0.023546371936568958
+      }
+    },
+    "metrics_targets": {
+      "words": 18588,
+      "count_sentences": 2135,
+      "vui": {
+        "vui_hits": 201,
+        "words": 18588,
+        "vui_per_1000": 10.813428018076179,
+        "vui_norm": 0.3604476006025393
+      },
+      "spi_rule": {
+        "specific": 288,
+        "total": 2135,
+        "spi_rule": 0.13489461358313817
+      }
+    }
+  },
+  "section_map": {
+    "governance": {
+      "pages": [
+        2,
+        5,
+        8,
+        14,
+        28,
+        44,
+        45,
+        57,
+        62,
+        64,
+        69,
+        77,
+        82,
+        95,
+        106,
+        107,
+        114,
+        123,
+        127,
+        201,
+        212,
+        213,
+        223,
+        240,
+        243,
+        246,
+        256,
+        367,
+        370,
+        371,
+        372,
+        373,
+        375,
+        382,
+        384,
+        385,
+        388,
+        394,
+        395
+      ],
+      "count_pages": 39,
+      "fallback_pages": 0,
+      "heading_pages": 39
+    },
+    "strategy": {
+      "pages": [
+        9,
+        11,
+        13,
+        16,
+        17,
+        19,
+        20,
+        22,
+        23,
+        26,
+        29,
+        30,
+        31,
+        37,
+        38,
+        39,
+        55,
+        56,
+        60,
+        63,
+        67,
+        68,
+        71,
+        72,
+        74,
+        75,
+        84,
+        85,
+        91,
+        92,
+        96,
+        99,
+        100,
+        104,
+        108,
+        111,
+        113,
+        118,
+        120,
+        129,
+        130,
+        135,
+        137,
+        143,
+        153,
+        161,
+        166,
+        170,
+        172,
+        178,
+        179,
+        181,
+        183,
+        185,
+        187,
+        195,
+        202,
+        209,
+        218,
+        249,
+        266,
+        269,
+        288,
+        323,
+        349,
+        350,
+        368,
+        369,
+        424
+      ],
+      "count_pages": 69,
+      "fallback_pages": 0,
+      "heading_pages": 69
+    },
+    "metrics_targets": {
+      "pages": [
+        21,
+        27,
+        36,
+        133,
+        159,
+        167,
+        169,
+        182,
+        188,
+        189,
+        190,
+        208,
+        257,
+        273,
+        278,
+        282,
+        283,
+        304,
+        305,
+        306,
+        307,
+        308,
+        318,
+        321,
+        325,
+        328,
+        330,
+        332,
+        334,
+        339,
+        342,
+        344,
+        348,
+        351,
+        392,
+        401,
+        408
+      ],
+      "count_pages": 37,
+      "fallback_pages": 37,
+      "heading_pages": 0
+    }
+  },
+  "regex_gate": {
+    "total_sentences": 7930,
+    "gate_hits_count": 8,
+    "gate_hits_sample": [
+      {
+        "page": 368,
+        "text": "until 2022."
+      },
+      {
+        "page": 368,
+        "text": "on the boards of directors of Allergan Plc and Raytheon Company until 2020."
+      },
+      {
+        "page": 369,
+        "text": "from 2018 through 2024, KKR Acquisition Holdings I Corp from 2021 through 2022, and Chubb Limited from 2014"
+      },
+      {
+        "page": 369,
+        "text": "through 2020."
+      },
+      {
+        "page": 28,
+        "text": "2009 through 2024."
+      },
+      {
+        "page": 367,
+        "text": "until 2021."
+      },
+      {
+        "page": 370,
+        "text": "From 2006 through 2010, Mr."
+      },
+      {
+        "page": 370,
+        "text": "member of the firm\u2019s Executive Committee and head of the firm\u2019s M&A practice in Asia from 2010 through 2018."
+      }
+    ]
+  }
+}

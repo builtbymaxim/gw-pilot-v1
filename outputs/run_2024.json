@@ -1,10 +1,10 @@
 {
   "meta": {
-    "config_sha1": "6be4c8b710dd2f16bfc329f4d7bbe488ad9b7272",
+    "config_sha1": "1e24c30834978a43b552f5f2536aed58d707248c",
     "effective_weights": {
-      "vui": 0.45,
-      "r_spi": 0.35,
-      "r_ci": 0.2
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
     },
     "winsor": [
       1,
@@ -23,86 +23,77 @@
     "metrics_targets": 24556
   },
   "vui": {
-    "vui_hits": 1691,
-    "words": 126889,
-    "vui_per_1000": 13.326608295439321,
-    "vui_norm": 0.444220276514644
+    "vui_hits": 1675,
+    "words": 118662,
+    "vui_per_1000": 14.115723652053733,
+    "vui_norm": 0.4705241217351244
   },
   "spi_rule": {
     "specific": 425,
-    "total": 4210,
-    "spi_rule": 0.10095011876484561
+    "total": 16222,
+    "spi_rule": 0.02619898902724695
   },
   "ai_spi": {
-    "ai_spi": 0.0,
-    "positives": 0,
-    "evaluated": 0
+    "ai_spi": 0.7222222222222222,
+    "positives": 26,
+    "evaluated": 36
   },
-  "spi_hybrid": 0.060570071258907364,
-  "ci_value": 0.709196069273627,
-  "ci_meta": {
-    "ci_by_year": {
-      "2024": 0.709196069273627
-    },
-    "winsor_bounds": [
-      1503.29,
-      2119.71
-    ],
-    "restated": {}
-  },
+  "spi_hybrid": 0.30460828230523707,
+  "ci_value": null,
+  "ci_meta": null,
   "gw": {
-    "gw": 0.5868603856362469,
+    "gw": 0.5689036949674662,
     "band": "medium",
     "effective_weights": {
-      "vui": 0.45,
-      "r_spi": 0.35,
-      "r_ci": 0.2
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
     }
   },
   "per_section": {
     "strategy": {
-      "words": 68058,
-      "count_sentences": 2565,
+      "words": 66144,
+      "count_sentences": 8538,
       "vui": {
-        "vui_hits": 1230,
-        "words": 68058,
-        "vui_per_1000": 18.07282024155867,
-        "vui_norm": 0.602427341385289
+        "vui_hits": 1216,
+        "words": 66144,
+        "vui_per_1000": 18.384131591678763,
+        "vui_norm": 0.6128043863892921
       },
       "spi_rule": {
-        "specific": 137,
-        "total": 2565,
-        "spi_rule": 0.05341130604288499
+        "specific": 156,
+        "total": 8538,
+        "spi_rule": 0.018271257905832748
       }
     },
     "governance": {
-      "words": 34275,
-      "count_sentences": 1069,
+      "words": 32544,
+      "count_sentences": 4386,
       "vui": {
-        "vui_hits": 263,
-        "words": 34275,
-        "vui_per_1000": 7.673231218088986,
-        "vui_norm": 0.25577437393629954
+        "vui_hits": 262,
+        "words": 32544,
+        "vui_per_1000": 8.05063913470993,
+        "vui_norm": 0.26835463782366437
       },
       "spi_rule": {
-        "specific": 82,
-        "total": 1069,
-        "spi_rule": 0.07670720299345182
+        "specific": 69,
+        "total": 4386,
+        "spi_rule": 0.01573187414500684
       }
     },
     "metrics_targets": {
-      "words": 24556,
-      "count_sentences": 576,
+      "words": 19974,
+      "count_sentences": 3298,
       "vui": {
-        "vui_hits": 198,
-        "words": 24556,
-        "vui_per_1000": 8.063202475973286,
-        "vui_norm": 0.2687734158657762
+        "vui_hits": 197,
+        "words": 19974,
+        "vui_per_1000": 9.86282166816862,
+        "vui_norm": 0.3287607222722873
       },
       "spi_rule": {
-        "specific": 206,
-        "total": 576,
-        "spi_rule": 0.3576388888888889
+        "specific": 200,
+        "total": 3298,
+        "spi_rule": 0.06064281382656155
       }
     }
   },
@@ -337,8 +328,129 @@
     }
   },
   "regex_gate": {
-    "total_sentences": 4210,
-    "gate_hits_count": 0,
-    "gate_hits_sample": []
+    "total_sentences": 16222,
+    "gate_hits_count": 36,
+    "gate_hits_sample": [
+      {
+        "page": 66,
+        "text": "by 2030 compared to the base year 2019 (in line with the net zero interim target)."
+      },
+      {
+        "page": 73,
+        "text": "Maintain or improve our CDP (Climate change) B score by 2024"
+      },
+      {
+        "page": 73,
+        "text": "Conduct 475 or more corporate engagements per annum by 2024"
+      },
+      {
+        "page": 73,
+        "text": "Achieve a minimum 46% reduction of in-scope operational emissions by 2030 compared to base year 2019 (aligned to our 2030"
+      },
+      {
+        "page": 73,
+        "text": "Achieve a 50% reduction in the inflation-adjusted WACI related to scope 1 and 2 portfolio emissions by 2030 compared to base year"
+      },
+      {
+        "page": 73,
+        "text": "management level below the Executive Board by 2024"
+      },
+      {
+        "page": 73,
+        "text": "Perform 90 minutes of volunteering on average per employee per year by 2024"
+      },
+      {
+        "page": 101,
+        "text": "In support of our ambition to become climate neutral by 2050 in line with the Paris"
+      },
+      {
+        "page": 101,
+        "text": "scope operational emissions by 2030 compared to base year 2019 (own operations)."
+      },
+      {
+        "page": 101,
+        "text": "reduction of in-scope operational emissions by 2030 compared to base year 2019 (own"
+      },
+      {
+        "page": 101,
+        "text": "reduction target by 2030, as needed for an orderly transition towards 1.5\u02daC ambition."
+      },
+      {
+        "page": 102,
+        "text": "Our ambition is to become climate neutral by 2050 in line with the Paris Agreement."
+      },
+      {
+        "page": 108,
+        "text": "\u2013 EMEA, which align with our expectation for achieving net zero by 2050."
+      },
+      {
+        "page": 109,
+        "text": "In addition to our overall ambition to become climate neutral by 2050, we also set ourselves"
+      },
+      {
+        "page": 109,
+        "text": "represents significant progress towards our 50% reduction target by 2030."
+      },
+      {
+        "page": 114,
+        "text": "Our ambition is to become climate-neutral by 2050 in our own operations in line with the"
+      },
+      {
+        "page": 114,
+        "text": "our long-term ambition of reaching operational net zero by 2050."
+      },
+      {
+        "page": 116,
+        "text": "Aligned to our ambition to reach net zero across our operational activities by 2050, we set"
+      },
+      {
+        "page": 116,
+        "text": "(75) % Achieve a minimum 46% reduction of in-scope operational emissions by 2030"
+      },
+      {
+        "page": 116,
+        "text": "(34) % Achieve a minimum 46% reduction of in-scope operational emissions by 2030"
+      },
+      {
+        "page": 117,
+        "text": "own operations by 2050."
+      },
+      {
+        "page": 222,
+        "text": "Based on the communicated medium-term targets by 2025 as well the ESG footprint"
+      },
+      {
+        "page": 223,
+        "text": "Maintain or improve our CDP (Climate change) B score by 2024"
+      },
+      {
+        "page": 223,
+        "text": "Achieve a minimum 46% reduction of in-scope operational emissions by 2030"
+      },
+      {
+        "page": 252,
+        "text": "Dr Stefan Hoops\u2019 contract as CEO has been extended for three more years until 2028."
+      },
+      {
+        "page": 252,
+        "text": "Goergen\u2019s contract has also been extended by three years until 2027."
+      },
+      {
+        "page": 89,
+        "text": "economies by 2030 and the rest of the world by 2040."
+      },
+      {
+        "page": 89,
+        "text": "out thermal coal by 2030 (for companies headquartered in the EU/OECD;"
+      },
+      {
+        "page": 224,
+        "text": "with the externally communicated target of 35% by 2025"
+      },
+      {
+        "page": 254,
+        "text": "The following table shows the members of the Supervisory Board through 2024, their year of"
+      }
+    ]
   }
 }

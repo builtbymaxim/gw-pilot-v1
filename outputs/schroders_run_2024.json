@@ -1,4 +1,16 @@
 {
+  "meta": {
+    "config_sha1": "1e24c30834978a43b552f5f2536aed58d707248c",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
+    },
+    "winsor": [
+      1,
+      99
+    ]
+  },
   "year": 2024,
   "included_sections": [
     "strategy",
@@ -11,27 +23,27 @@
     "metrics_targets": 7829
   },
   "vui": {
-    "vui_hits": 1143,
-    "words": 99891,
-    "vui_per_1000": 11.442472294801334,
-    "vui_norm": 0.38141574316004445
+    "vui_hits": 1123,
+    "words": 92090,
+    "vui_per_1000": 12.19459224671517,
+    "vui_norm": 0.40648640822383897
   },
   "spi_rule": {
-    "specific": 400,
-    "total": 3746,
-    "spi_rule": 0.10678056593699947
+    "specific": 574,
+    "total": 13817,
+    "spi_rule": 0.04154302670623145
   },
   "ai_spi": {
-    "ai_spi": 0.0,
-    "positives": 0,
-    "evaluated": 0
+    "ai_spi": 0.8,
+    "positives": 16,
+    "evaluated": 20
   },
-  "spi_hybrid": 0.10678056593699947,
+  "spi_hybrid": 0.34492581602373895,
   "ci_value": null,
   "ci_meta": null,
   "gw": {
-    "gw": 0.6053298579300876,
-    "band": "high",
+    "gw": 0.5152435601155236,
+    "band": "medium",
     "effective_weights": {
       "vui": 0.5625,
       "r_spi": 0.43749999999999994,
@@ -40,48 +52,48 @@
   },
   "per_section": {
     "strategy": {
-      "words": 42037,
-      "count_sentences": 1746,
+      "words": 40889,
+      "count_sentences": 6142,
       "vui": {
-        "vui_hits": 509,
-        "words": 42037,
-        "vui_per_1000": 12.108380712229703,
-        "vui_norm": 0.4036126904076568
+        "vui_hits": 500,
+        "words": 40889,
+        "vui_per_1000": 12.228227640685759,
+        "vui_norm": 0.4076075880228586
       },
       "spi_rule": {
-        "specific": 136,
-        "total": 1746,
-        "spi_rule": 0.07789232531500573
+        "specific": 163,
+        "total": 6142,
+        "spi_rule": 0.026538586779550635
       }
     },
     "governance": {
-      "words": 50025,
-      "count_sentences": 1769,
+      "words": 44774,
+      "count_sentences": 6527,
       "vui": {
-        "vui_hits": 614,
-        "words": 50025,
-        "vui_per_1000": 12.273863068465767,
-        "vui_norm": 0.4091287689488589
+        "vui_hits": 603,
+        "words": 44774,
+        "vui_per_1000": 13.467637468173493,
+        "vui_norm": 0.44892124893911645
       },
       "spi_rule": {
-        "specific": 191,
-        "total": 1769,
-        "spi_rule": 0.10797060486150367
+        "specific": 294,
+        "total": 6527,
+        "spi_rule": 0.04504366477707982
       }
     },
     "metrics_targets": {
-      "words": 7829,
-      "count_sentences": 231,
+      "words": 6427,
+      "count_sentences": 1148,
       "vui": {
         "vui_hits": 20,
-        "words": 7829,
-        "vui_per_1000": 2.554604674926555,
-        "vui_norm": 0.0851534891642185
+        "words": 6427,
+        "vui_per_1000": 3.1118717908822155,
+        "vui_norm": 0.10372905969607385
       },
       "spi_rule": {
-        "specific": 73,
-        "total": 231,
-        "spi_rule": 0.31601731601731603
+        "specific": 117,
+        "total": 1148,
+        "spi_rule": 0.1019163763066202
       }
     }
   },
@@ -263,5 +275,91 @@
       "fallback_pages": 15,
       "heading_pages": 0
     }
+  },
+  "regex_gate": {
+    "total_sentences": 13817,
+    "gate_hits_count": 20,
+    "gate_hits_sample": [
+      {
+        "page": 26,
+        "text": "are targeted to be fully aligned with a 1.5\u00b0C pathway by 2040."
+      },
+      {
+        "page": 27,
+        "text": "pathway by 2040"
+      },
+      {
+        "page": 27,
+        "text": "by 2050 or sooner"
+      },
+      {
+        "page": 27,
+        "text": "a 2.2\u00b0C pathway by 2030"
+      },
+      {
+        "page": 27,
+        "text": "by 16% by 2025 and 36% by"
+      },
+      {
+        "page": 27,
+        "text": "electricity by 2025"
+      },
+      {
+        "page": 181,
+        "text": "temperature rise to 1.5\u00b0C by 2050 through strict climate policies"
+      },
+      {
+        "page": 182,
+        "text": "Aggregated Climate VAR (%)Net Zero 2050Delayed TransitionNDCsNet Zero 2050 OverallDelayed Transition & NDCs Overall-70-60-50-40-30-20-100Transition VAR - Net Zero by 2050 scenario (%)Physical VAR \u2013 worst-case scenario\u00b3 (%)Consumer DiscretionaryMaterialsHealth CareConsumer StaplesUtilitiesEnergyInfor"
+      },
+      {
+        "page": 186,
+        "text": "We have made a number of climate and nature-related commitments to support achieving net zero by 2050,"
+      },
+      {
+        "page": 5,
+        "text": "in-scope assets by 2030."
+      },
+      {
+        "page": 9,
+        "text": "cost:income ratio to below 70% by 2027."
+      },
+      {
+        "page": 15,
+        "text": "reach net zero by 2050, annual clean energy"
+      },
+      {
+        "page": 15,
+        "text": "triple by 2030 to around $4 trillion.2 China\u2019s"
+      },
+      {
+        "page": 15,
+        "text": "from private markets is expected to reach 55% by 2027.4"
+      },
+      {
+        "page": 15,
+        "text": "Net Zero by 2050 - Analysis | International Energy Agency."
+      },
+      {
+        "page": 39,
+        "text": "until 2023."
+      },
+      {
+        "page": 62,
+        "text": "within ten years of EY\u2019s appointment, and by 2027 at the latest."
+      },
+      {
+        "page": 70,
+        "text": "\u2013 In-scope group investments reached a medium-term temperature in line with our target of 2.2\u00b0C by 2030,"
+      },
+      {
+        "page": 70,
+        "text": "\u2013 Achieved a 39% reduction in Scope 3 business travel emissions, towards the 50% reduction target by 2030."
+      },
+      {
+        "page": 189,
+        "text": "90% by 2050 and\u00a0neutralising any remaining emissions through"
+      }
+    ]
   }
 }

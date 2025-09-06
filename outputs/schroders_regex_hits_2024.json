@@ -1,5 +1,86 @@
 {
-  "total_sentences": 3746,
-  "gate_hits_count": 0,
-  "gate_hits_sample": []
+  "total_sentences": 13817,
+  "gate_hits_count": 20,
+  "gate_hits_sample": [
+    {
+      "page": 26,
+      "text": "are targeted to be fully aligned with a 1.5\u00b0C pathway by 2040."
+    },
+    {
+      "page": 27,
+      "text": "pathway by 2040"
+    },
+    {
+      "page": 27,
+      "text": "by 2050 or sooner"
+    },
+    {
+      "page": 27,
+      "text": "a 2.2\u00b0C pathway by 2030"
+    },
+    {
+      "page": 27,
+      "text": "by 16% by 2025 and 36% by"
+    },
+    {
+      "page": 27,
+      "text": "electricity by 2025"
+    },
+    {
+      "page": 181,
+      "text": "temperature rise to 1.5\u00b0C by 2050 through strict climate policies"
+    },
+    {
+      "page": 182,
+      "text": "Aggregated Climate VAR (%)Net Zero 2050Delayed TransitionNDCsNet Zero 2050 OverallDelayed Transition & NDCs Overall-70-60-50-40-30-20-100Transition VAR - Net Zero by 2050 scenario (%)Physical VAR \u2013 worst-case scenario\u00b3 (%)Consumer DiscretionaryMaterialsHealth CareConsumer StaplesUtilitiesEnergyInfor"
+    },
+    {
+      "page": 186,
+      "text": "We have made a number of climate and nature-related commitments to support achieving net zero by 2050,"
+    },
+    {
+      "page": 5,
+      "text": "in-scope assets by 2030."
+    },
+    {
+      "page": 9,
+      "text": "cost:income ratio to below 70% by 2027."
+    },
+    {
+      "page": 15,
+      "text": "reach net zero by 2050, annual clean energy"
+    },
+    {
+      "page": 15,
+      "text": "triple by 2030 to around $4 trillion.2 China\u2019s"
+    },
+    {
+      "page": 15,
+      "text": "from private markets is expected to reach 55% by 2027.4"
+    },
+    {
+      "page": 15,
+      "text": "Net Zero by 2050 - Analysis | International Energy Agency."
+    },
+    {
+      "page": 39,
+      "text": "until 2023."
+    },
+    {
+      "page": 62,
+      "text": "within ten years of EY\u2019s appointment, and by 2027 at the latest."
+    },
+    {
+      "page": 70,
+      "text": "\u2013 In-scope group investments reached a medium-term temperature in line with our target of 2.2\u00b0C by 2030,"
+    },
+    {
+      "page": 70,
+      "text": "\u2013 Achieved a 39% reduction in Scope 3 business travel emissions, towards the 50% reduction target by 2030."
+    },
+    {
+      "page": 189,
+      "text": "90% by 2050 and\u00a0neutralising any remaining emissions through"
+    }
+  ]
 }
