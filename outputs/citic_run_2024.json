@@ -1,6 +1,6 @@
 {
   "meta": {
-    "config_sha1": "1e24c30834978a43b552f5f2536aed58d707248c",
+    "config_sha1": "cfe380aa59ac19e69972c96cc3d6849478156545",
     "effective_weights": {
       "vui": 0.5625,
       "r_spi": 0.43749999999999994,
@@ -36,7 +36,7 @@
   "ai_spi": {
     "ai_spi": 0.0,
     "positives": 0,
-    "evaluated": 1
+    "evaluated": 0
   },
   "spi_hybrid": 0.037675628794449266,
   "ci_value": null,
@@ -257,12 +257,7 @@
   },
   "regex_gate": {
     "total_sentences": 5765,
-    "gate_hits_count": 1,
-    "gate_hits_sample": [
-      {
-        "page": 24,
-        "text": "By 2024, the"
-      }
-    ]
+    "gate_hits_count": 0,
+    "gate_hits_sample": []
   }
 }

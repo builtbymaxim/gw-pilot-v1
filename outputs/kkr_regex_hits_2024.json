@@ -1,38 +1,5 @@
 {
   "total_sentences": 7930,
-  "gate_hits_count": 8,
-  "gate_hits_sample": [
-    {
-      "page": 368,
-      "text": "until 2022."
-    },
-    {
-      "page": 368,
-      "text": "on the boards of directors of Allergan Plc and Raytheon Company until 2020."
-    },
-    {
-      "page": 369,
-      "text": "from 2018 through 2024, KKR Acquisition Holdings I Corp from 2021 through 2022, and Chubb Limited from 2014"
-    },
-    {
-      "page": 369,
-      "text": "through 2020."
-    },
-    {
-      "page": 28,
-      "text": "2009 through 2024."
-    },
-    {
-      "page": 367,
-      "text": "until 2021."
-    },
-    {
-      "page": 370,
-      "text": "From 2006 through 2010, Mr."
-    },
-    {
-      "page": 370,
-      "text": "member of the firm\u2019s Executive Committee and head of the firm\u2019s M&A practice in Asia from 2010 through 2018."
-    }
-  ]
+  "gate_hits_count": 0,
+  "gate_hits_sample": []
 }

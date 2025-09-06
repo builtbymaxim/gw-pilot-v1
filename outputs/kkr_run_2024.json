@@ -1,6 +1,6 @@
 {
   "meta": {
-    "config_sha1": "1e24c30834978a43b552f5f2536aed58d707248c",
+    "config_sha1": "cfe380aa59ac19e69972c96cc3d6849478156545",
     "effective_weights": {
       "vui": 0.5625,
       "r_spi": 0.43749999999999994,
@@ -34,15 +34,15 @@
     "spi_rule": 0.05775535939470366
   },
   "ai_spi": {
-    "ai_spi": 0.125,
-    "positives": 1,
-    "evaluated": 8
+    "ai_spi": 0.0,
+    "positives": 0,
+    "evaluated": 0
   },
-  "spi_hybrid": 0.0846532156368222,
+  "spi_hybrid": 0.03465321563682219,
   "ci_value": null,
   "ci_meta": null,
   "gw": {
-    "gw": 0.7647728897974211,
+    "gw": 0.7866478897974212,
     "band": "high",
     "effective_weights": {
       "vui": 0.5625,
@@ -267,40 +267,7 @@
   },
   "regex_gate": {
     "total_sentences": 7930,
-    "gate_hits_count": 8,
-    "gate_hits_sample": [
-      {
-        "page": 368,
-        "text": "until 2022."
-      },
-      {
-        "page": 368,
-        "text": "on the boards of directors of Allergan Plc and Raytheon Company until 2020."
-      },
-      {
-        "page": 369,
-        "text": "from 2018 through 2024, KKR Acquisition Holdings I Corp from 2021 through 2022, and Chubb Limited from 2014"
-      },
-      {
-        "page": 369,
-        "text": "through 2020."
-      },
-      {
-        "page": 28,
-        "text": "2009 through 2024."
-      },
-      {
-        "page": 367,
-        "text": "until 2021."
-      },
-      {
-        "page": 370,
-        "text": "From 2006 through 2010, Mr."
-      },
-      {
-        "page": 370,
-        "text": "member of the firm\u2019s Executive Committee and head of the firm\u2019s M&A practice in Asia from 2010 through 2018."
-      }
-    ]
+    "gate_hits_count": 0,
+    "gate_hits_sample": []
   }
 }

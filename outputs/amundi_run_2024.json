@@ -1,6 +1,6 @@
 {
   "meta": {
-    "config_sha1": "1e24c30834978a43b552f5f2536aed58d707248c",
+    "config_sha1": "cfe380aa59ac19e69972c96cc3d6849478156545",
     "effective_weights": {
       "vui": 0.5625,
       "r_spi": 0.43749999999999994,
@@ -36,16 +36,16 @@
     "spi_rule": 0.045401676493001246
   },
   "ai_spi": {
-    "ai_spi": 0.7083333333333334,
-    "positives": 34,
-    "evaluated": 48
+    "ai_spi": 0.0,
+    "positives": 0,
+    "evaluated": 1
   },
-  "spi_hybrid": 0.31057433922913413,
+  "spi_hybrid": 0.027241005895800748,
   "ci_value": null,
   "ci_meta": null,
   "gw": {
-    "gw": 0.5203271939346267,
-    "band": "medium",
+    "gw": 0.6442855272679601,
+    "band": "high",
     "effective_weights": {
       "vui": 0.5625,
       "r_spi": 0.43749999999999994,
@@ -453,127 +453,11 @@
   },
   "regex_gate": {
     "total_sentences": 24933,
-    "gate_hits_count": 48,
+    "gate_hits_count": 1,
     "gate_hits_sample": [
-      {
-        "page": 68,
-        "text": "the regulation of financial markets and their stakeholders in 2003 until 2005."
-      },
-      {
-        "page": 85,
-        "text": "Executive Committee by 2029."
-      },
-      {
-        "page": 144,
-        "text": "Amundi commits to by 2025 to:"
-      },
-      {
-        "page": 150,
-        "text": "(1) Regarding third-party investments, Amundi has developed a Net Zero investment framework based on the Net Zero Emissions by 2050 (NZE) scenario developed by"
-      },
-      {
-        "page": 154,
-        "text": "employee by 2025, compared to the year 2018."
-      },
-      {
-        "page": 154,
-        "text": "Emissions by 2050"
-      },
-      {
-        "page": 154,
-        "text": "goals by 2050."
-      },
-      {
-        "page": 155,
-        "text": "reference to the Net Zero Emissions by 2050 (NZE) scenario"
-      },
-      {
-        "page": 155,
-        "text": "target, with the ultimate goal of achieving carbon neutrality by 2050."
-      },
-      {
-        "page": 155,
-        "text": "from energy and industrial processes by 2050."
-      },
       {
         "page": 155,
         "text": "ensure that, by 2030, CO2 emissions related to energy and"
-      },
-      {
-        "page": 155,
-        "text": "Carbon intensity reduction targets are the absolute reduction targets per unit of real growth by 2025 and 2030."
-      },
-      {
-        "page": 155,
-        "text": "30% reduction by 2025"
-      },
-      {
-        "page": 155,
-        "text": "60% reduction by 2030"
-      },
-      {
-        "page": 157,
-        "text": "investments by 2030 in the European Union and OECD countries,"
-      },
-      {
-        "page": 157,
-        "text": "and by 2040 in the rest of the world."
-      },
-      {
-        "page": 157,
-        "text": "In line with our thermal coal phase-out schedule by 2030/2040,"
-      },
-      {
-        "page": 158,
-        "text": "additional 1,000 companies engaged by 2025."
-      },
-      {
-        "page": 159,
-        "text": "with an additional 1,000 companies committed by 2025."
-      },
-      {
-        "page": 182,
-        "text": "50% French profiles by 2025."
-      },
-      {
-        "page": 212,
-        "text": "group, by 2025,"
-      },
-      {
-        "page": 215,
-        "text": "neutrality by 2050"
-      },
-      {
-        "page": 229,
-        "text": "All commitments are on track for achievement by 2025."
-      },
-      {
-        "page": 229,
-        "text": "objective by 2050."
-      },
-      {
-        "page": 234,
-        "text": "additional 1,000 companies engaged by 2025."
-      },
-      {
-        "page": 235,
-        "text": "investments by 2030 in the European Union and OECD countries,"
-      },
-      {
-        "page": 235,
-        "text": "and by 2040 in the rest of the world."
-      },
-      {
-        "page": 235,
-        "text": "In line with our thermal coal phase-out schedule by 2030/2040, the"
-      },
-      {
-        "page": 238,
-        "text": "least 40% of the total ETF range composed of ESG ETFs by 2025."
-      },
-      {
-        "page": 242,
-        "text": "range in ESG ETFs by 2025."
       }
     ]
   }
