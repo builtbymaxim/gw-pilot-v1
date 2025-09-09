@@ -2,7 +2,7 @@ import argparse, json, yaml, os
 from typing import Dict, List
 import regex as re
 
-from src.parsing import extract_pages, split_sentences, split_sentences_loose
+from src.parsing import extract_pages, split_sentences, split_sentences_loose, load_nlp
 from src.sectioning import section_by_headings, keyword_fallback, collect_section_sentences
 from src.vui import compute_vui
 from src.spi import compute_spi_rule, normalize_year_tokens
@@ -65,7 +65,11 @@ def main():
     # 3) Collect sentences per target section
     target_secs = cfg["sectioning"]["target_sections"]
     min_words = int(cfg["sectioning"]["min_words_per_section"])
-    splitter = split_sentences_loose if args.loose_sentences else (lambda txt: split_sentences(txt, "en_core_web_sm"))
+    if args.loose_sentences:
+        splitter = split_sentences_loose
+    else:
+        nlp = load_nlp()
+        splitter = lambda txt: split_sentences(txt, nlp=nlp)
 
     section_sentences = {}
     section_wordcounts = {}
