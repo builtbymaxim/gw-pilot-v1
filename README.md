@@ -12,12 +12,22 @@ python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --rule-only --ci-values 
 python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --enable-nli --tau 0.63 --ci-values "2021:2694,2022:2194,2023:2126"
 ```
 
-## Files
+## Auxiliary scripts
+Calibrate the τ threshold for the NLI model:
+```bash
+python -m src.calibrate_tau_cli --gold calibration/gold60.csv --strict-gating
+```
+Generate a multi-year PDF report:
+```bash
+python -m src.report --years 2022,2023,2024 --out outputs/report_v1_1.pdf
+```
+
+## Directory overview
+- `calibration/` — gold-label CSVs and helpers for τ calibration
+- `outputs/` — run artifacts (JSON, CSV, charts). See `outputs/README.md` for formats
+- `src/` — pipeline modules and command-line entry points
+- `data/` — place your input PDFs here (not tracked)
 - `config.yml` — thresholds and patterns
-- `src/*` — pipeline modules
-- `calibration/gold60.csv` — template for τ calibration
-- `data/dws-2023.pdf` — pilot document (copy of your upload)
-- `outputs/` — JSON results
 
 ## Notes
 - Sectioning: headings-first with DWS aliases → keyword fallback (min density 0.02); ≥100 words/section.
