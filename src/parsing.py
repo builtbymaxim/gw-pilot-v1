@@ -2,8 +2,28 @@ from typing import List, Dict
 from pdfminer.high_level import extract_text
 import spacy
 import logging
-for name in ("pdfminer", "pdfminer.layout", "pdfminer.pdfinterp", "pdfminer.pdfpage", "pdfminer.converter"):
+
+for name in (
+    "pdfminer",
+    "pdfminer.layout",
+    "pdfminer.pdfinterp",
+    "pdfminer.pdfpage",
+    "pdfminer.converter",
+):
     logging.getLogger(name).setLevel(logging.ERROR)
+
+_NLP_CACHE = {}
+
+
+def load_nlp(lang_model: str = "en_core_web_sm"):
+    """Load and cache a spaCy model."""
+    nlp = _NLP_CACHE.get(lang_model)
+    if nlp is None:
+        nlp = spacy.load(lang_model, disable=["tagger", "ner", "lemmatizer"])
+        if "sentencizer" not in nlp.pipe_names:
+            nlp.add_pipe("sentencizer")
+        _NLP_CACHE[lang_model] = nlp
+    return nlp
 
 
 def extract_pages(pdf_path: str) -> List[Dict]:
@@ -18,10 +38,12 @@ def extract_pages(pdf_path: str) -> List[Dict]:
         out = [{"page": 1, "text": full}]
     return out
 
-def split_sentences(text: str, lang_model: str = "en_core_web_sm"):
-    nlp = spacy.load(lang_model, disable=["tagger","ner","lemmatizer"])
-    if "sentencizer" not in nlp.pipe_names:
-        nlp.add_pipe("sentencizer")
+
+def split_sentences(
+    text: str, lang_model: str = "en_core_web_sm", nlp=None
+):
+    if nlp is None:
+        nlp = load_nlp(lang_model)
     doc = nlp(text)
     return [{"text": s.text.strip()} for s in doc.sents if s.text.strip()]
 
