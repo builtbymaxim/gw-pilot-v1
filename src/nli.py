@@ -1,9 +1,7 @@
 import regex as re
 from transformers import pipeline
 import torch
-
-def normalize_year_tokens(text: str) -> str:
-    return re.sub(r'(?i)(?<!\d)2\W*0\W*([0-9])\W*([0-9])(?!\d)', r'20\1\2', text)
+from src.utils import normalize_year_tokens
 
 class NLIWrapper:
     def __init__(self, model_id: str, hypothesis: str):
