@@ -5,7 +5,8 @@ import regex as re
 from src.parsing import extract_pages, split_sentences, split_sentences_loose, load_nlp
 from src.sectioning import section_by_headings, keyword_fallback, collect_section_sentences
 from src.vui import compute_vui
-from src.spi import compute_spi_rule, normalize_year_tokens
+from src.spi import compute_spi_rule
+from src.utils import normalize_year_tokens
 from src.ci import ci_light
 from src.gw import aggregate_gw
 

@@ -4,7 +4,8 @@ from typing import List, Dict
 import numpy as np
 from transformers import pipeline
 from src.calibration import calibrate_tau, confusion_at_tau
-from src.spi import is_specific, normalize_year_tokens  # normalize years for gating
+from src.spi import is_specific
+from src.utils import normalize_year_tokens  # normalize years for gating
 
 def load_gold(path: str):
     rows = []
