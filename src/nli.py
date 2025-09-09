@@ -1,4 +1,5 @@
 import regex as re
+from typing import List
 from transformers import pipeline
 import torch
 
@@ -24,16 +25,35 @@ class NLIWrapper:
         scores = {d["label"].lower(): float(d["score"]) for d in out[0]}
         return scores.get("entailment", 0.0)
 
-def compute_ai_spi(sentences, nli: NLIWrapper, tau: float, gated_regex: str):
+    def entailment_probs(self, premises: List[str], batch_size: int = 32) -> List[float]:
+        inputs = [f"{p} </s></s> {self.hypothesis}" for p in premises]
+        out = self.pipe(inputs, batch_size=batch_size)
+        probs: List[float] = []
+        for res in out:
+            scores = {d["label"].lower(): float(d["score"]) for d in res}
+            probs.append(scores.get("entailment", 0.0))
+        return probs
+
+def compute_ai_spi(
+    sentences,
+    nli: NLIWrapper,
+    tau: float,
+    gated_regex: str,
+    batch_size: int = 32,
+):
     gate = re.compile(gated_regex, re.I | re.X)
-    positives = 0
-    evaluated = 0
+    gated_texts = []
     for s in sentences:
         txt = normalize_year_tokens(s["text"])
-        if not gate.search(txt):
-            continue
-        evaluated += 1
-        if nli.entailment_prob(txt) >= tau:
-            positives += 1
+        if gate.search(txt):
+            gated_texts.append(txt)
+
+    evaluated = len(gated_texts)
+    positives = 0
+    for i in range(0, evaluated, batch_size):
+        batch = gated_texts[i : i + batch_size]
+        probs = nli.entailment_probs(batch, batch_size=batch_size)
+        positives += sum(1 for p in probs if p >= tau)
+
     ai_spi = (positives / evaluated) if evaluated else 0.0
     return {"ai_spi": ai_spi, "positives": positives, "evaluated": evaluated}
