@@ -1,5 +1,8 @@
-import json, glob
+import json, glob, sys
 from pathlib import Path
+
+# allow importing project-local modules when executed as a script
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 from jsonschema import Draft7Validator
 
 SCHEMA_PATH = Path('schema/run.schema.json')
@@ -7,7 +10,7 @@ SCHEMA_PATH = Path('schema/run.schema.json')
 def main():
     schema = json.loads(SCHEMA_PATH.read_text())
     validator = Draft7Validator(schema)
-    files = sorted(glob.glob('outputs/run_*.json') + glob.glob('outputs/*/run_*.json'))
+    files = sorted(glob.glob('outputs/*run_*.json') + glob.glob('outputs/*/run_*.json'))
     if not files:
         print('No run files found.')
         return
