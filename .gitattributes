@@ -1,0 +1,10 @@
+﻿* text=auto
+
+# Keep source and scripts LF (good for CI/Unix)
+*.py text eol=lf
+*.yml text eol=lf
+*.sh text eol=lf
+
+# Let images/binaries alone
+*.png binary
+*.pdf binary
