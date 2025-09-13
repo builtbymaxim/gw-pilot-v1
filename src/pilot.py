@@ -44,6 +44,13 @@ def main():
     ap.add_argument("--rule-only", action="store_true")
     ap.add_argument("--enable-nli", action="store_true")
     ap.add_argument("--tau", type=float, default=None)
+    ap.add_argument("--nli-model", default=None, help="Override NLI model id or path")
+    ap.add_argument(
+        "--nli-profile",
+        default="hf",
+        choices=["hf", "onnx"],
+        help="NLI model profile (hf or onnx)",
+    )
     ap.add_argument("--ci-values", default=None, help='Comma list: e.g. "2021:2694,2022:2194,2023:2126"')
     ap.add_argument("--loose-sentences", action="store_true", help="Use regex/newline-based splitting for messy PDFs")
     ap.add_argument("--issuer", default="dws", help="issuer shortname for output filenames")
@@ -114,7 +121,8 @@ def main():
         tau = args.tau if args.tau is not None else cfg["nli"]["tau"]
         if tau is not None:
             from src.nli import NLIWrapper, compute_ai_spi
-            nli = NLIWrapper(cfg["nli"]["model"], cfg["nli"]["hypothesis"])
+            model_id = args.nli_model or cfg["nli"]["model"]
+            nli = NLIWrapper(model_id, cfg["nli"]["hypothesis"], profile=args.nli_profile)
             ai_spi = compute_ai_spi(all_sents, nli, tau, cfg["nli"]["gated_regex"])
             spi_hybrid = 0.6 * spi_rule["spi_rule"] + 0.4 * ai_spi["ai_spi"]
 

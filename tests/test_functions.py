@@ -13,7 +13,6 @@ from src.ci import ci_light
 from src.gw import aggregate_gw
 from src.alerts import delta_warnings
 
-
 def test_normalize_year_tokens():
     assert normalize_year_tokens('This is 2-0-3-0 event') == 'This is 2030 event'
     assert normalize_year_tokens('Plans for 20 24 are ready') == 'Plans for 2024 are ready'
