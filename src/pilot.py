@@ -161,7 +161,7 @@ def main():
 
     # 8) GW aggregation
     weights = cfg["weights"]; bands = cfg["bands"]
-    gw_res = aggregate_gw(vui["vui_norm"], spi_hybrid, ci_val, weights, bands)
+    gw_res = aggregate_gw(vui["vui_norm"], spi_hybrid, ci_val, weights, bands, ai_spi=ai_spi, spi_rule=spi_rule["spi_rule"])
 
     # 9) Per-section metrics
     per_section = {}
