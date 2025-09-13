@@ -3,7 +3,9 @@ from pathlib import Path
 import pytest
 
 # make src modules importable
-sys.path.append(str(Path(__file__).resolve().parents[1]))
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(ROOT))
+sys.path.append(str(ROOT / 'src'))
 
 from src.spi import normalize_year_tokens, is_specific
 from src.vui import compute_vui
