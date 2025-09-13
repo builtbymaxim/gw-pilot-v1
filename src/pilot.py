@@ -9,6 +9,7 @@ from src.spi import compute_spi_rule
 from src.utils import normalize_year_tokens
 from src.ci import ci_light
 from src.gw import aggregate_gw
+from src.alerts import delta_warnings
 
 
 def word_count(text: str) -> int:
@@ -158,11 +159,21 @@ def main():
             "spi_rule": compute_spi_rule(sents, cfg),
         }
 
-    # 10) Persist outputs (with provenance meta)
+    # 10) Year-over-year warnings
+    warnings = []
+    prev_path = os.path.join(args.outdir, f"{prefix}run_{args.year - 1}.json")
+    if os.path.exists(prev_path):
+        with open(prev_path) as pf:
+            prev = json.load(pf)
+        prev_vui = prev.get("vui", {}).get("vui_norm")
+        prev_spi = prev.get("spi_rule", {}).get("spi_rule")
+        warnings = delta_warnings(vui["vui_norm"], spi_rule["spi_rule"], prev_vui, prev_spi)
+
+    # 11) Persist outputs (with provenance meta)
     import hashlib, yaml as _y
     cfg_sha1 = hashlib.sha1(_y.safe_dump(cfg, sort_keys=True).encode()).hexdigest()
     out = {
-        "meta": {"config_sha1": cfg_sha1, "effective_weights": gw_res.get("effective_weights", {}), "winsor": cfg["ci"]["winsor_pct"]},
+        "meta": {"config_sha1": cfg_sha1, "effective_weights": gw_res.get("effective_weights", {}), "winsor": cfg["ci"]["winsor_pct"], "warnings": warnings},
         "year": args.year,
         "included_sections": included_sections,
         "section_wordcounts": section_wordcounts,
@@ -186,7 +197,7 @@ def main():
         json.dump(diag, f, indent=2)
 
     # stdout summary
-    print(json.dumps({
+    summary = {
         "year": args.year,
         "vui_norm": round(vui["vui_norm"], 4),
         "spi_rule": round(spi_rule["spi_rule"], 4),
@@ -194,8 +205,11 @@ def main():
         "ci_value": None if ci_val is None else round(ci_val, 4),
         "gw": round(gw_res["gw"], 4),
         "band": gw_res["band"],
-        "included_sections": included_sections
-    }, indent=2))
+        "included_sections": included_sections,
+    }
+    if warnings:
+        summary["warnings"] = warnings
+    print(json.dumps(summary, indent=2))
 
 
 if __name__ == "__main__":
