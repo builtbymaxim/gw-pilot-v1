@@ -198,5 +198,14 @@ def main():
     }, indent=2))
 
 
+def cli():
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "summarize":
+        from .summarize import main as summarize_main
+        summarize_main(sys.argv[2:])
+    else:
+        main()
+
+
 if __name__ == "__main__":
-    main()
+    cli()
