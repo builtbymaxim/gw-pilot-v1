@@ -1,5 +1,10 @@
 import numpy as np
-from sklearn.metrics import roc_curve, auc, confusion_matrix
+from sklearn.metrics import (
+    auc,
+    confusion_matrix,
+    precision_recall_curve,
+    roc_curve,
+)
 
 def cohen_kappa(y1, y2):
     y1, y2 = np.asarray(y1), np.asarray(y2)
@@ -15,12 +20,19 @@ def calibrate_tau(entail_probs, labels):
     fpr, tpr, thr = roc_curve(labels, entail_probs)
     youden = tpr - fpr
     j_idx = int(np.argmax(youden))
+
+    precision, recall, _ = precision_recall_curve(labels, entail_probs)
+    pr_curve = [
+        {"precision": float(p), "recall": float(r)} for p, r in zip(precision, recall)
+    ]
+
     return {
         "auc": float(auc(fpr, tpr)),
+        "pr_auc": float(auc(recall, precision)),
         "tau": float(thr[j_idx]),
         "tpr": float(tpr[j_idx]),
         "fpr": float(fpr[j_idx]),
-        "thresholds": [float(x) for x in thr]
+        "pr_curve": pr_curve,
     }
 
 def confusion_at_tau(entail_probs, labels, tau):

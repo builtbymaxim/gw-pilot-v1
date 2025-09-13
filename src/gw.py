@@ -1,5 +1,6 @@
-def aggregate_gw(vui_norm, spi_hybrid, ci_or_none, weights, bands):
-    r_spi = 1.0 - spi_hybrid
+def aggregate_gw(vui_norm, spi_hybrid, ci_or_none, weights, bands, *, ai_spi=None, spi_rule=None):
+    spi_used = spi_hybrid if ai_spi and ai_spi.get("evaluated", 0) > 0 else (spi_rule if spi_rule is not None else spi_hybrid)
+    r_spi = 1.0 - spi_used
     if ci_or_none is None:
         wsum = weights["vui"] + weights["r_spi"]
         vw, sw = weights["vui"]/wsum, weights["r_spi"]/wsum

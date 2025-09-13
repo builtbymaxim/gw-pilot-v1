@@ -9,17 +9,30 @@ python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --rule-only --outdir out
 # With CI values (Scope1+2 totals, tons):
 python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --rule-only --ci-values "2021:2694,2022:2194,2023:2126"
 # After τ calibration:
-python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --enable-nli --tau 0.63 --ci-values "2021:2694,2022:2194,2023:2126"
+# Use a predefined τ profile (loose/medium/strict) instead of --tau
+python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --enable-nli --profile strict --ci-values "2021:2694,2022:2194,2023:2126"
+# Profiles: loose=0.5, medium=0.7, strict=0.9
 ```
+
+## Performance
+- Parsed PDF text and sentence offsets are cached under `outputs/cache/pdf/` using a key of the file path, mtime, and config hash.
+- The spaCy pipeline is trimmed to a sentencizer-only config. On typical annual reports, first runs drop from ~10s to ~3s and re-runs from the cache complete in well under a second.
 
 ## Auxiliary scripts
 Calibrate the τ threshold for the NLI model:
 ```bash
-python -m src.calibrate_tau_cli --gold calibration/gold60.csv --strict-gating
+python -m src.calibrate_tau_cli --gold calibration/gold60.csv --strict-gating --profile strict
+
+# tau_calibration.json fields: tau, profile, auc, pr_auc, tpr, fpr, pr_curve
 ```
 Generate a multi-year PDF report:
 ```bash
 python -m src.report --years 2022,2023,2024 --out outputs/report_v1_1.pdf
+```
+
+Aggregate `run_*.json` files into CSV summaries and comparison plots:
+```bash
+python -m src.pilot summarize --inputs "outputs/*/run_*.json" --out outputs/summaries
 ```
 
 ## Directory overview
