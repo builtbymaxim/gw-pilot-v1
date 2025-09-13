@@ -9,6 +9,7 @@ from src.spi import compute_spi_rule
 from src.utils import normalize_year_tokens
 from src.ci import ci_light
 from src.gw import aggregate_gw
+from src.alerts import delta_warnings
 
 
 def word_count(text: str) -> int:
@@ -43,6 +44,13 @@ def main():
     ap.add_argument("--rule-only", action="store_true")
     ap.add_argument("--enable-nli", action="store_true")
     ap.add_argument("--tau", type=float, default=None)
+    ap.add_argument("--nli-model", default=None, help="Override NLI model id or path")
+    ap.add_argument(
+        "--nli-profile",
+        default="hf",
+        choices=["hf", "onnx"],
+        help="NLI model profile (hf or onnx)",
+    )
     ap.add_argument("--ci-values", default=None, help='Comma list: e.g. "2021:2694,2022:2194,2023:2126"')
     ap.add_argument("--loose-sentences", action="store_true", help="Use regex/newline-based splitting for messy PDFs")
     ap.add_argument("--issuer", default="dws", help="issuer shortname for output filenames")
@@ -110,7 +118,8 @@ def main():
         tau = args.tau if args.tau is not None else cfg["nli"]["tau"]
         if tau is not None:
             from src.nli import NLIWrapper, compute_ai_spi
-            nli = NLIWrapper(cfg["nli"]["model"], cfg["nli"]["hypothesis"])
+            model_id = args.nli_model or cfg["nli"]["model"]
+            nli = NLIWrapper(model_id, cfg["nli"]["hypothesis"], profile=args.nli_profile)
             ai_spi = compute_ai_spi(all_sents, nli, tau, cfg["nli"]["gated_regex"])
             spi_hybrid = 0.6 * spi_rule["spi_rule"] + 0.4 * ai_spi["ai_spi"]
 
@@ -155,9 +164,24 @@ def main():
             "spi_rule": compute_spi_rule(sents, cfg),
         }
 
-    # 10) Persist outputs (with provenance meta)
+    # 10) Year-over-year warnings
+    warnings = []
+    prev_path = os.path.join(args.outdir, f"{prefix}run_{args.year - 1}.json")
+    if os.path.exists(prev_path):
+        with open(prev_path) as pf:
+            prev = json.load(pf)
+        prev_vui = prev.get("vui", {}).get("vui_norm")
+        prev_spi = prev.get("spi_rule", {}).get("spi_rule")
+        warnings = delta_warnings(vui["vui_norm"], spi_rule["spi_rule"], prev_vui, prev_spi)
+
+    # 11) Persist outputs (with provenance meta)
     out = {
-        "meta": {"config_sha1": cfg_sha1, "effective_weights": gw_res.get("effective_weights", {}), "winsor": cfg["ci"]["winsor_pct"]},
+        "meta": {
+            "config_sha1": cfg_sha1,
+            "effective_weights": gw_res.get("effective_weights", {}),
+            "winsor": cfg["ci"]["winsor_pct"],
+            "warnings": warnings
+        },
         "year": args.year,
         "included_sections": included_sections,
         "section_wordcounts": section_wordcounts,
@@ -173,6 +197,7 @@ def main():
         "regex_gate": diag,
     }
 
+
     with open(os.path.join(args.outdir, f"{prefix}run_{args.year}.json"), "w") as f:
         json.dump(out, f, indent=2)
     with open(os.path.join(args.outdir, f"{prefix}section_map_{args.year}.json"), "w") as f:
@@ -181,7 +206,7 @@ def main():
         json.dump(diag, f, indent=2)
 
     # stdout summary
-    print(json.dumps({
+    summary = {
         "year": args.year,
         "vui_norm": round(vui["vui_norm"], 4),
         "spi_rule": round(spi_rule["spi_rule"], 4),
@@ -189,9 +214,21 @@ def main():
         "ci_value": None if ci_val is None else round(ci_val, 4),
         "gw": round(gw_res["gw"], 4),
         "band": gw_res["band"],
-        "included_sections": included_sections
-    }, indent=2))
+        "included_sections": included_sections,
+    }
+    if warnings:
+        summary["warnings"] = warnings
+    print(json.dumps(summary, indent=2))
+
+
+def cli():
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "summarize":
+        from .summarize import main as summarize_main
+        summarize_main(sys.argv[2:])
+    else:
+        main()
 
 
 if __name__ == "__main__":
-    main()
+    cli()
