@@ -1,14 +1,15 @@
-import argparse, json, yaml, os
+import argparse, json, yaml, os, hashlib
 from typing import Dict, List
 import regex as re
 
-from src.parsing import extract_pages, split_sentences, split_sentences_loose, load_nlp
+from src.parsing import extract_pages_cached
 from src.sectioning import section_by_headings, keyword_fallback, collect_section_sentences
 from src.vui import compute_vui
 from src.spi import compute_spi_rule
 from src.utils import normalize_year_tokens
 from src.ci import ci_light
 from src.gw import aggregate_gw
+from src.alerts import delta_warnings
 
 
 def word_count(text: str) -> int:
@@ -49,6 +50,13 @@ def main():
         default="medium",
         help="Default τ profile if --tau not provided",
     )
+    ap.add_argument("--nli-model", default=None, help="Override NLI model id or path")
+    ap.add_argument(
+        "--nli-profile",
+        default="hf",
+        choices=["hf", "onnx"],
+        help="NLI model profile (hf or onnx)",
+    )
     ap.add_argument("--ci-values", default=None, help='Comma list: e.g. "2021:2694,2022:2194,2023:2126"')
     ap.add_argument("--loose-sentences", action="store_true", help="Use regex/newline-based splitting for messy PDFs")
     ap.add_argument("--issuer", default="dws", help="issuer shortname for output filenames")
@@ -57,9 +65,11 @@ def main():
     prefix = "" if args.issuer.lower() in ("", "dws") else f"{args.issuer.lower()}_"
     os.makedirs(args.outdir, exist_ok=True)
     cfg = yaml.safe_load(open(args.config))
+    cfg_sha1 = hashlib.sha1(yaml.safe_dump(cfg, sort_keys=True).encode()).hexdigest()
 
     # 1) Parse & section
-    pages = extract_pages(args.pdf)
+    cache_dir = os.path.join(args.outdir, "cache", "pdf")
+    pages = extract_pages_cached(args.pdf, cfg_sha1, cache_dir, args.loose_sentences)
     buckets = section_by_headings(pages, cfg)
     if "unassigned" in buckets:
         fb = keyword_fallback(buckets["unassigned"], cfg)
@@ -72,11 +82,6 @@ def main():
     # 3) Collect sentences per target section
     target_secs = cfg["sectioning"]["target_sections"]
     min_words = int(cfg["sectioning"]["min_words_per_section"])
-    if args.loose_sentences:
-        splitter = split_sentences_loose
-    else:
-        nlp = load_nlp()
-        splitter = lambda txt: split_sentences(txt, nlp=nlp)
 
     section_sentences = {}
     section_wordcounts = {}
@@ -90,7 +95,7 @@ def main():
         section_wordcounts[sec] = wc
         if wc < min_words:
             continue
-        sents = collect_section_sentences(sec_pages, splitter)
+        sents = collect_section_sentences(sec_pages)
         section_sentences[sec] = sents
         included_sections.append(sec)
 
@@ -125,7 +130,8 @@ def main():
             tau = profiles.get(args.profile, 0.7)
         if tau is not None:
             from src.nli import NLIWrapper, compute_ai_spi
-            nli = NLIWrapper(cfg["nli"]["model"], cfg["nli"]["hypothesis"])
+            model_id = args.nli_model or cfg["nli"]["model"]
+            nli = NLIWrapper(model_id, cfg["nli"]["hypothesis"], profile=args.nli_profile)
             ai_spi = compute_ai_spi(all_sents, nli, tau, cfg["nli"]["gated_regex"])
             spi_hybrid = 0.6 * spi_rule["spi_rule"] + 0.4 * ai_spi["ai_spi"]
 
@@ -170,11 +176,24 @@ def main():
             "spi_rule": compute_spi_rule(sents, cfg),
         }
 
-    # 10) Persist outputs (with provenance meta)
-    import hashlib, yaml as _y
-    cfg_sha1 = hashlib.sha1(_y.safe_dump(cfg, sort_keys=True).encode()).hexdigest()
+    # 10) Year-over-year warnings
+    warnings = []
+    prev_path = os.path.join(args.outdir, f"{prefix}run_{args.year - 1}.json")
+    if os.path.exists(prev_path):
+        with open(prev_path) as pf:
+            prev = json.load(pf)
+        prev_vui = prev.get("vui", {}).get("vui_norm")
+        prev_spi = prev.get("spi_rule", {}).get("spi_rule")
+        warnings = delta_warnings(vui["vui_norm"], spi_rule["spi_rule"], prev_vui, prev_spi)
+
+    # 11) Persist outputs (with provenance meta)
     out = {
-        "meta": {"config_sha1": cfg_sha1, "effective_weights": gw_res.get("effective_weights", {}), "winsor": cfg["ci"]["winsor_pct"]},
+        "meta": {
+            "config_sha1": cfg_sha1,
+            "effective_weights": gw_res.get("effective_weights", {}),
+            "winsor": cfg["ci"]["winsor_pct"],
+            "warnings": warnings
+        },
         "year": args.year,
         "included_sections": included_sections,
         "section_wordcounts": section_wordcounts,
@@ -190,6 +209,7 @@ def main():
         "regex_gate": diag,
     }
 
+
     with open(os.path.join(args.outdir, f"{prefix}run_{args.year}.json"), "w") as f:
         json.dump(out, f, indent=2)
     with open(os.path.join(args.outdir, f"{prefix}section_map_{args.year}.json"), "w") as f:
@@ -198,7 +218,7 @@ def main():
         json.dump(diag, f, indent=2)
 
     # stdout summary
-    print(json.dumps({
+    summary = {
         "year": args.year,
         "vui_norm": round(vui["vui_norm"], 4),
         "spi_rule": round(spi_rule["spi_rule"], 4),
@@ -206,9 +226,21 @@ def main():
         "ci_value": None if ci_val is None else round(ci_val, 4),
         "gw": round(gw_res["gw"], 4),
         "band": gw_res["band"],
-        "included_sections": included_sections
-    }, indent=2))
+        "included_sections": included_sections,
+    }
+    if warnings:
+        summary["warnings"] = warnings
+    print(json.dumps(summary, indent=2))
+
+
+def cli():
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "summarize":
+        from .summarize import main as summarize_main
+        summarize_main(sys.argv[2:])
+    else:
+        main()
 
 
 if __name__ == "__main__":
-    main()
+    cli()
