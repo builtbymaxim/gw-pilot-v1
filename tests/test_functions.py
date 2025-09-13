@@ -3,13 +3,15 @@ from pathlib import Path
 import pytest
 
 # make src modules importable
-sys.path.append(str(Path(__file__).resolve().parents[1] / 'src'))
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(ROOT))
+sys.path.append(str(ROOT / 'src'))
 
-from spi import normalize_year_tokens, is_specific
-from vui import compute_vui
-from ci import ci_light
-from gw import aggregate_gw
-
+from src.spi import normalize_year_tokens, is_specific
+from src.vui import compute_vui
+from src.ci import ci_light
+from src.gw import aggregate_gw
+from src.alerts import delta_warnings
 
 def test_normalize_year_tokens():
     assert normalize_year_tokens('This is 2-0-3-0 event') == 'This is 2030 event'
@@ -74,3 +76,10 @@ def test_aggregate_gw(vui_norm, spi_hybrid, ci_or_none, expected_gw, expected_ba
     assert res['band'] == expected_band
     for k, v in expected_weights.items():
         assert res['effective_weights'][k] == pytest.approx(v)
+
+
+def test_delta_warnings():
+    res = delta_warnings(0.6, 0.3, 0.3, 0.2)
+    assert "ΔVUI_norm +0.300 exceeds ±0.2" in res
+    assert "ΔSPI +0.100 exceeds ±0.05" in res
+    assert delta_warnings(0.35, 0.21, 0.3, 0.18) == []
