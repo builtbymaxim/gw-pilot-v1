@@ -1,8 +1,8 @@
-import argparse, json, yaml, os
+import argparse, json, yaml, os, hashlib
 from typing import Dict, List
 import regex as re
 
-from src.parsing import extract_pages, split_sentences, split_sentences_loose, load_nlp
+from src.parsing import extract_pages_cached
 from src.sectioning import section_by_headings, keyword_fallback, collect_section_sentences
 from src.vui import compute_vui
 from src.spi import compute_spi_rule
@@ -51,9 +51,11 @@ def main():
     prefix = "" if args.issuer.lower() in ("", "dws") else f"{args.issuer.lower()}_"
     os.makedirs(args.outdir, exist_ok=True)
     cfg = yaml.safe_load(open(args.config))
+    cfg_sha1 = hashlib.sha1(yaml.safe_dump(cfg, sort_keys=True).encode()).hexdigest()
 
     # 1) Parse & section
-    pages = extract_pages(args.pdf)
+    cache_dir = os.path.join(args.outdir, "cache", "pdf")
+    pages = extract_pages_cached(args.pdf, cfg_sha1, cache_dir, args.loose_sentences)
     buckets = section_by_headings(pages, cfg)
     if "unassigned" in buckets:
         fb = keyword_fallback(buckets["unassigned"], cfg)
@@ -66,11 +68,6 @@ def main():
     # 3) Collect sentences per target section
     target_secs = cfg["sectioning"]["target_sections"]
     min_words = int(cfg["sectioning"]["min_words_per_section"])
-    if args.loose_sentences:
-        splitter = split_sentences_loose
-    else:
-        nlp = load_nlp()
-        splitter = lambda txt: split_sentences(txt, nlp=nlp)
 
     section_sentences = {}
     section_wordcounts = {}
@@ -84,7 +81,7 @@ def main():
         section_wordcounts[sec] = wc
         if wc < min_words:
             continue
-        sents = collect_section_sentences(sec_pages, splitter)
+        sents = collect_section_sentences(sec_pages)
         section_sentences[sec] = sents
         included_sections.append(sec)
 
@@ -159,8 +156,6 @@ def main():
         }
 
     # 10) Persist outputs (with provenance meta)
-    import hashlib, yaml as _y
-    cfg_sha1 = hashlib.sha1(_y.safe_dump(cfg, sort_keys=True).encode()).hexdigest()
     out = {
         "meta": {"config_sha1": cfg_sha1, "effective_weights": gw_res.get("effective_weights", {}), "winsor": cfg["ci"]["winsor_pct"]},
         "year": args.year,

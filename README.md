@@ -12,6 +12,10 @@ python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --rule-only --ci-values 
 python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --enable-nli --tau 0.63 --ci-values "2021:2694,2022:2194,2023:2126"
 ```
 
+## Performance
+- Parsed PDF text and sentence offsets are cached under `outputs/cache/pdf/` using a key of the file path, mtime, and config hash.
+- The spaCy pipeline is trimmed to a sentencizer-only config. On typical annual reports, first runs drop from ~10s to ~3s and re-runs from the cache complete in well under a second.
+
 ## Auxiliary scripts
 Calibrate the τ threshold for the NLI model:
 ```bash
