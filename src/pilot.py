@@ -197,6 +197,7 @@ def main():
         "regex_gate": diag,
     }
 
+
     with open(os.path.join(args.outdir, f"{prefix}run_{args.year}.json"), "w") as f:
         json.dump(out, f, indent=2)
     with open(os.path.join(args.outdir, f"{prefix}section_map_{args.year}.json"), "w") as f:
