@@ -3,12 +3,12 @@ from pathlib import Path
 import pytest
 
 # make src modules importable
-sys.path.append(str(Path(__file__).resolve().parents[1] / 'src'))
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from spi import normalize_year_tokens, is_specific
-from vui import compute_vui
-from ci import ci_light
-from gw import aggregate_gw
+from src.spi import normalize_year_tokens, is_specific
+from src.vui import compute_vui
+from src.ci import ci_light
+from src.gw import aggregate_gw
 
 
 def test_normalize_year_tokens():
