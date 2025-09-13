@@ -44,6 +44,12 @@ def main():
     ap.add_argument("--rule-only", action="store_true")
     ap.add_argument("--enable-nli", action="store_true")
     ap.add_argument("--tau", type=float, default=None)
+    ap.add_argument(
+        "--profile",
+        choices=["loose", "medium", "strict"],
+        default="medium",
+        help="Default τ profile if --tau not provided",
+    )
     ap.add_argument("--nli-model", default=None, help="Override NLI model id or path")
     ap.add_argument(
         "--nli-profile",
@@ -115,7 +121,13 @@ def main():
     ai_spi = {"ai_spi": 0.0, "positives": 0, "evaluated": 0}
     spi_hybrid = spi_rule["spi_rule"]
     if args.enable_nli and not args.rule_only:
-        tau = args.tau if args.tau is not None else cfg["nli"]["tau"]
+        profiles = {"loose": 0.5, "medium": 0.7, "strict": 0.9}
+        if args.tau is not None:
+            tau = args.tau
+        elif cfg["nli"].get("tau") is not None:
+            tau = cfg["nli"]["tau"]
+        else:
+            tau = profiles.get(args.profile, 0.7)
         if tau is not None:
             from src.nli import NLIWrapper, compute_ai_spi
             model_id = args.nli_model or cfg["nli"]["model"]

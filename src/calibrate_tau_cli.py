@@ -1,10 +1,9 @@
 # src/calibrate_tau_cli.py
-import argparse, csv, json, re, yaml, os
-from typing import List, Dict
+import argparse, csv, json, os, re, yaml
+from typing import Dict, List
 import numpy as np
 from transformers import pipeline
-from src.calibration import calibrate_tau, confusion_at_tau
-from src.spi import is_specific
+from src.calibration import calibrate_tau
 from src.utils import normalize_year_tokens  # normalize years for gating
 
 def load_gold(path: str):
@@ -46,8 +45,17 @@ def main():
     ap.add_argument("--gold", required=True, help="calibration/gold60.csv")
     ap.add_argument("--config", default="config.yml")
     ap.add_argument("--tau-out", default="outputs/tau_calibration.json")
-    ap.add_argument("--strict-gating", action="store_true",
-                    help="Use config.nli.gated_regex; otherwise no gating")
+    ap.add_argument(
+        "--strict-gating",
+        action="store_true",
+        help="Use config.nli.gated_regex; otherwise no gating",
+    )
+    ap.add_argument(
+        "--profile",
+        choices=["loose", "medium", "strict"],
+        default="medium",
+        help="Profile tag for the output JSON",
+    )
     args = ap.parse_args()
 
     cfg = yaml.safe_load(open(args.config))
@@ -62,7 +70,6 @@ def main():
 
     entail_probs = []
     labels = []
-    gated_flags = []
     for g in gold:
         txt = g["text"]
         txt_norm = normalize_year_tokens(txt)  # match pilot behavior
@@ -74,29 +81,23 @@ def main():
             scores = {d["label"].lower(): d["score"] for d in result[0]}
             p = float(scores.get("entailment", 0.0))
             entail_probs.append(p)
-            gated_flags.append(1)
         else:
             entail_probs.append(0.0)
-            gated_flags.append(0)
         labels.append(g["label"])
 
     labels = np.array(labels, dtype=int)
     entail_probs = np.array(entail_probs, dtype=float)
 
     cal = calibrate_tau(entail_probs, labels)
-    tau = cal["tau"]
-    cm = confusion_at_tau(entail_probs, labels, tau)
 
     out = {
-        "n_samples": int(len(labels)),
-        "evaluated_by_nli": int(sum(gated_flags)),
+        "tau": cal["tau"],
+        "profile": args.profile,
         "auc": cal["auc"],
-        "tau": tau,
+        "pr_auc": cal["pr_auc"],
         "tpr": cal["tpr"],
         "fpr": cal["fpr"],
-        "confusion_at_tau": cm,
-        "gating": "strict" if args.strict_gating else "off",
-        "gate_regex": cfg["nli"]["gated_regex"]
+        "pr_curve": cal["pr_curve"],
     }
     os.makedirs(os.path.dirname(args.tau_out), exist_ok=True)
     json.dump(out, open(args.tau_out, "w"), indent=2)
