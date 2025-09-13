@@ -43,6 +43,12 @@ def main():
     ap.add_argument("--rule-only", action="store_true")
     ap.add_argument("--enable-nli", action="store_true")
     ap.add_argument("--tau", type=float, default=None)
+    ap.add_argument(
+        "--profile",
+        choices=["loose", "medium", "strict"],
+        default="medium",
+        help="Default τ profile if --tau not provided",
+    )
     ap.add_argument("--ci-values", default=None, help='Comma list: e.g. "2021:2694,2022:2194,2023:2126"')
     ap.add_argument("--loose-sentences", action="store_true", help="Use regex/newline-based splitting for messy PDFs")
     ap.add_argument("--issuer", default="dws", help="issuer shortname for output filenames")
@@ -110,7 +116,13 @@ def main():
     ai_spi = {"ai_spi": 0.0, "positives": 0, "evaluated": 0}
     spi_hybrid = spi_rule["spi_rule"]
     if args.enable_nli and not args.rule_only:
-        tau = args.tau if args.tau is not None else cfg["nli"]["tau"]
+        profiles = {"loose": 0.5, "medium": 0.7, "strict": 0.9}
+        if args.tau is not None:
+            tau = args.tau
+        elif cfg["nli"].get("tau") is not None:
+            tau = cfg["nli"]["tau"]
+        else:
+            tau = profiles.get(args.profile, 0.7)
         if tau is not None:
             from src.nli import NLIWrapper, compute_ai_spi
             nli = NLIWrapper(cfg["nli"]["model"], cfg["nli"]["hypothesis"])

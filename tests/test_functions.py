@@ -3,12 +3,13 @@ from pathlib import Path
 import pytest
 
 # make src modules importable
-sys.path.append(str(Path(__file__).resolve().parents[1] / 'src'))
+sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from spi import normalize_year_tokens, is_specific
-from vui import compute_vui
-from ci import ci_light
-from gw import aggregate_gw
+from src.spi import normalize_year_tokens, is_specific
+from src.vui import compute_vui
+from src.ci import ci_light
+from src.gw import aggregate_gw
+from src.calibration import calibrate_tau
 
 
 def test_normalize_year_tokens():
@@ -74,3 +75,15 @@ def test_aggregate_gw(vui_norm, spi_hybrid, ci_or_none, expected_gw, expected_ba
     assert res['band'] == expected_band
     for k, v in expected_weights.items():
         assert res['effective_weights'][k] == pytest.approx(v)
+
+
+def test_calibrate_tau_metrics():
+    probs = [0.9, 0.8, 0.4, 0.3, 0.2]
+    labels = [1, 1, 0, 1, 0]
+    res = calibrate_tau(probs, labels)
+    assert res['tau'] == pytest.approx(0.8)
+    assert res['tpr'] == pytest.approx(2/3)
+    assert res['fpr'] == pytest.approx(0.0)
+    assert res['auc'] == pytest.approx(0.8333333333)
+    assert res['pr_auc'] == pytest.approx(0.9027777778)
+    assert isinstance(res['pr_curve'], list) and res['pr_curve']

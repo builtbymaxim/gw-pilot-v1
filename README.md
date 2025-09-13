@@ -9,13 +9,17 @@ python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --rule-only --outdir out
 # With CI values (Scope1+2 totals, tons):
 python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --rule-only --ci-values "2021:2694,2022:2194,2023:2126"
 # After τ calibration:
-python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --enable-nli --tau 0.63 --ci-values "2021:2694,2022:2194,2023:2126"
+# Use a predefined τ profile (loose/medium/strict) instead of --tau
+python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --enable-nli --profile strict --ci-values "2021:2694,2022:2194,2023:2126"
+# Profiles: loose=0.5, medium=0.7, strict=0.9
 ```
 
 ## Auxiliary scripts
 Calibrate the τ threshold for the NLI model:
 ```bash
-python -m src.calibrate_tau_cli --gold calibration/gold60.csv --strict-gating
+python -m src.calibrate_tau_cli --gold calibration/gold60.csv --strict-gating --profile strict
+
+# tau_calibration.json fields: tau, profile, auc, pr_auc, tpr, fpr, pr_curve
 ```
 Generate a multi-year PDF report:
 ```bash
