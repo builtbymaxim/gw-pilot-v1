@@ -8,3 +8,4 @@ matplotlib>=3.7
 PyYAML>=6.0
 pdfminer.six>=20221105
 pytest>=7.0
+jsonschema>=4.0

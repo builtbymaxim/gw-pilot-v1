@@ -1,27 +1,5 @@
 {
-  "meta": {
-    "config_sha1": "cfe380aa59ac19e69972c96cc3d6849478156545",
-    "effective_weights": {
-      "vui": 0.5625,
-      "r_spi": 0.43749999999999994,
-      "r_ci": 0.0
-    },
-    "winsor": [
-      1,
-      99
-    ]
-  },
   "year": 2024,
-  "included_sections": [
-    "strategy",
-    "governance",
-    "metrics_targets"
-  ],
-  "section_wordcounts": {
-    "strategy": 42037,
-    "governance": 50025,
-    "metrics_targets": 7829
-  },
   "vui": {
     "vui_hits": 1123,
     "words": 92090,
@@ -40,7 +18,6 @@
   },
   "spi_hybrid": 0.22492581602373887,
   "ci_value": null,
-  "ci_meta": null,
   "gw": {
     "gw": 0.5677435601155236,
     "band": "medium",
@@ -50,244 +27,16 @@
       "r_ci": 0.0
     }
   },
-  "per_section": {
-    "strategy": {
-      "words": 40889,
-      "count_sentences": 6142,
-      "vui": {
-        "vui_hits": 500,
-        "words": 40889,
-        "vui_per_1000": 12.228227640685759,
-        "vui_norm": 0.4076075880228586
-      },
-      "spi_rule": {
-        "specific": 163,
-        "total": 6142,
-        "spi_rule": 0.026538586779550635
-      }
+  "meta": {
+    "config_sha1": "cfe380aa59ac19e69972c96cc3d6849478156545",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
     },
-    "governance": {
-      "words": 44774,
-      "count_sentences": 6527,
-      "vui": {
-        "vui_hits": 603,
-        "words": 44774,
-        "vui_per_1000": 13.467637468173493,
-        "vui_norm": 0.44892124893911645
-      },
-      "spi_rule": {
-        "specific": 294,
-        "total": 6527,
-        "spi_rule": 0.04504366477707982
-      }
-    },
-    "metrics_targets": {
-      "words": 6427,
-      "count_sentences": 1148,
-      "vui": {
-        "vui_hits": 20,
-        "words": 6427,
-        "vui_per_1000": 3.1118717908822155,
-        "vui_norm": 0.10372905969607385
-      },
-      "spi_rule": {
-        "specific": 117,
-        "total": 1148,
-        "spi_rule": 0.1019163763066202
-      }
-    }
-  },
-  "section_map": {
-    "strategy": {
-      "pages": [
-        3,
-        6,
-        8,
-        10,
-        14,
-        16,
-        19,
-        20,
-        21,
-        26,
-        27,
-        28,
-        29,
-        30,
-        33,
-        34,
-        35,
-        36,
-        38,
-        42,
-        43,
-        44,
-        45,
-        46,
-        47,
-        48,
-        49,
-        50,
-        51,
-        54,
-        58,
-        60,
-        64,
-        65,
-        66,
-        68,
-        69,
-        71,
-        73,
-        74,
-        85,
-        87,
-        90,
-        102,
-        121,
-        123,
-        133,
-        167,
-        168,
-        171,
-        179,
-        180,
-        181,
-        182,
-        183,
-        184,
-        186,
-        188,
-        190
-      ],
-      "count_pages": 59,
-      "fallback_pages": 0,
-      "heading_pages": 59
-    },
-    "governance": {
-      "pages": [
-        5,
-        7,
-        9,
-        11,
-        12,
-        13,
-        15,
-        17,
-        18,
-        23,
-        25,
-        31,
-        32,
-        37,
-        39,
-        41,
-        52,
-        53,
-        55,
-        56,
-        57,
-        59,
-        61,
-        62,
-        63,
-        67,
-        70,
-        75,
-        77,
-        79,
-        81,
-        83,
-        84,
-        86,
-        88,
-        89,
-        91,
-        93,
-        95,
-        97,
-        99,
-        101,
-        103,
-        105,
-        107,
-        109,
-        111,
-        113,
-        115,
-        117,
-        119,
-        125,
-        126,
-        127,
-        129,
-        131,
-        135,
-        137,
-        139,
-        140,
-        141,
-        143,
-        145,
-        147,
-        149,
-        151,
-        153,
-        155,
-        157,
-        159,
-        161,
-        163,
-        165,
-        169,
-        170,
-        173,
-        174,
-        175,
-        177,
-        185,
-        187,
-        189
-      ],
-      "count_pages": 82,
-      "fallback_pages": 1,
-      "heading_pages": 81
-    },
-    "metrics_targets": {
-      "pages": [
-        4,
-        22,
-        72,
-        82,
-        112,
-        130,
-        142,
-        152,
-        154,
-        156,
-        158,
-        160,
-        162,
-        164,
-        166
-      ],
-      "count_pages": 15,
-      "fallback_pages": 15,
-      "heading_pages": 0
-    }
-  },
-  "regex_gate": {
-    "total_sentences": 13817,
-    "gate_hits_count": 2,
-    "gate_hits_sample": [
-      {
-        "page": 27,
-        "text": "by 16% by 2025 and 36% by"
-      },
-      {
-        "page": 182,
-        "text": "Aggregated Climate VAR (%)Net Zero 2050Delayed TransitionNDCsNet Zero 2050 OverallDelayed Transition & NDCs Overall-70-60-50-40-30-20-100Transition VAR - Net Zero by 2050 scenario (%)Physical VAR \u2013 worst-case scenario\u00b3 (%)Consumer DiscretionaryMaterialsHealth CareConsumer StaplesUtilitiesEnergyInfor"
-      }
+    "winsor": [
+      1,
+      99
     ]
   }
 }

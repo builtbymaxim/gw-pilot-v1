@@ -73,7 +73,6 @@ def main():
         splitter = lambda txt: split_sentences(txt, nlp=nlp)
 
     section_sentences = {}
-    section_wordcounts = {}
     included_sections = []
     for sec in target_secs:
         sec_pages = buckets.get(sec, [])
@@ -81,7 +80,6 @@ def main():
             continue
         raw_text = "\n\n".join(pg["text"] for pg in sec_pages)
         wc = word_count(raw_text)
-        section_wordcounts[sec] = wc
         if wc < min_words:
             continue
         sents = collect_section_sentences(sec_pages, splitter)
@@ -119,7 +117,6 @@ def main():
 
     # 7) CI_light
     ci_val = None
-    ci_meta = None
     if args.ci_values:
         series = {}
         for kv in args.ci_values.split(","):
@@ -139,43 +136,28 @@ def main():
         if series:
             ci_res = ci_light(series, winsor=tuple(cfg["ci"]["winsor_pct"]))
             ci_val = ci_res["ci_by_year"].get(args.year, None)
-            ci_meta = ci_res
 
     # 8) GW aggregation
-    weights = cfg["weights"]; bands = cfg["bands"]
+    weights = cfg["weights"]
+    bands = cfg["bands"]
     gw_res = aggregate_gw(vui["vui_norm"], spi_hybrid, ci_val, weights, bands)
 
-    # 9) Per-section metrics
-    per_section = {}
-    for sec in included_sections:
-        sents = section_sentences.get(sec, [])
-        if not sents:
-            continue
-        per_section[sec] = {
-            "words": sum(len(re.findall(r"\b\w+(?:[-/]\w+)?\b", s["text"])) for s in sents),
-            "count_sentences": len(sents),
-            "vui": compute_vui(sents, cfg),
-            "spi_rule": compute_spi_rule(sents, cfg),
-        }
-
-    # 10) Persist outputs (with provenance meta)
+    # 9) Persist outputs (with provenance meta)
     import hashlib, yaml as _y
     cfg_sha1 = hashlib.sha1(_y.safe_dump(cfg, sort_keys=True).encode()).hexdigest()
     out = {
-        "meta": {"config_sha1": cfg_sha1, "effective_weights": gw_res.get("effective_weights", {}), "winsor": cfg["ci"]["winsor_pct"]},
         "year": args.year,
-        "included_sections": included_sections,
-        "section_wordcounts": section_wordcounts,
         "vui": vui,
         "spi_rule": spi_rule,
         "ai_spi": ai_spi,
         "spi_hybrid": spi_hybrid,
         "ci_value": ci_val,
-        "ci_meta": ci_meta,
         "gw": gw_res,
-        "per_section": per_section,
-        "section_map": section_map,
-        "regex_gate": diag,
+        "meta": {
+            "config_sha1": cfg_sha1,
+            "effective_weights": gw_res.get("effective_weights", {}),
+            "winsor": cfg["ci"]["winsor_pct"],
+        },
     }
 
     with open(os.path.join(args.outdir, f"{prefix}run_{args.year}.json"), "w") as f:

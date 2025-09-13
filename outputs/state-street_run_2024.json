@@ -1,27 +1,5 @@
 {
-  "meta": {
-    "config_sha1": "cfe380aa59ac19e69972c96cc3d6849478156545",
-    "effective_weights": {
-      "vui": 0.5625,
-      "r_spi": 0.43749999999999994,
-      "r_ci": 0.0
-    },
-    "winsor": [
-      1,
-      99
-    ]
-  },
   "year": 2024,
-  "included_sections": [
-    "strategy",
-    "governance",
-    "metrics_targets"
-  ],
-  "section_wordcounts": {
-    "strategy": 27480,
-    "governance": 20470,
-    "metrics_targets": 23862
-  },
   "vui": {
     "vui_hits": 1168,
     "words": 64760,
@@ -40,7 +18,6 @@
   },
   "spi_hybrid": 0.02570885043935139,
   "ci_value": null,
-  "ci_meta": null,
   "gw": {
     "gw": 0.7644240888654583,
     "band": "high",
@@ -50,192 +27,16 @@
       "r_ci": 0.0
     }
   },
-  "per_section": {
-    "strategy": {
-      "words": 25770,
-      "count_sentences": 4434,
-      "vui": {
-        "vui_hits": 534,
-        "words": 25770,
-        "vui_per_1000": 20.721769499417928,
-        "vui_norm": 0.6907256499805976
-      },
-      "spi_rule": {
-        "specific": 71,
-        "total": 4434,
-        "spi_rule": 0.016012629679747408
-      }
+  "meta": {
+    "config_sha1": "cfe380aa59ac19e69972c96cc3d6849478156545",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
     },
-    "governance": {
-      "words": 19588,
-      "count_sentences": 3310,
-      "vui": {
-        "vui_hits": 385,
-        "words": 19588,
-        "vui_per_1000": 19.654890749438433,
-        "vui_norm": 0.6551630249812811
-      },
-      "spi_rule": {
-        "specific": 39,
-        "total": 3310,
-        "spi_rule": 0.011782477341389729
-      }
-    },
-    "metrics_targets": {
-      "words": 19402,
-      "count_sentences": 3295,
-      "vui": {
-        "vui_hits": 249,
-        "words": 19402,
-        "vui_per_1000": 12.833728481599834,
-        "vui_norm": 0.4277909493866611
-      },
-      "spi_rule": {
-        "specific": 363,
-        "total": 3295,
-        "spi_rule": 0.1101669195751138
-      }
-    }
-  },
-  "section_map": {
-    "strategy": {
-      "pages": [
-        7,
-        8,
-        9,
-        10,
-        11,
-        14,
-        15,
-        22,
-        23,
-        28,
-        31,
-        32,
-        38,
-        44,
-        54,
-        58,
-        59,
-        63,
-        65,
-        66,
-        85,
-        87,
-        90,
-        96,
-        99,
-        100,
-        103,
-        119,
-        130,
-        132,
-        134,
-        135,
-        136,
-        137,
-        142,
-        144,
-        151,
-        158,
-        159,
-        161,
-        200,
-        222,
-        231,
-        232
-      ],
-      "count_pages": 44,
-      "fallback_pages": 1,
-      "heading_pages": 43
-    },
-    "governance": {
-      "pages": [
-        12,
-        47,
-        53,
-        57,
-        60,
-        64,
-        70,
-        86,
-        88,
-        89,
-        94,
-        95,
-        131,
-        133,
-        138,
-        140,
-        141,
-        143,
-        147,
-        148,
-        149,
-        150,
-        152,
-        156,
-        157,
-        171,
-        192,
-        235,
-        236,
-        237,
-        247
-      ],
-      "count_pages": 31,
-      "fallback_pages": 1,
-      "heading_pages": 30
-    },
-    "metrics_targets": {
-      "pages": [
-        16,
-        18,
-        19,
-        20,
-        34,
-        36,
-        109,
-        110,
-        111,
-        112,
-        113,
-        115,
-        117,
-        121,
-        122,
-        123,
-        124,
-        125,
-        127,
-        128,
-        129,
-        145,
-        160,
-        164,
-        166,
-        167,
-        187,
-        191,
-        197,
-        198,
-        199,
-        207,
-        212,
-        216,
-        217,
-        218,
-        220,
-        229
-      ],
-      "count_pages": 38,
-      "fallback_pages": 38,
-      "heading_pages": 0
-    }
-  },
-  "regex_gate": {
-    "total_sentences": 11039,
-    "gate_hits_count": 0,
-    "gate_hits_sample": []
+    "winsor": [
+      1,
+      99
+    ]
   }
 }
