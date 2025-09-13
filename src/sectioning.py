@@ -31,11 +31,17 @@ def keyword_fallback(unassigned_pages, cfg):
             out[best_sec].append({**pg, "fallback": True, "score": best_score})
     return out
 
-def collect_section_sentences(section_pages, splitter):
+def collect_section_sentences(section_pages, splitter=None):
     # Split per-page and attach page number to each sentence
     out = []
     for pg in section_pages:
-        sents = splitter(pg["text"])
-        for s in sents:
-            out.append({"text": s["text"], "page": pg["page"]})
+        if "sentences" in pg:
+            for start, end in pg["sentences"]:
+                txt = pg["text"][start:end].strip()
+                if txt:
+                    out.append({"text": txt, "page": pg["page"]})
+        elif splitter is not None:
+            sents = splitter(pg["text"])
+            for s in sents:
+                out.append({"text": s["text"], "page": pg["page"]})
     return out
