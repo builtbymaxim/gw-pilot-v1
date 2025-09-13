@@ -76,21 +76,29 @@ Interpretation: Higher vagueness (VUI) paired with low specificity (SPI_rule) co
 <!-- RESULTS_START -->
 ## Results snapshot
 
-**Cross-section (GW) — 2023**
+**Cross-section (GW) — 2024**
 
-![gw_cross_section_2023](docs/img/gw_cross_section_2023.png)
+![gw_cross_section_2024](docs/img/gw_cross_section_2024.png)
 
-**GW: rules vs. NLI (strict) — 2023**
+**GW over time — DWS (rules-only)**
 
-![compare_rules_vs_nli_2023](docs/img/compare_rules_vs_nli_2023.png)
+![dws_gw_series](docs/img/dws_gw_series.png)
 
-**Top-5 issuers 2023 (rules-only)**
-| Rank | Issuer | GW | VUI_norm | SPI_rule |
-|-----:|:------|---:|---------:|---------:|
-| 1 | DWS | 0.630 | 0.430 | 0.112 |
+**Top ↑ YoY GW changes (2023→2024)**
+
+| Rank | Issuer | ΔGW YoY | GW (latest) |
+|-----:|:------|--------:|------------:|
+| 1 | DWS | +0.013 | 0.643 |
+
+**Top ↓ YoY GW changes (2023→2024)**
+
+| Rank | Issuer | ΔGW YoY | GW (latest) |
+|-----:|:------|--------:|------------:|
+| 1 | DWS | +0.013 | 0.643 |
 
 > Full results & more plots: see [docs/RESULTS.md](docs/RESULTS.md).
 <!-- RESULTS_END -->
+
 
 
 <!-- LIMITS_START -->
