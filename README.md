@@ -22,6 +22,11 @@ Generate a multi-year PDF report:
 python -m src.report --years 2022,2023,2024 --out outputs/report_v1_1.pdf
 ```
 
+Aggregate `run_*.json` files into CSV summaries and comparison plots:
+```bash
+python -m src.pilot summarize --inputs "outputs/*/run_*.json" --out outputs/summaries
+```
+
 ## Directory overview
 - `calibration/` — gold-label CSVs and helpers for τ calibration
 - `outputs/` — run artifacts (JSON, CSV, charts). See `outputs/README.md` for formats
