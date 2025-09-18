@@ -2,79 +2,76 @@ import csv, glob, json, random, regex as re
 from pathlib import Path
 random.seed(42)
 
-# ——— Config
-cfg = {}
+# ---- Config / Patterns
+cfg={}
 try:
     import yaml
-    cfg = yaml.safe_load(Path("config.yml").read_text(encoding="utf-8"))
+    cfg=yaml.safe_load(Path("config.yml").read_text(encoding="utf-8"))
 except Exception:
     pass
-gated = cfg.get("nli",{}).get("gated_regex", r"(?i)(?=.*(?:net\s*zero|emission|carbon|ghg|scope|target|reduction))(?=.*(?:\d+%|\d+\s?(?:tco2e|tco₂e|co2|co₂|kt|mt|mw|kwh|mwh|gwh)|by\s+20\d{2}))")
+
+gated = cfg.get("nli",{}).get("gated_regex",
+    r"(?ix)(?=.*(?:net\s*zero|emission|carbon|ghg|scope|target|reduction))(?=.*(?:\d+%|\d+\s?(?:tco2e|tco₂e|co2|co₂|kt|mt|mw|kwh|mwh|gwh)|by\s+20\d{2}))")
 gate_pat = re.compile(gated, re.IGNORECASE | re.VERBOSE)
 
-# Conservative hedge list for VUI
-vui_pat = re.compile(r"(?i)\b(may|might|could|would|should|plan to|intend to|aim to|seek to|strive to|consider|explore|ongoing|continue|endeavor|aspire|help|support)\b")
+vui_pat = re.compile(
+    r"(?i)\b(may|might|could|would|should|plan to|intend to|aim to|seek to|strive to|consider|explore|ongoing|continue|endeavor|aspire|help|support)\b"
+)
 
-def load_sentences_from_section_map(path):
+def is_sent(s: str) -> bool:
+    s = s.strip()
+    if not (20 <= len(s) <= 350): return False
+    if s.count(" ") < 3: return False
+    return True
+
+def walk(obj, out):
+    if isinstance(obj, dict):
+        for v in obj.values():
+            walk(v, out)
+    elif isinstance(obj, list):
+        for v in obj:
+            walk(v, out)
+    elif isinstance(obj, str):
+        if is_sent(obj):
+            out.append(obj.strip())
+
+def load_json_texts(path):
     try:
         j = json.load(open(path, encoding="utf-8"))
     except Exception:
         return []
-    sents = []
-    # Try common shapes:
-    # 1) {'sections': {'strategy': {'sentences': [...]}, ...}}
-    sec = j.get("sections") or j.get("section_map") or {}
-    if isinstance(sec, dict):
-        for v in sec.values():
-            if isinstance(v, dict) and "sentences" in v and isinstance(v["sentences"], list):
-                sents.extend([s for s in v["sentences"] if isinstance(s, str)])
-            elif isinstance(v, list):  # direct list
-                sents.extend([s for s in v if isinstance(s, str)])
-    # 2) flat list under 'sentences'
-    if not sents and isinstance(j.get("sentences"), list):
-        sents.extend([s for s in j["sentences"] if isinstance(s, str)])
-    # dedup + filter length
-    out, seen = [], set()
-    for s in sents:
-        s = s.strip()
-        if 20 <= len(s) <= 350 and s not in seen:
-            seen.add(s)
-            out.append(s)
+    acc = []
+    walk(j, acc)
+    # de-dup preserve order
+    seen=set(); out=[]
+    for s in acc:
+        if s not in seen:
+            seen.add(s); out.append(s)
     return out
 
-def gather_pool():
-    # Section maps from gatefix (AI runs) and rules runs
-    maps = []
-    maps += glob.glob("outputs/*_*_nli_gatefix/section_map_*.json")
-    maps += glob.glob("outputs/*_*_rules/section_map_*.json")
-    all_sents = []
-    for p in maps:
-        all_sents.extend(load_sentences_from_section_map(p))
-    # Dedup
-    dedup, seen = [], set()
-    for s in all_sents:
+def load_regex_hits(paths):
+    texts=[]
+    for p in paths:
+        try:
+            j=json.load(open(p, encoding="utf-8"))
+            if isinstance(j, list):
+                items=j
+            else:
+                items=j.get("hits", j.get("data", []))
+            for it in items:
+                t = it["text"] if isinstance(it, dict) and "text" in it else (it if isinstance(it,str) else "")
+                if is_sent(t):
+                    texts.append(t.strip())
+        except Exception:
+            pass
+    # de-dup
+    seen=set(); out=[]
+    for s in texts:
         if s not in seen:
-            seen.add(s); dedup.append(s)
-    return dedup
+            seen.add(s); out.append(s)
+    return out
 
-def pick_high_spi(sents, k=35):
-    hits = [s for s in sents if gate_pat.search(s)]
-    if len(hits) > k:
-        return random.sample(hits, k)
-    return hits
-
-def pick_high_vui(sents, k=35):
-    vag = [s for s in sents if vui_pat.search(s)]
-    if len(vag) > k:
-        return random.sample(vag, k)
-    return vag
-
-def pick_random(sents, k=40):
-    pool = list(sents)
-    random.shuffle(pool)
-    return pool[:min(k, len(pool))]
-
-# Anchors
+# ---- Collect pools
 anchors=[]
 ap=Path("inputs/anchors.csv")
 if ap.exists():
@@ -85,10 +82,41 @@ if ap.exists():
             if t:
                 anchors.append({"bucket":"external_anchors","label":row.get("label",""),"text":t,"meta":row.get("source","")})
 
-sents = gather_pool()
-high_spi = pick_high_spi(sents, 35)
-high_vui = pick_high_vui(sents, 35)
-random_baseline = pick_random([x for x in sents if x not in set(high_spi)|set(high_vui)], 40)
+# 1) NLI regex hits (both strict + gatefix)
+regex_hit_paths = []
+regex_hit_paths += glob.glob("outputs/*_*_nli_gatefix/*regex_hits_*.json")
+regex_hit_paths += glob.glob("outputs/*_*_nli_strict/*regex_hits_*.json")
+nli_hits = load_regex_hits(regex_hit_paths)
+
+# 2) Section maps (rules + gatefix), schema-agnostic
+map_paths = []
+map_paths += glob.glob("outputs/*_*_nli_gatefix/*section_map*.json")
+map_paths += glob.glob("outputs/*_*_rules/*section_map*.json")
+map_texts=[]
+for p in map_paths:
+    map_texts.extend(load_json_texts(p))
+
+# 3) Merge + dedup global pool
+global_pool=[]
+seen=set()
+for s in nli_hits + map_texts:
+    if s not in seen:
+        seen.add(s); global_pool.append(s)
+
+# ---- Buckets
+high_spi = [s for s in global_pool if gate_pat.search(s)]
+high_vui = [s for s in global_pool if vui_pat.search(s)]
+
+def pick(seq, k):
+    seq = list(seq)
+    random.shuffle(seq)
+    return seq[:min(k, len(seq))]
+
+high_spi = pick(high_spi, 35)
+high_vui = pick(high_vui, 35)
+
+excl = set(high_spi) | set(high_vui)
+random_baseline = pick([s for s in global_pool if s not in excl], 40)
 
 def pack(bucket, seq, label=""):
     return [{"bucket":bucket,"label":label,"text":t,"meta":""} for t in seq]
