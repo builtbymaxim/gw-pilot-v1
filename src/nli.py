@@ -67,7 +67,7 @@ class NLIWrapper:
 
         if to_run:
             for (idx, p, cache_file), res in zip(
-                to_run, self.pipe.pipe(run_inputs, batch_size=batch_size)
+                to_run, self.pipe(run_inputs, batch_size=batch_size)
             ):
                 scores = {d["label"].lower(): float(d["score"]) for d in res}
                 prob = scores.get("entailment", 0.0)
