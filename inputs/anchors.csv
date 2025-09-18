@@ -1,0 +1,5 @@
+source,label,text
+regulatory_negative,neg,"<paste sentence 1>"
+regulatory_negative,neg,"<paste sentence 2>"
+best_practice,pos,"<paste sentence 1>"
+best_practice,pos,"<paste sentence 2>"

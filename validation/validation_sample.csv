@@ -1,0 +1,5 @@
+bucket,label,text,meta
+external_anchors,pos,<paste sentence 1>,best_practice
+external_anchors,neg,<paste sentence 2>,regulatory_negative
+external_anchors,pos,<paste sentence 2>,best_practice
+external_anchors,neg,<paste sentence 1>,regulatory_negative
