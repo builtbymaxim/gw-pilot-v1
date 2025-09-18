@@ -2,7 +2,7 @@ import csv, glob, json, random, regex as re
 from pathlib import Path
 random.seed(42)
 
-# ---- Config / Patterns
+# ---------------- Config / Patterns ----------------
 cfg={}
 try:
     import yaml
@@ -10,73 +10,87 @@ try:
 except Exception:
     pass
 
-gated = cfg.get("nli",{}).get("gated_regex",
+GATE_RE = cfg.get("nli",{}).get("gated_regex",
     r"(?ix)(?=.*(?:net\s*zero|emission|carbon|ghg|scope|target|reduction))(?=.*(?:\d+%|\d+\s?(?:tco2e|tco₂e|co2|co₂|kt|mt|mw|kwh|mwh|gwh)|by\s+20\d{2}))")
-gate_pat = re.compile(gated, re.IGNORECASE | re.VERBOSE)
+gate_pat = re.compile(GATE_RE, re.IGNORECASE | re.VERBOSE)
 
-# Broader VUI list (modal verbs, hedges, weak commitments)
+# modal/hedges for high-VUI
 vui_pat = re.compile(
-    r"(?i)\b("
-    r"may|might|could|would|should|"
-    r"plan to|plans to|intend to|intends to|aim to|aims to|seek to|seeks to|"
-    r"strive to|strives to|working towards|work towards|"
+    r"(?i)\b(may|might|could|would|should|"
+    r"plan[s]?\s+to|intend[s]?\s+to|aim[s]?\s+to|seek[s]?\s+to|strive[s]?\s+to|"
+    r"working\s+towards?|work\s+towards?|"
     r"consider|explore|endeavor|aspire|"
-    r"as appropriate|where possible|subject to|targeting|"
-    r"commitment to reduce|commitments? to reduce|ambition to|ambitions? to"
-    r")\b"
+    r"as\s+appropriate|where\s+possible|subject\s+to|targeting|"
+    r"commitment[s]?\s+to\s+reduce|ambition[s]?\s+to)"
 )
 
 def is_sent(s: str) -> bool:
     s = s.strip()
-    if not (20 <= len(s) <= 350): return False
-    if s.count(" ") < 3: return False
-    return True
+    return 20 <= len(s) <= 350 and s.count(" ") >= 3
 
-def walk_collect(o, out):
-    if isinstance(o, str):
-        if is_sent(o): out.append(o.strip()); return
-    if isinstance(o, dict):
-        # capture dict["text"] if present
-        t=o.get("text")
-        if isinstance(t,str) and is_sent(t): out.append(t.strip())
-        for v in o.values(): walk_collect(v, out)
-    elif isinstance(o, list):
-        for v in o: walk_collect(v, out)
+SPLIT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-Z(])")
 
-def load_json_texts(path):
-    try:
-        j=json.load(open(path, encoding="utf-8"))
-    except Exception:
-        return []
-    acc=[]
-    walk_collect(j, acc)
-    # de-dup preserve order
+def split_to_sents(text: str):
+    parts = SPLIT_RE.split(text.replace("\n", " ").strip())
+    return [p.strip() for p in parts if is_sent(p)]
+
+def dedup(seq):
     seen=set(); out=[]
-    for s in acc:
+    for s in seq:
         if s not in seen:
             seen.add(s); out.append(s)
     return out
 
-def load_regex_hits(paths):
+# ---------------- Loaders ----------------
+def load_regex_hits():
+    paths = []
+    paths += glob.glob("outputs/*_*_nli_gatefix/*regex_hits*.json")
+    paths += glob.glob("outputs/*_*_nli_strict/*regex_hits*.json")
     texts=[]
     for p in paths:
         try:
-            j=json.load(open(p, encoding="utf-8"))
-            items = j if isinstance(j,list) else j.get("hits", j.get("data", []))
-            for it in items:
-                t = it.get("text") if isinstance(it, dict) else (it if isinstance(it,str) else "")
-                if isinstance(t,str) and is_sent(t):
-                    texts.append(t.strip())
+            j=json.load(open(p,encoding="utf-8"))
         except Exception:
-            pass
-    # de-dup
-    seen=set(); out=[]
-    for s in texts:
-        if s not in seen:
-            seen.add(s); out.append(s)
-    return out
+            continue
+        items = j if isinstance(j,list) else j.get("hits", j.get("data", []))
+        for it in items:
+            t = ""
+            if isinstance(it,str):
+                t = it
+            elif isinstance(it,dict):
+                for key in ("text","sentence","s","value"):
+                    if isinstance(it.get(key),str):
+                        t = it[key]; break
+            if t and is_sent(t):
+                texts.append(t.strip())
+    return dedup(texts)
 
-# ---- Collect pools
+def load_from_cache_dirs():
+    # mine raw text from cached PDF parse under each run outdir
+    cache_dirs = []
+    cache_dirs += glob.glob("outputs/*_*_nli_gatefix/cache/**/*", recursive=True)
+    cache_dirs += glob.glob("outputs/*_*_rules/cache/**/*", recursive=True)
+    texts=[]
+    for p in cache_dirs:
+        if not p.endswith(".json"): 
+            continue
+        try:
+            j=json.load(open(p,encoding="utf-8"))
+        except Exception:
+            continue
+        # walk recursively, collect strings, and split to sentences if big blobs
+        def walk(o):
+            if isinstance(o,str):
+                if is_sent(o): texts.append(o.strip())
+                elif len(o) > 400: texts.extend(split_to_sents(o))
+            elif isinstance(o,dict):
+                for v in o.values(): walk(v)
+            elif isinstance(o,list):
+                for v in o: walk(v)
+        walk(j)
+    return dedup(texts)
+
+# ---------------- Build pools ----------------
 anchors=[]
 ap=Path("inputs/anchors.csv")
 if ap.exists():
@@ -87,33 +101,16 @@ if ap.exists():
             if t:
                 anchors.append({"bucket":"external_anchors","label":row.get("label",""),"text":t,"meta":row.get("source","")})
 
-# NLI regex hits (strict + gatefix)
-regex_hit_paths = []
-regex_hit_paths += glob.glob("outputs/*_*_nli_gatefix/*regex_hits_*.json")
-regex_hit_paths += glob.glob("outputs/*_*_nli_strict/*regex_hits_*.json")
-nli_hits = load_regex_hits(regex_hit_paths)
+nli_hits = load_regex_hits()
+cache_sents = load_from_cache_dirs()
 
-# Section maps (rules + gatefix)
-map_paths = []
-map_paths += glob.glob("outputs/*_*_nli_gatefix/*section_map*.json")
-map_paths += glob.glob("outputs/*_*_rules/*section_map*.json")
-map_texts=[]
-for p in map_paths:
-    map_texts.extend(load_json_texts(p))
+global_pool = dedup(nli_hits + cache_sents)
 
-# Merge + dedup
-global_pool=[]
-seen=set()
-for s in nli_hits + map_texts:
-    if s not in seen:
-        seen.add(s); global_pool.append(s)
-
-# ---- Buckets
 high_spi = [s for s in global_pool if gate_pat.search(s)]
 high_vui = [s for s in global_pool if vui_pat.search(s)]
 
 def pick(seq, k):
-    seq = list(seq); random.shuffle(seq)
+    seq=list(seq); random.shuffle(seq)
     return seq[:min(k, len(seq))]
 
 high_spi = pick(high_spi, 35)
@@ -139,4 +136,4 @@ with out.open("w", newline="") as f:
     for row in sample:
         w.writerow(row)
 
-print(f"Wrote {out} with {len(sample)} rows (anchors={min(40,len(anchors))}, high_vui={len(high_vui)}, high_spi={len(high_spi)}, random={len(random_baseline)})")
+print(f"Wrote {out} with {len(sample)} rows (anchors={min(40,len(anchors))}, high_vui={len(high_vui)}, high_spi={len(high_spi)}, random={len(random_baseline)}, pool={len(global_pool)})")
