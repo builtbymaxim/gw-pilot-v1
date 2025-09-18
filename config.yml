@@ -137,6 +137,9 @@ nli:
   hypothesis: This sentence states a measurable environmental target.
   gated_regex: (?ix)(?=.*(?:net\s*zero|emission|carbon|ghg|scope|target|reduction))(?=.*(?:\d+%|\d+\s?(?:tco2e|tco₂e|co2|co₂|kt|mt|mw|kwh|mwh|gwh)|by\s+20\d{2}))
   tau: 0.6
+  tau_default: 0.5
+  w_rules_default: 0.7
+  w_ai_default: 0.3
 ci:
   winsor_pct:
   - 1
