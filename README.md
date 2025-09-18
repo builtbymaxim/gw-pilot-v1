@@ -74,34 +74,15 @@ Interpretation: Higher vagueness (VUI) paired with low specificity (SPI_rule) co
 
 
 <!-- RESULTS_START -->
-## Results snapshot
+## Results snapshot (rules-only, 2021–2024)
 
-**Cross-section (GW) — 2024**
+**Cross-section (GW) — latest per issuer**
 
-![gw_cross_section_2024](docs/img/gw_cross_section_2024.png)
+![GW cross-section latest](docs/img/gw_cross_section_latest_bar.png)
 
-**GW over time — DWS (rules-only)**
+**GW over time — asset managers**
 
-![dws_gw_series](docs/img/dws_gw_series.png)
-
-**Top ↑ YoY GW changes (2023→2024)**
-
-| Rank | Issuer | ΔGW YoY | GW (latest) |
-|-----:|:------|--------:|------------:|
-| 1 | DWS | +0.013 | 0.643 |
-
-**Top ↓ YoY GW changes (2023→2024)**
-
-| Rank | Issuer | ΔGW YoY | GW (latest) |
-|-----:|:------|--------:|------------:|
-| 1 | DWS | +0.013 | 0.643 |
-
-> Full results & more plots: see [docs/RESULTS.md](docs/RESULTS.md).
-<!-- RESULTS_END -->
-
-
-
-<!-- LIMITS_START -->
+![GW series asset managers](docs/img/gw_series_asset_managers.png)
 ## Known limitations
 
 - **PDF parsing & sentence segmentation:** multi-column layouts, tables and hyphenation can still cause sentence/word count drift. We cache parsed pages but edge documents may need manual QA.
