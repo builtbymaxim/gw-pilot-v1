@@ -17,3 +17,7 @@ outputs/cache/
 !outputs/overlay_2022_2024.png
 !outputs/cross_issuer_scatter_noCI.png
 !outputs/cross_issuer_scatter_noCI.png
+outputs/
+outputs/**
+*.tar.gz
+.Rhistory
