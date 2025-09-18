@@ -27,7 +27,7 @@ sectioning:
     risk_management:
     - Climate Risk
     - TCFD Risk Management
-    - "TCFD \u2013 Risk Management"
+    - TCFD – Risk Management
     - Risk management (TCFD)
   keyword_fallback:
     strategy:
@@ -52,7 +52,7 @@ sectioning:
     - mwh
     - kt
     - mt
-    - "\u20AC"
+    - €
     - mn
     - bn
     - million
@@ -105,12 +105,12 @@ spi:
   unit_patterns:
   - '%'
   - tco2e
-  - "tco\u2082e"
+  - tco₂e
   - gwh
   - mwh
   - kt
   - mt
-  - "\u20AC"
+  - €
   - \\bmn\\b
   - \\bbn\\b
   - million
@@ -134,13 +134,9 @@ spi:
   - \\b(in|during|as of)\\s+20\\d{2}\\b
 nli:
   model: facebook/bart-large-mnli
-  hypothesis: This sentence states a measurable target.
-  gated_regex: "(?ix)\n(?=.*(?:%|tco2e|tco\u2082e|co2|co\u2082|ghg|tonnes?|kwh|mwh|gwh|mw|kt|mt|scope\\\
-    s*[123]|net\\s*zero))\n(\n  \\b(?:by|until|no\\s+later\\s+than|at\\s+the\\s+latest|through)\\\
-    s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b\n| \\bby\\s+(?:year[-\\s]?end|YE)\\s*(?:20\\\
-    d{2}|2\\W*0\\W*\\d\\W*\\d)\\b\n| \\bby\\s+end[-\\s]?of\\s+(?:20\\d{2}|2\\W*0\\\
-    W*\\d\\W*\\d)\\b\n)"
-  tau: null
+  hypothesis: This sentence states a measurable environmental target.
+  gated_regex: (?i)(?=.*(?:%|tco2e|tco₂e|co2|co₂|ghg|tonnes?|kwh|mwh|gwh|mw|kt|mt|scope|net\s*zero|carbon|emissions|target|reduction|by\s+20\d{2}|baseline|vs\s+20\d{2}))
+  tau: 0.6
 ci:
   winsor_pct:
   - 1
