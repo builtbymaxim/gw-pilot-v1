@@ -133,7 +133,7 @@ spi:
   - \\bQ[1-4]\\s?20\\d{2}\\b
   - \\b(in|during|as of)\\s+20\\d{2}\\b
 nli:
-  model: facebook/bart-large-mnli
+  model: roberta-large-mnli
   hypothesis: This sentence states a measurable environmental target.
   gated_regex: (?ix)(?=.*(?:net\s*zero|emission|carbon|ghg|scope|target|reduction))(?=.*(?:\d+%|\d+\s?(?:tco2e|tco₂e|co2|co₂|kt|mt|mw|kwh|mwh|gwh)|by\s+20\d{2}))
   tau: 0.6
