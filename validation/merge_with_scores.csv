@@ -1,0 +1,115 @@
+item_id,text,bucket,label,vui_norm_sent,spi_flag_sent,risk_rules
+GWX1000,DWS 2021 Annual Report,dws_ar,,0.0,0.0,0.4
+GWX1001,DWS 2022 Annual Report,dws_ar,,0.0,0.0,0.4
+GWX1002,SEC Press Release on DWS,dws_ar,,0.0,0.0,0.4
+GWX1003,Shell Ads Appeal Decision,shell_ruling,,0.0,0.0,0.4
+GWX1004,Good Practice Sustainability Reporting Guide,mixed_pool,,0.0,0.0,0.4
+GWX1005,TCFD Good Practice Handbook,mixed_pool,,0.0,0.0,0.4
+GWX1006,Liberty Mutual 2024 TCFD Report,mixed_pool,,0.0,0.0,0.4
+GWX1007,GE Aerospace 2024 TCFD Report,mixed_pool,,0.0,0.0,0.4
+GWX1008,Merck 2024 TCFD Report,mixed_pool,,0.0,0.0,0.4
+GWX1009,Banner Bank 2024 TCFD Report,mixed_pool,,0.0,0.0,0.4
+GWX1010,"We aim to become climate-neutral in our actions, in line with the Paris Agreement, by 2050 or sooner.",mixed_pool,,0.3333333333333333,0.0,0.6
+GWX1012,Our Strategy – climate ambitions,mixed_pool,,0.0,0.0,0.4
+GWX1013,"While we aim to maintain our strong momentum from 2021 into 2022 and beyond, we expect some industry headwinds along the way, mainly due to inflation and enormous geopolitical tensions.",mixed_pool,,0.3333333333333333,0.0,0.6
+GWX1015,Interview with the Chairman of the Executive Board,mixed_pool,,0.0,0.0,0.4
+GWX1016,"We are aware that, among others, external factors such as unfavourable macro‑economic and market conditions, geopolitical uncertainty, the ongoing COVID‑19 pandemic, regulatory changes, climate change and related climate transition activities may adversely affect our ability to execute on our strategy.",mixed_pool,,0.3333333333333333,0.0,0.6
+GWX1018,Our Strategy – risk factors,mixed_pool,,0.0,0.0,0.4
+GWX1019,"While it is not yet possible for us to speak about potential outcomes or timeframes of the external investigations, we can state with regard to our nearly completed internal reviews that we continue to stand by our financial disclosures as well as the prospectuses of our funds.",mixed_pool,,0.0,0.0,0.4
+GWX1021,Letter of the Chairman – greenwashing investigations,mixed_pool,,0.0,0.0,0.4
+GWX1022,"Since summer 2022, we have further transformed DWS in various ways and informed the capital market and the public in December about our refined strategy, including new financial targets.",dws_ar,,0.0,0.0,0.4
+GWX1024,Letter of the Chairman – strategy update,mixed_pool,,0.0,0.0,0.4
+GWX1025,"With this strategy, we want to maintain our leading position in Germany and further exploit the potential in Europe.",mixed_pool,,0.0,0.0,0.4
+GWX1028,"In addition, we intend to further expand our Passive and Alternatives business in the USA.",mixed_pool,,0.3333333333333333,0.0,0.6
+GWX1031,"From 2018 to 2021, DWS made materially misleading statements about its controls for incorporating environmental, social, and governance (ESG) factors into research and investment recommendations for ESG‑integrated products.",dws_ar,,0.0,0.0,0.4
+GWX1033,"DWS marketed itself as a ‘leader in ESG’ and stated that ESG was in its ‘DNA’, yet the firm failed to adequately implement its ESG integration policy and failed to adopt and implement policies and procedures to ensure that its public statements about its ESG integration were accurate.",dws_ar,,0.0,0.0,0.4
+GWX1035,The first poster featured an aerial image of waves crashing on a shore with text that stated ‘Climate change doesn’t do borders. Neither do rising sea levels. That’s why HSBC is aiming to provide up to $1 trillion in financing and investment globally to help our clients transition to net zero’.,hsbc_case,,0.0,0.0,0.4
+GWX1036,"The second poster featured an image of tree growth rings with text that stated ‘Climate changes doesn’t do borders. So in the UK, we’re helping to plant 2 million trees which will lock in 1.25 million tonnes of carbon over their lifetime’.",mixed_pool,,0.0,0.0,0.4
+GWX1037,The CAP Code required that the basis of environmental claims must be clear and that unqualified claims could mislead if they omit significant information.,mixed_pool,,0.3333333333333333,0.0,0.6
+GWX1038,HSBC UK Bank plc said it had been making the claim in ad (a) since 2020 and aimed to meet the ambition to provide financing and investment globally to help some of its clients transition to net zero by 2030.,hsbc_case,,0.3333333333333333,1.0,0.19999999999999998
+GWX1039,"HSBC said that the financing of greenhouse gas‑emitting industries was required during the transition to net zero, and so their continued financing of those industries was not in conflict with the aims of a transition to net zero.",hsbc_case,,0.0,0.0,0.4
+GWX1041,"We are changing for a cleaner future; to keep the Netherlands warm, operational and moving, Shell is active in oil and gas, but we are changing for a cleaner future; we have to, we can and we want to; therefore, Shell also invests in new energy for the Netherlands, for example through electric transport, hydrogen and biofuels.",shell_ruling,,0.0,0.0,0.4
+GWX1043,"We are building wind turbine parks at sea, with smart extras to generate electricity even when the wind isn’t strong; this allows us to make green energy from wind at sea for homes and businesses.",mixed_pool,,0.0,0.0,0.4
+GWX1045,"The original complaint against Shell’s statements was that they were in breach of Article 3.1 and 3.2 of the Dutch Sustainability Claims Code, which requires sustainability claims to be clear, specific, correct and unambiguous and prohibits advertising an aspiration when it cannot reasonably be suspected that this will be attained.",shell_ruling,,0.0,0.0,0.4
+GWX1047,"Shell breached these requirements with its statements, as Shell’s plans to reduce the production of fossil fuels have been reversed, its investments in renewable energy are only a small fraction of its total budget, and its advertised ‘sustainable’ actions contribute little to nothing to reducing Shell’s emissions.",shell_ruling,,0.3333333333333333,0.0,0.6
+GWX1049,"However, the Advertising Code Committee decided that Shell’s advertisements made sufficiently clear that Shell’s efforts were mere aspirations, as required under Article 3.2 SCC, and argued that it was clear on the face of the advertisements that Shell is in a transition process and that their plans haven’t yet come to fruition.",shell_ruling,,0.0,0.0,0.4
+GWX1053,"By failing to apply Article 3.1 SCC, the Committee didn’t test whether Shell’s advertisements were sufficiently substantiated, nuanced and specified; Shell provides no context as to what it means to be ‘changing’ or to become ‘cleaner’.",shell_ruling,,0.0,0.0,0.4
+GWX1057,Board of Appeal decision,mixed_pool,,0.0,0.0,0.4
+GWX1058,You cannot advertise an aspiration when it cannot reasonably be suspected that this will be attained.,mixed_pool,,0.0,0.0,0.4
+GWX1060,It is argued that the Committee overestimates the knowledgeability of the regular consumer regarding Shell’s activities.,shell_ruling,,0.0,0.0,0.4
+GWX1062,The Board of Appeal disagreed with the appellant that Shell’s advertisements would confuse a regular consumer as to what Shell’s operations entail.,shell_ruling,,0.3333333333333333,0.0,0.6
+GWX1065,We seek to increase the level of sustainability associated with our activities throughout our organization.,mixed_pool,,0.3333333333333333,0.0,0.6
+GWX1067,Our Strategy – corporate transformation,mixed_pool,,0.0,0.0,0.4
+GWX1068,"Whilst having already built‑up strong capabilities, we seek to further embed ESG in our investment process to improve the assessment of the future expected risk/return of a security.",mixed_pool,,0.3333333333333333,0.0,0.6
+GWX1070,Our Strategy – ESG in the investment process,mixed_pool,,0.0,0.0,0.4
+GWX1071,We seek to launch new and innovative ESG products and solutions to meet the requirements of our clients and to increase the number of funds classified as Article 8 or Article 9 SFDR by converting existing funds previously classified as Article 6 in Europe.,mixed_pool,,0.3333333333333333,0.0,0.6
+GWX1073,Our Strategy – innovative and sustainable investment solutions,mixed_pool,,0.0,0.0,0.4
+GWX1074,We seek to take a holistic approach to engagement as we consider issuer and non‑issuer engagement as the key driver for positive transformation of the global economy – particularly in context of our net zero ambition.,mixed_pool,,0.6666666666666666,0.0,0.8
+GWX1076,Our Strategy – stakeholder engagement,mixed_pool,,0.0,0.0,0.4
+GWX1077,"As the asset management market continues to be shaped by advances in technology, we seek to leverage our investments in new digital expertise, which is creating new distribution channels, products and services for our clients.",mixed_pool,,0.3333333333333333,0.0,0.6
+GWX1079,Market outlook and technology,mixed_pool,,0.0,0.0,0.4
+GWX1080,"Through proxy voting, we seek to address corporate governance topics with investee companies; similarly, we seek to ensure good corporate governance at the Group to ensure accountability, fairness and transparency for all stakeholders.",mixed_pool,,0.6666666666666666,0.0,0.8
+GWX1082,"HSBC believed the claims in ads (a) and (b) highlighted two tangible and specific short‑to‑medium term initiatives, capable of quantifiable measurement, and would not be seen as commenting, in a broader sense, on their green credentials or environmental contribution.",hsbc_case,,0.3333333333333333,0.0,0.6
+GWX1083,Consumers could access HSBC’s climate change initiatives and Climate Strategy via the “Search HSBC Sustainability” call to action on the ads; the bank argued that this meant the ads did not mislead about its total environmental impact.,hsbc_case,,0.3333333333333333,0.0,0.6
+GWX1084,"We have learned from the ongoing changing regulatory environment and our own findings and continue to improve our ESG governance, processes and controls.",mixed_pool,,0.0,0.0,0.4
+GWX1086,Letter of the Chairman – lessons from investigations,mixed_pool,,0.0,0.0,0.4
+GWX1087,Travel (Air and Rail): reduce our travel emissions by 25% by 2022 compared to 2019.,mixed_pool,,0.0,1.0,0.0
+GWX1089,Sustainability rating: maintain or improve our Carbon Disclosure Project (CDP) B rating by 2024.,mixed_pool,,0.0,1.0,0.0
+GWX1091,Volunteer hours per employee: perform 1.5 hours of volunteering per employee by 2024.,mixed_pool,,0.0,0.0,0.4
+GWX1093,Corporate engagements: participate in 475 or more corporate engagements per annum by 2024.,mixed_pool,,0.0,0.0,0.4
+GWX1095,"ESG net flows: grow ESG net flows at the same, or at a faster rate, than our overall flow target of more than 4% of assets under management.",mixed_pool,,0.0,1.0,0.0
+GWX1097,"ESG AuM: continue to grow our ESG assets under management through a combination of flows into existing products, flows into new products and supporting the transfer by existing clients of their assets from non‑ESG products into ESG products.",mixed_pool,,0.0,0.0,0.4
+GWX1099,The advertisements merely convey that Shell invests in sustainable projects.,shell_ruling,,0.0,0.0,0.4
+GWX1102,Practice to avoid includes overly positive commentary that fails to identify where current performance is off track or where goals are unlikely to be met in future periods and inconsistent reporting across years that makes it difficult for stakeholders to track progress.,mixed_pool,,0.0,0.0,0.4
+GWX1104,Metrics and targets – practice to avoid,mixed_pool,,0.0,0.0,0.4
+GWX1105,"Organisations should include historic, baseline and target information when visually representing data and should ensure consistent frameworks and data collection methods each year to facilitate comparability.",mixed_pool,,0.6666666666666666,0.0,0.8
+GWX1107,Metrics and targets – charts and tables,mixed_pool,,0.0,0.0,0.4
+GWX1108,"Electricity from renewable sources: source 100% renewable electricity by 2025, with an interim ambition of 85% by 2022.",mixed_pool,,0.0,0.0,0.4
+GWX1110,Achieve 32% of positions at the first management level below the Executive Board held by female executives and 33% at the second management level below the Executive Board by 2024.,mixed_pool,,0.0,0.0,0.4
+GWX1112,DS Smith has a science‑based target requiring at least a 40% reduction in carbon emissions per tonne of production by 2030 compared to 2019 and has committed to net‑zero emissions by 2050.,mixed_pool,,0.0,1.0,0.0
+GWX1114,Metrics and targets examples,mixed_pool,,0.0,0.0,0.4
+GWX1115,"The Met Office clearly set out how emissions metrics and targets have been set and measured throughout the period, including their initial stocktake to calculate their baseline, the GHG Protocol methodology used, and the metrics and targets selected to drive key change.",mixed_pool,,0.0,0.0,0.4
+GWX1117,Metrics and targets – methodology,mixed_pool,,0.0,0.0,0.4
+GWX1118,"Where organisations have set their own net zero or carbon neutral targets, an explanation of what this means – including baselines, how they plan to achieve it and progress so far – is important to allow users to assess performance.",mixed_pool,,0.3333333333333333,0.0,0.6
+GWX1120,Metrics and targets – explanation,mixed_pool,,0.0,0.0,0.4
+GWX1121,"Forward‑looking good practice requires that future targets, goals and commitments include appropriate interim targets with performance tracked, supported by charts with trajectory lines and accompanied by narrative comparing performance to prior periods and actions undertaken.",mixed_pool,,0.0,0.0,0.4
+GWX1123,Metrics and targets – forward‑looking,mixed_pool,,0.0,0.0,0.4
+GWX1124,"Good practice reports fairly assess the likelihood of meeting goals or commitments, clearly identify where performance is behind target and include trajectory lines continuing until the end commitment date, avoiding overly positive commentary.",mixed_pool,,0.0,0.0,0.4
+GWX1127,"The guide notes that organisations should consider emissions from other specific KPIs, such as supplier engagement scores, with an accompanying fair and balanced assessment of supplier performance including both successes and ongoing challenges.",mixed_pool,,0.6666666666666666,0.0,0.8
+GWX1129,UKRI includes forward‑looking trend lines to the end of the GGC commitment period so users can easily assess performance against the target and the likelihood of meeting the commitment.,mixed_pool,,0.0,0.0,0.4
+GWX1132,"UKRI’s GGC charts and graphs clearly demonstrate performance against target during the current and past periods, with trajectory lines continuing until the end commitment or goal completion date and narrative clearly identifying where performance was behind target and explaining why.",mixed_pool,,0.0,0.0,0.4
+GWX1135,"Accurate and transparent reporting of climate and environmental metrics and targets is essential for accountability and demonstrating central government’s commitment to sustainability; by setting clear, measurable targets and consistently reporting on key metrics, government bodies enhance transparency and drive performance improvements.",mixed_pool,,0.0,0.0,0.4
+GWX1137,Metrics and targets – principles,mixed_pool,,0.0,0.0,0.4
+GWX1141,"Good practice sustainability reporting provides a fair and honest explanation when performance is off track, with narrative comparing performance to prior periods and linking to actions undertaken.",mixed_pool,,0.0,0.0,0.4
+GWX1143,Metrics and targets – narrative,mixed_pool,,0.0,0.0,0.4
+GWX1144,"The guide emphasises that good practice includes the inclusion of a target trajectory line continuing until the end commitment or goal completion date, accompanied by a narrative that fairly assesses the likelihood of meeting the goal based on current performance and trajectories.",mixed_pool,,0.0,0.0,0.4
+GWX1146,Metrics and targets – trajectory lines,mixed_pool,,0.0,0.0,0.4
+GWX1147,"The guide states that organisations should clearly set out how emissions metrics and targets are set and measured, including baseline calculations and methodology used such as the GHG Protocol.",mixed_pool,,0.3333333333333333,0.0,0.6
+GWX1150,"The Met Office explains their carbon neutral commitments appropriately in the annual report, including organisation‑specific metrics and targets beyond headline net‑zero statements and emissions targets, and links climate‑related metrics and targets to the risks and opportunities to which they relate.",mixed_pool,,0.0,0.0,0.4
+GWX1152,Emissions reporting – Met Office example,mixed_pool,,0.0,0.0,0.4
+GWX1153,"The Department for Transport integrates climate adaptation into broader organisational objectives, provides transparency about future climate risks and signposts to supplementary information, helping readers understand the organisation’s long‑term resilience.",mixed_pool,,0.0,0.0,0.4
+GWX1155,Risk management – DfT example,mixed_pool,,0.0,0.0,0.4
+GWX1156,"UK Research and Innovation identifies climate change as a principal risk and provides supporting risk information, demonstrating good practice in linking risk identification to sustainability reporting.",mixed_pool,,0.0,0.0,0.4
+GWX1158,Risk management – UKRI example,mixed_pool,,0.0,0.0,0.4
+GWX1159,"Government bodies should consider Scope 3 emissions and provide clear methodology, set SMART targets and provide historical data to avoid unsubstantiated net‑zero commitments or cherry‑picking positive data.",mixed_pool,,0.6666666666666666,0.0,0.8
+GWX1161,"In 2024, we achieved a 20% reduction from 2023 levels, resulting in a cumulative 56% reduction from the 2019 baseline, achieving the 50% reduction in Scope 1 and 2 emissions target ahead of schedule; we aim to further reduce Scope 1 and 2 emissions by 65% from 2019 levels by 2030.",mixed_pool,,0.3333333333333333,1.0,0.19999999999999998
+GWX1164,"We have adapted and reimagined our offices to support the evolving workplace dynamics to support our employees globally as they connect and collaborate in hybrid, in‑office or work‑from‑home environments, and this adaptability plays a crucial role in our overall reduction of GHG emissions.",mixed_pool,,0.0,0.0,0.4
+GWX1169,"At Liberty Mutual, the Board of Directors oversees the ongoing development of our enterprise‑level business strategy and the management and implementation of our climate strategy, with responsibilities delegated to the Risk Committee and Governance and Sustainability Committee.",mixed_pool,,0.0,0.0,0.4
+GWX1171,"We continue to enhance our governance structure to support communication, collaboration and effective decision‑making, ensuring that climate‑related financial risks and opportunities are understood by our Board of Directors and across every level of our business.",mixed_pool,,0.0,0.0,0.4
+GWX1173,GE Aerospace 2024 TCFD Report,mixed_pool,,0.0,0.0,0.4
+GWX1174,Merck’s board of directors oversees ESG matters and has established a cross‑functional EHS Council composed of senior leaders to manage climate‑related issues; the company applies scenario analysis using the Representative Concentration Pathway 8.5 scenario to assess physical risks for ten key facilities across various hazards.,mixed_pool,,0.0,0.0,0.4
+GWX1176,Governance and risk management,mixed_pool,,0.0,0.0,0.4
+GWX1177,"Merck’s risk management process includes identifying, assessing and managing climate‑related risks across at least ten facilities using advanced modelling to evaluate hazards like high temperature, wildfires, drought, storm surge and sea level rise, with results informing adaptation measures and investment decisions.",mixed_pool,,0.0,0.0,0.4
+GWX1179,"Banner Bank has established board‑level oversight of climate‑related risks with a risk committee that reviews policies and risk assessments, and its directors receive ESG training to ensure adequate understanding of climate risk and opportunities.",mixed_pool,,0.0,0.0,0.4
+GWX1181,"AT&T aims to reduce absolute Scope 1 and 2 greenhouse gas emissions by 63% by 2030 from a 2015 baseline and achieve net‑zero Scope 1 and 2 emissions by 2035; by 2022 its emissions were approximately 4.8 million metric tonnes of CO2e, a reduction of over 4 million metric tonnes from 2015 (over 45%).",mixed_pool,,0.3333333333333333,1.0,0.19999999999999998
+GWX1182,AT&T aims for 50% of suppliers to set science‑based targets by 2024 and reported that 53% of suppliers had done so by 2022.,mixed_pool,,0.0,1.0,0.0
+GWX1183,"AT&T’s Gigaton Goal aims to enable its customers to save 1 billion metric tonnes of greenhouse gas emissions by 2035, and by 2022 the company reported that customers had avoided 149.2 million metric tonnes through its products and services.",mixed_pool,,0.3333333333333333,1.0,0.19999999999999998
+GWX1184,"Liberty Mutual continues research and investment in enhancing its modelling capabilities, building a bespoke portfolio‑level transition risk model that leverages NGFS data and advancing insights on high‑priority perils including hurricane frequency, flood and wildfire risk.",mixed_pool,,0.0,0.0,0.4
+GWX1186,Liberty Mutual shares its expertise on managing physical climate risk through the publication of a Physical Climate Risk Management Framework and by hosting the Geneva Association’s Climate Change and Environment Conference to facilitate industry‑wide dialogue on climate.,mixed_pool,,0.0,0.0,0.4
+GWX1188,"Liberty Mutual has expanded its Climate Activation Programme globally with new leadership participation, tailored sessions to engage product leaders and the development of new content and online training modules.",mixed_pool,,0.0,0.0,0.4
+GWX1190,"We continue to prioritise projects that support the integration of climate considerations into our business strategy and decision‑making, including refining our approach to climate resiliency and enhancing modelling capabilities.",mixed_pool,,0.0,0.0,0.4
+GWX1192,The guide notes that good practice reports provide a balanced assessment of supplier performance with both successes and ongoing challenges when reporting on Scope 3 supply chain emissions.,mixed_pool,,0.0,0.0,0.4
+GWX1194,The Department for Transport provides transparency about future climate risks by integrating adaptation considerations into broader organisational objectives and signposting to supplementary information.,mixed_pool,,0.0,0.0,0.4
+GWX1197,"UK Research and Innovation identifies climate change as a principal risk with supporting risk information, exemplifying the linkage of risk identification to sustainability reporting.",mixed_pool,,0.0,0.0,0.4
+GWX1200,"Government bodies are encouraged to set SMART emissions targets, provide historical data and avoid unsubstantiated net‑zero commitments or cherry‑picking positive data when reporting on emissions.",mixed_pool,,0.0,0.0,0.4
+GWX1202,"The guide recommends including a fair and honest explanation when performance is off track, with narrative comparing performance to prior periods and linking it to actions undertaken.",mixed_pool,,0.0,0.0,0.4
