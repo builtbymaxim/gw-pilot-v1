@@ -1,6 +1,6 @@
 {
   "meta": {
-    "config_sha1": "cfe380aa59ac19e69972c96cc3d6849478156545",
+    "config_sha1": "90f44a391a29bcd4eaf8a889fef2ae438aebcca3",
     "effective_weights": {
       "vui": 0.5625,
       "r_spi": 0.43749999999999994,
@@ -9,7 +9,8 @@
     "winsor": [
       1,
       99
-    ]
+    ],
+    "warnings": []
   },
   "year": 2024,
   "included_sections": [
@@ -20,29 +21,29 @@
   "section_wordcounts": {
     "strategy": 68058,
     "governance": 34275,
-    "metrics_targets": 24556
+    "metrics_targets": 15484
   },
   "vui": {
-    "vui_hits": 1675,
-    "words": 118662,
-    "vui_per_1000": 14.115723652053733,
-    "vui_norm": 0.4705241217351244
+    "vui_hits": 1617,
+    "words": 117817,
+    "vui_per_1000": 13.724674707385182,
+    "vui_norm": 0.45748915691283937
   },
   "spi_rule": {
-    "specific": 425,
-    "total": 16222,
-    "spi_rule": 0.02619898902724695
+    "specific": 282,
+    "total": 3776,
+    "spi_rule": 0.0746822033898305
   },
   "ai_spi": {
-    "ai_spi": 0.75,
-    "positives": 3,
-    "evaluated": 4
+    "ai_spi": 0.816,
+    "positives": 306,
+    "evaluated": 375
   },
-  "spi_hybrid": 0.3157193934163482,
+  "spi_hybrid": 0.37120932203389834,
   "ci_value": null,
   "ci_meta": null,
   "gw": {
-    "gw": 0.5640425838563552,
+    "gw": 0.5324335723736415,
     "band": "medium",
     "effective_weights": {
       "vui": 0.5625,
@@ -52,48 +53,48 @@
   },
   "per_section": {
     "strategy": {
-      "words": 66144,
-      "count_sentences": 8538,
+      "words": 68058,
+      "count_sentences": 2442,
       "vui": {
-        "vui_hits": 1216,
-        "words": 66144,
-        "vui_per_1000": 18.384131591678763,
-        "vui_norm": 0.6128043863892921
+        "vui_hits": 1230,
+        "words": 68058,
+        "vui_per_1000": 18.07282024155867,
+        "vui_norm": 0.602427341385289
       },
       "spi_rule": {
-        "specific": 156,
-        "total": 8538,
-        "spi_rule": 0.018271257905832748
+        "specific": 123,
+        "total": 2442,
+        "spi_rule": 0.05036855036855037
       }
     },
     "governance": {
-      "words": 32544,
-      "count_sentences": 4386,
+      "words": 34275,
+      "count_sentences": 1002,
       "vui": {
-        "vui_hits": 262,
-        "words": 32544,
-        "vui_per_1000": 8.05063913470993,
-        "vui_norm": 0.26835463782366437
+        "vui_hits": 263,
+        "words": 34275,
+        "vui_per_1000": 7.673231218088986,
+        "vui_norm": 0.25577437393629954
       },
       "spi_rule": {
-        "specific": 69,
-        "total": 4386,
-        "spi_rule": 0.01573187414500684
+        "specific": 61,
+        "total": 1002,
+        "spi_rule": 0.06087824351297405
       }
     },
     "metrics_targets": {
-      "words": 19974,
-      "count_sentences": 3298,
+      "words": 15484,
+      "count_sentences": 332,
       "vui": {
-        "vui_hits": 197,
-        "words": 19974,
-        "vui_per_1000": 9.86282166816862,
-        "vui_norm": 0.3287607222722873
+        "vui_hits": 124,
+        "words": 15484,
+        "vui_per_1000": 8.008266597778352,
+        "vui_norm": 0.2669422199259451
       },
       "spi_rule": {
-        "specific": 200,
-        "total": 3298,
-        "spi_rule": 0.06064281382656155
+        "specific": 98,
+        "total": 332,
+        "spi_rule": 0.29518072289156627
       }
     }
   },
@@ -278,10 +279,7 @@
       "pages": [
         3,
         13,
-        22,
-        23,
         33,
-        34,
         35,
         36,
         37,
@@ -300,52 +298,141 @@
         118,
         119,
         134,
-        147,
-        162,
-        165,
         168,
-        169,
         171,
-        172,
-        175,
-        178,
-        182,
-        184,
         193,
-        195,
         219,
         220,
-        230,
-        231,
-        234,
-        235,
-        239,
         270
       ],
-      "count_pages": 45,
-      "fallback_pages": 42,
+      "count_pages": 27,
+      "fallback_pages": 24,
       "heading_pages": 3
     }
   },
   "regex_gate": {
-    "total_sentences": 16222,
-    "gate_hits_count": 4,
+    "total_sentences": 3776,
+    "gate_hits_count": 375,
     "gate_hits_sample": [
       {
-        "page": 66,
-        "text": "by 2030 compared to the base year 2019 (in line with the net zero interim target)."
+        "page": 5,
+        "text": "Based on our financial results and the progress we made with our strategy last year, we \nreiterate our 2025 financial targets of a \u20ac 4.50 earnings per share, an adjusted cost-income \nratio of below 59 percent and a dividend pay-out ratio of approximately 65 percent."
       },
       {
-        "page": 119,
-        "text": "2 In support of our ambition to become climate neutral by 2050 in line with the Paris Agreement, for certain in-scope assets and operational activities we have set interim net zero targets for 2030."
+        "page": 5,
+        "text": "Yours sincerely,\n\nIn January 2025, we re-emphasized our financial target for earnings per share with additional \nguidance for the years 2026 and 2027."
       },
       {
-        "page": 119,
-        "text": "4 Our interim target emission values by 2030 are to be less than 3,165 tCO2e across scope 1 and 2 combined (market-based), and to be less than 4,704 tCO2e across scope 3 \u2013 Category 6."
+        "page": 9,
+        "text": "The average participation rate was more than 95%."
       },
       {
-        "page": 119,
-        "text": "2 In support of our ambition to become climate neutral by 2050 in line with the Paris Agreement, for certain in-scope assets and operational activities we have set interim net zero targets for 2030."
+        "page": 9,
+        "text": "As part of a so \ncalled \u201cDeep Dive\u201d, we talked about our multi-year transformation program, which is intended \nto replace the existing complex IT Infrastructure, including the target operating model of the \nindividual divisions as well as future connections and interdependencies with Deutsche Bank."
+      },
+      {
+        "page": 9,
+        "text": "We also looked at the target operating models of our divisions \nand talked about governance and controls."
+      },
+      {
+        "page": 21,
+        "text": "A range of topics was covered during these meetings, such as the Group's strategic priorities \nand its financial targets including their achievability, our Alternatives development, M&A \nambitions, the extraordinary dividend as well as product innovation, particularly around digital \nand thematic pr"
+      },
+      {
+        "page": 21,
+        "text": "During 2024, the share price posted a \ncumulative shareholder return of 33.9% compared to a 3.6% increase in the SDAX."
+      },
+      {
+        "page": 29,
+        "text": "These include products focusing on global excluding US equities, corporate bonds with a \ntarget maturity, Chinese mid-cap equities, as well as global infrastructure."
+      },
+      {
+        "page": 31,
+        "text": "Internal Management System\n\nBased on our strategy, we aim to deliver the following medium-term financial targets by \n2025:\n\n\u2014 We remain committed to creating shareholder value, reflected in an earnings per share \n\ntarget."
+      },
+      {
+        "page": 31,
+        "text": "Financial key performance indicators (medium-term to 2025)\n\nTargets assuming stable market conditions."
+      },
+      {
+        "page": 31,
+        "text": "Against this backdrop, the ECB \nstarted to cut interest rates in June, reducing the key interest rate (deposit rate) in four steps \nto 3.00%."
+      },
+      {
+        "page": 31,
+        "text": "According to Eurostat, inflation reached its lowest level of the year at 1.7% in September, but \nrose again to 2.4% in December."
+      },
+      {
+        "page": 31,
+        "text": "On the one hand, services inflation has remained high at \naround 4% since the end of last year, which continues to call for a restrictive monetary policy."
+      },
+      {
+        "page": 31,
+        "text": "In January 2025 and in the context of our progress against the medium-term targets 2025, we \nre-emphasised our financial target for earnings per share with additional guidance for the \nyears 2026 and 2027."
+      },
+      {
+        "page": 31,
+        "text": "We are committed to achieving a reported earnings per share growth of \n10% per year in 2026 and 2027."
+      },
+      {
+        "page": 31,
+        "text": "Revenue growth and cost management are the expected \ndrivers for this growth and we expect the reported cost-income ratio to improve further and \ntherefore to be below 59% in 2027."
+      },
+      {
+        "page": 31,
+        "text": "In addition, we continue to aim for a dividend payout ratio \nguidance of approximately 65%."
+      },
+      {
+        "page": 31,
+        "text": "In Japan, according to data from the Japanese Trade Union Confederation, a resurgence in \ninflation and worsening labour shortages supported a strong average annual wage increase \nof 5.1% in the annual spring wage negotiations, the strongest wage increases since 1991."
+      },
+      {
+        "page": 32,
+        "text": "To our Shareholders\n\nSummarised \nManagement Report\n\nConsolidated \nFinancial Statements\n\nCompensation Report\n\nCorporate Govern-\nance Statement\n\nSupplementary \nInformation\n\nDWS 2024 Annual Report\n\no       \u00a0\n\ncontinued to weaken in the context of a global \u201chigher for longer\u201d rate setting and was end of"
+      },
+      {
+        "page": 32,
+        "text": "After strong growth in 2023 and 5.3% GDP growth in the first quarter of 2024, growth \nmomentum in China cooled as the year progressed."
+      },
+      {
+        "page": 32,
+        "text": "Economic activity bottomed out in the third quarter (4.6%)."
+      },
+      {
+        "page": 32,
+        "text": "Global sustainable fund \nassets have grown by 8% to USD 3.2 billion in 2024 with Europe accounting for 84% of the \nassets."
+      },
+      {
+        "page": 42,
+        "text": "For 2025, we expect the adjusted cost-income ratio to be lower compared to 2024 and within \na range of 57% to 59%."
+      },
+      {
+        "page": 42,
+        "text": "Thus, we reiterate our 2025 financial targets, i.e. reported earnings per share of \u20ac 4.50 and \nan adjusted cost-income ratio of below 59%."
+      },
+      {
+        "page": 42,
+        "text": "Opportunities and Risks\n\nMacroeconomic, Geopolitical and Market Environment\n\nOpportunities\n\nOur strategy has evolved along with the changing asset management industry and is \ncontributing, directly and indirectly, to anticipated growth rates as well as our medium-term \nnet flow target."
+      },
+      {
+        "page": 43,
+        "text": "Any merger and acquisition activity, in addition \nto meeting strategic objectives, will focus on the prioritization of shareholder value creation \nand be measured against financial criteria such as attractive return on investment, earnings \naccretion and contribution to our medium-term targets for n"
+      },
+      {
+        "page": 45,
+        "text": "This risk may \nadversely impact our medium-term targets."
+      },
+      {
+        "page": 48,
+        "text": "\u2013 The business and risk strategy including capital planning provides the basis for aligning \nrisk, capital, and performance targets for regular risk and capital profile monitoring."
+      },
+      {
+        "page": 49,
+        "text": "Risk appetite is an integral element in the strategic planning processes via our business and \nrisk strategy, designed to promote the appropriate alignment of risk, capital, and performance \ntargets, while considering risk capacity constraints from both non-financial and financial risks."
+      },
+      {
+        "page": 49,
+        "text": "This process translates our long-term strategic targets into measurable short- \nto medium-term financial targets and enables intra-year performance monitoring and \nmanagement."
       }
     ]
   }

@@ -1,19 +1,41 @@
-.venv/
+﻿.venv/
 __pycache__/
-*.pyc
+*.bak
+*.zip
+*.pptx
 *.log
-.ipynb_checkpoints/
-.cache/
-.env
-# PDFs & large binaries
-data/*.pdf
-# Model caches (leave out of repo)
-~/.cache/huggingface/
-# Optional: ignore heavy images
-outputs/*.png
-outputs/cache/
 
-.DS_Store
-!outputs/overlay_2022_2024.png
-!outputs/cross_issuer_scatter_noCI.png
-!outputs/cross_issuer_scatter_noCI.png
+data/**
+!data/README.md
+
+outputs/**
+!outputs/run_manifest.json
+!outputs/canonical_runs.csv
+!outputs/summary_latest.csv
+!outputs/summary_runs_full.csv
+!outputs/dws_2021_rules/run_2021.json
+!outputs/dws_2022_rules/run_2022.json
+!outputs/dws_2023_rules/run_2023.json
+!outputs/dws_2024_rules/run_2024.json
+!outputs/amundi_2024_rules/run_2024.json
+!outputs/state-street_2024_rules/run_2024.json
+
+docs/img/**
+!docs/img/gw_series_dws.png
+!docs/img/vui_vs_1minus_spistar_dws.png
+!docs/img/gw_cross_section_latest_bar.png
+docs/eq/
+pitch_pack/
+src/nli_patched.py
+scripts/append_formula_slides.py
+scripts/fix_formula_slides.py
+scripts/make_pitch_pptx.py
+scripts/make_pub_charts.py
+scripts/make_simple_charts.py
+scripts/refresh_readme_results.py
+scripts/update_formula_slides.py
+scripts/plot_annotated_dws.py
+
+scripts/plot_annotated_dws.py
+
+scripts/local/

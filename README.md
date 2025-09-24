@@ -1,102 +1,105 @@
-﻿# GW Pilot v1.1 (DWS 2023)
-[![CI](https://github.com/builtbymaxim/gw-pilot-v1/actions/workflows/tests.yml/badge.svg)](https://github.com/builtbymaxim/gw-pilot-v1/actions/workflows/tests.yml)
+﻿# GW Pilot (v0.2-mini)
 
-## Quickstart
-```bash
-python -m venv .venv && source .venv/bin/activate
+Reproducible snapshot of our greenwashing detection pilot:
+- Rule-based VUI (vague term density) and SPI (specificity) signals
+- AI-enhanced specificity via RoBERTa large MNLI with gating and tau=0.5
+- Hybrid SPI* (rule + AI) feeds Greenwashing (GW) score
+- Reproducible runs with config+manifest; curated charts in docs/img
+
+## 1) What problem we solve
+Sustainability reports often contain vague language and unverified targets. We provide:
+- A transparent, repeatable scoring method across reports and years
+- A split of "vagueness" vs. "specificity" rather than a black-box single score
+- Human-auditable outputs (JSON runs, charts, and a manifest with versions)
+
+## 2) Method overview (plain English)
+1. Parse report sections (Strategy, Governance, Metrics & Targets, optionally Risk).
+2. Compute VUI: vague term hits per 1,000 words, normalized to [0,1].
+3. Compute SPI_rule: fraction of sentences that match handcrafted specificity rules.
+4. Gate sentences likely to contain hard facts (numbers, dates, targets, scopes); run NLI.
+   - Model: roberta-large-mnli (CPU), tau=0.5 entailment threshold.
+   - AI specificity rate = share of gated sentences entailed as "specific".
+5. Blend rule and AI into SPI* (hybrid specificity). More specific -> higher SPI*.
+6. GW score combines normalized VUI (higher = more vague) and (1 - SPI*).
+   - Current weights (from config): w_v = 0.5625, w_s = 0.4375, w_c = 0.0 (CI off).
+
+## 3) Formula (as implemented)
+- VUI_1000 = vague_term_hits / total_words * 1000  (then normalized to [0,1])
+- SPI_rule = specific_sentences / total_sentences
+- SPI* = blend(SPI_rule, AI_specificity_rate)  // details in code, config.yml
+- GW = w_v * VUI_norm + w_s * (1 - SPI*)        // w_c * CI omitted, CI not used
+
+Notes:
+- CI (coverage/confidence) is not implemented in this release and weight is 0.0.
+- If AI is disabled or gate yields 0 sentences, SPI* falls back to SPI_rule.
+
+## 4) Reproducibility
+We lock versions and record a manifest.
+- Requirements: see requirements.txt
+- Config: config.yml (profiles.loose.nli: tau=0.5 and a permissive gate)
+- Run manifest: outputs/run_manifest.json stores commit, config SHA1, versions
+
+Quick reproduce (DWS 2024):
+```powershell
+python -m venv .venv; .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-python -m spacy download en_core_web_sm
-python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --rule-only --outdir outputs/
-# With CI values (Scope1+2 totals, tons):
-python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --rule-only --ci-values "2021:2694,2022:2194,2023:2126"
-# After τ calibration:
-# Use a predefined τ profile (loose/medium/strict) instead of --tau
-python -m src.pilot --pdf data/dws-2023.pdf --year 2023 --enable-nli --profile strict --ci-values "2021:2694,2022:2194,2023:2126"
-# Profiles: loose=0.5, medium=0.7, strict=0.9
+$env:PYTHONPATH=(Get-Location).Path
+python -m src.pilot --config config.yml --issuer dws --year 2024 --pdf data\raw\dws-2024.pdf --enable-nli --profile loose
+python scripts\build_summary.py
+python scripts\plot_series.py
 ```
 
-## Performance
-- Parsed PDF text and sentence offsets are cached under `outputs/cache/pdf/` using a key of the file path, mtime, and config hash.
-- The spaCy pipeline is trimmed to a sentencizer-only config. On typical annual reports, first runs drop from ~10s to ~3s and re-runs from the cache complete in well under a second.
+## 5) Current results (selected)
+We publish curated CSVs and PNGs:
 
-## Auxiliary scripts
-Calibrate the τ threshold for the NLI model:
-```bash
-python -m src.calibrate_tau_cli --gold calibration/gold60.csv --strict-gating --profile strict
+Artifacts:
+- outputs/canonical_runs.csv
+- outputs/summary_latest.csv
+- outputs/summary_runs_full.csv
+- outputs/run_manifest.json
+- docs/img/gw_series_dws.png
+- docs/img/vui_vs_1minus_spistar_dws.png
+- docs/img/gw_cross_section_latest_bar.png   (only appears if >= 3 issuers included)
 
-# tau_calibration.json fields: tau, profile, auc, pr_auc, tpr, fpr, pr_curve
+Example (DWS 2021–2024, hybrid on):
+| Year | VUI_norm | SPI_rule | SPI* (hybrid) | GW    |
+|-----:|---------:|---------:|--------------:|------:|
+| 2021 | 0.3515   | 0.0799   | 0.3835        | 0.4674|
+| 2022 | 0.0778   | 0.2045   | 0.4709        | 0.2753|
+| 2023 | 0.4468   | 0.0880   | 0.3940        | 0.5164|
+| 2024 | 0.4575   | 0.0747   | 0.3712        | 0.5324|
+
+Interpretation:
+- Higher VUI_norm means more vague wording.
+- Higher SPI* means more specific content (so 1 - SPI* becomes smaller).
+- GW rises with vagueness and falls with specificity.
+
+## 6) How to regenerate charts
+We provide small utilities; outputs must exist first (see reproduce step).
+```powershell
+python scripts\build_summary.py
+python scripts\plot_series.py
 ```
-Generate a multi-year PDF report:
-```bash
-python -m src.report --years 2022,2023,2024 --out outputs/report_v1_1.pdf
-```
+Charts end up in docs/img.
 
-Aggregate `run_*.json` files into CSV summaries and comparison plots:
-```bash
-python -m src.pilot summarize --inputs "outputs/*/run_*.json" --out outputs/summaries
-```
+## 7) Limitations and scope
+- AI model is a general NLI model; it is not fine-tuned on ESG. We gate to reduce off-topic inferences.
+- We do not verify factual truth (only specificity/entailment of claims).
+- Cross-issuer comparisons depend on sectioning quality; PDFs with poor structure may degrade metrics.
 
-## Directory overview
-- `calibration/` — gold-label CSVs and helpers for τ calibration
-- `outputs/` — run artifacts (JSON, CSV, charts). See `outputs/README.md` for formats
-- `src/` — pipeline modules and command-line entry points
-- `data/` — place your input PDFs here (not tracked)
-- `config.yml` — thresholds and patterns
+## 8) Roadmap
+- Human validation pass on AI-gated sentences; adjust thresholds if needed.
+- Extend to more issuers and years.
+- SFDR side-study: simple AUM-based tiering per manager and correlation vs. GW.
+- Optional CI component (coverage/confidence) once spec is finalized.
 
-## Notes
-- Sectioning: headings-first with DWS aliases → keyword fallback (min density 0.02); ≥100 words/section.
-- VUI scope: four target sections only.
-- SPI rule: balanced (number + (unit OR target/baseline) OR ≥2 signals) with strict excludes.
-- AI assist: BART-MNLI gated on target syntax; disable if AUC < 0.70.
-- CI_light: supply Scope-1+2 totals via --ci-values for now.
+## 9) Release
+Tagged: v0.2-mini-20250924 (see GitHub Releases)
+Contains: curated PNGs, CSVs, and run manifest.
+## Visual snapshot
 
-## Pilot v1.1 — DWS results (rules-first; AI gated)
-| Year | VUI_norm | SPI_rule | CI    | GW   | Band   |
-|------|----------|----------|-------|------|--------|
-| 2022 | 0.080    | 0.172    | 0.818 | 0.386| Medium |
-| 2023 | 0.430    | 0.112    | 0.970 | 0.526| Medium |
-| 2024 | 0.444    | 0.101    | 0.965 | 0.536| Medium |
+![DWS  GW series](docs/img/gw_series_dws.png)
 
-Notes: AI assist (BART-MNLI) gated on dated targets; evaluated=0 for all three years, so hybrid = 0.6·SPI_rule. CI based on Scope-1+2 totals. CI based on Scope-1+2 totals.
+![DWS – VUInorm vs 1 − SPI*](docs/img/vui_vs_1minus_spistar_dws.png)
 
-### Peer smoke-tests (rule-only)
-2024 results (no CI; weights renormalized):
-
-| Issuer    | VUI_norm | SPI_rule | GW    | Band   |
-|-----------|----------|----------|-------|--------|
-| Schroders | 0.381    | 0.107    | 0.605 | High   |
-| Amundi    | 0.382    | 0.158    | 0.584 | Medium |
-
-Gate diagnostics show 0 dated-target hits → AI path remains inactive by design.
-
-### Cross-issuer 2021–2024 (rules-first, no-CI)
-- AI path implemented and strictly gated on dated targets; gate hits = 0 across tested 2024 issuers ⇒ AI off.
-- See `outputs/compare_cross_issuers_noCI.csv` and `outputs/cross_issuer_scatter_noCI.png`.
-
-Interpretation: Higher vagueness (VUI) paired with low specificity (SPI_rule) correlates with higher GW (reporting-risk). This is by construction and consistent across peers.
-
-
-<!-- RESULTS_START -->
----
-
-## Results snapshot (rules-only, 2021–2024)
-
-
-Results below show multi-issuer rule-only scores across 2021–2024.
-
-**Cross-section (GW) — latest per issuer**
-
-![GW cross-section latest](docs/img/gw_cross_section_latest_bar.png)
-
-**GW over time — asset managers**
-
-![GW series asset managers](docs/img/gw_series_asset_managers.png)
-## Known limitations
-
-- **PDF parsing & sentence segmentation:** multi-column layouts, tables and hyphenation can still cause sentence/word count drift. We cache parsed pages but edge documents may need manual QA.
-- **Strict NLI gate & small gold set:** current strict gate was calibrated on a small gold set and can underfit. We plan to expand labels and evaluate softer gating / blending.
-- **Language variety:** patterns are English-centric; non-English or mixed-language reports may be underestimated until cross-lingual rules are added.
-- **Document-length & section mix:** very short sections or unusual section mixes can bias normalized rates; we monitor with warnings and year-over-year deltas.
-- **Cross-platform subtlety:** even with seeds and pinned deps, PDF extraction libraries may vary slightly across OS/CPUs; we run tests and validate schema to reduce surprises.
-<!-- LIMITS_END -->
-
+![GW  latest year per issuer](docs/img/gw_cross_section_latest_bar.png)

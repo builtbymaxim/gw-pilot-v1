@@ -1,14 +1,18 @@
 {
   "meta": {
-    "config_sha1": "6be4c8b710dd2f16bfc329f4d7bbe488ad9b7272",
+    "config_sha1": "90f44a391a29bcd4eaf8a889fef2ae438aebcca3",
     "effective_weights": {
-      "vui": 0.45,
-      "r_spi": 0.35,
-      "r_ci": 0.2
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
     },
     "winsor": [
       1,
       99
+    ],
+    "warnings": [
+      "\u0394VUI_norm -0.274 exceeds \u00b10.2",
+      "\u0394SPI +0.125 exceeds \u00b10.05"
     ]
   },
   "year": 2022,
@@ -21,50 +25,41 @@
   "section_wordcounts": {
     "strategy": 3291,
     "governance": 23572,
-    "metrics_targets": 84074,
+    "metrics_targets": 79922,
     "risk_management": 765
   },
   "vui": {
-    "vui_hits": 269,
-    "words": 111704,
-    "vui_per_1000": 2.408150111007663,
-    "vui_norm": 0.08027167036692211
+    "vui_hits": 251,
+    "words": 107550,
+    "vui_per_1000": 2.3337982333798233,
+    "vui_norm": 0.07779327444599411
   },
   "spi_rule": {
-    "specific": 1035,
-    "total": 6007,
-    "spi_rule": 0.17229898451806225
+    "specific": 842,
+    "total": 4118,
+    "spi_rule": 0.20446818844099077
   },
   "ai_spi": {
-    "ai_spi": 0.0,
-    "positives": 0,
-    "evaluated": 0
+    "ai_spi": 0.8704663212435233,
+    "positives": 168,
+    "evaluated": 193
   },
-  "spi_hybrid": 0.10337939071083735,
-  "ci_value": 0.8177761249535143,
-  "ci_meta": {
-    "ci_by_year": {
-      "2022": 0.8177761249535143
-    },
-    "winsor_bounds": [
-      2199.0,
-      2689.0
-    ],
-    "restated": {}
-  },
+  "spi_hybrid": 0.4708674415620038,
+  "ci_value": null,
+  "ci_meta": null,
   "gw": {
-    "gw": 0.38638423992561904,
-    "band": "medium",
+    "gw": 0.275254211192495,
+    "band": "low",
     "effective_weights": {
-      "vui": 0.45,
-      "r_spi": 0.35,
-      "r_ci": 0.2
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
     }
   },
   "per_section": {
     "strategy": {
       "words": 3291,
-      "count_sentences": 208,
+      "count_sentences": 157,
       "vui": {
         "vui_hits": 7,
         "words": 3291,
@@ -72,14 +67,14 @@
         "vui_norm": 0.07090043553124684
       },
       "spi_rule": {
-        "specific": 25,
-        "total": 208,
-        "spi_rule": 0.1201923076923077
+        "specific": 31,
+        "total": 157,
+        "spi_rule": 0.19745222929936307
       }
     },
     "governance": {
       "words": 23572,
-      "count_sentences": 1323,
+      "count_sentences": 907,
       "vui": {
         "vui_hits": 36,
         "words": 23572,
@@ -87,29 +82,29 @@
         "vui_norm": 0.05090785677922959
       },
       "spi_rule": {
-        "specific": 174,
-        "total": 1323,
-        "spi_rule": 0.13151927437641722
+        "specific": 163,
+        "total": 907,
+        "spi_rule": 0.17971334068357223
       }
     },
     "metrics_targets": {
-      "words": 84076,
-      "count_sentences": 4433,
+      "words": 79922,
+      "count_sentences": 3020,
       "vui": {
-        "vui_hits": 223,
-        "words": 84076,
-        "vui_per_1000": 2.6523621485322804,
-        "vui_norm": 0.08841207161774269
+        "vui_hits": 205,
+        "words": 79922,
+        "vui_per_1000": 2.5650008758539578,
+        "vui_norm": 0.08550002919513193
       },
       "spi_rule": {
-        "specific": 836,
-        "total": 4433,
-        "spi_rule": 0.18858560794044665
+        "specific": 645,
+        "total": 3020,
+        "spi_rule": 0.21357615894039736
       }
     },
     "risk_management": {
       "words": 765,
-      "count_sentences": 43,
+      "count_sentences": 34,
       "vui": {
         "vui_hits": 3,
         "words": 765,
@@ -117,9 +112,9 @@
         "vui_norm": 0.13071895424836602
       },
       "spi_rule": {
-        "specific": 0,
-        "total": 43,
-        "spi_rule": 0.0
+        "specific": 3,
+        "total": 34,
+        "spi_rule": 0.08823529411764706
       }
     }
   },
@@ -289,7 +284,6 @@
         135,
         136,
         137,
-        138,
         139,
         140,
         141,
@@ -300,7 +294,6 @@
         146,
         147,
         149,
-        151,
         152,
         153,
         154,
@@ -312,14 +305,12 @@
         161,
         163,
         164,
-        165,
         166,
         167,
         168,
         169,
         170,
         171,
-        172,
         173,
         175,
         176,
@@ -338,18 +329,13 @@
         206,
         207,
         208,
-        209,
         211,
         212,
         213,
-        214,
-        215,
         216,
         217,
         218,
         219,
-        220,
-        221,
         225,
         226,
         227,
@@ -375,14 +361,135 @@
         273,
         274
       ],
-      "count_pages": 175,
-      "fallback_pages": 175,
+      "count_pages": 166,
+      "fallback_pages": 166,
       "heading_pages": 0
     }
   },
   "regex_gate": {
-    "total_sentences": 6007,
-    "gate_hits_count": 0,
-    "gate_hits_sample": []
+    "total_sentences": 4118,
+    "gate_hits_count": 193,
+    "gate_hits_sample": [
+      {
+        "page": 5,
+        "text": "Die bereinigte Aufwand-Ertrag-Relation lag bei 60,6% und \ndamit im Einklang mit unserer Prognose."
+      },
+      {
+        "page": 9,
+        "text": "Die durchschnittliche Teilnahmequote lag bei mehr als \n96%."
+      },
+      {
+        "page": 13,
+        "text": "Sitzungsteilnahme\n\nDie Mitglieder des Aufsichtsrats nahmen wie folgt an den Sitzungen des Aufsichtsrats und der \nst\u00e4ndigen Aussch\u00fcsse teil: \n\nAnzahl Sitzungen\n\nDavon: virtuell\n\nTeilnahme:\n\nKarl von Rohr \n(Vorsitzender)1\n\nUte Wolf (Stellvertretende \nVorsitzende)1,2\n\nStephan Accorsini\n\nAnnabelle Bexig"
+      },
+      {
+        "page": 26,
+        "text": "Materielle Themen1\n\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7\n\nBek\u00e4mpfung der Finanzkriminalit\u00e4t\n\nAttraktiver Arbeitgeber\n\nEffizienz des Vorstands oder vergleichbarer \nF\u00fchrungspositionen\n\nGesch\u00e4ftskontinuit\u00e4t\n\nUnternehmensethik\n\nKundenzufriedenheit\n\nKlimawandel\n\nGesch\u00e4fts-\nrelevanz f\u00fcr \ndie DWS2\n\nnnnn\n\nnnn\n\nnnn\n\nnnn\n\nnnn"
+      },
+      {
+        "page": 34,
+        "text": "Nachhaltigkeitsindikatoren ab 2023\n\nIndikator\n\nAmbitionen ab 2023\n\nESG-spezifisches verwaltetes \nVerm\u00f6gen1\n\nReduktion der Scope 1 und 2 - \nBetriebsemissionen\n\nReduktion der Scope 3 - \nBetriebsemissionen \n(Reiset\u00e4tigkeiten)\n\nReduktion der Scope 3 - \nPortfolioemissionen\n\nWeiteres Wachstum unseres ESG-"
+      },
+      {
+        "page": 46,
+        "text": "Daher rechnen wir 2023 mit einer durchschnittlichen Inflationsrate von 6%, \nwomit das Inflationsziel der EZB weiter deutlich verfehlt werden w\u00fcrde."
+      },
+      {
+        "page": 46,
+        "text": "Zudem hat die EZB bereits \nangek\u00fcndigt, die Leitzinsen f\u00fcr einen l\u00e4ngeren Zeitraum auf dem h\u00f6heren Niveau zu belassen, \num mittelfristig das Inflationsziel von 2% zu erreichen."
+      },
+      {
+        "page": 55,
+        "text": "An unsere Aktion\u00e4re\n\nZusammengefasster \nLagebericht\n\nKonzernabschluss\n\nVerg\u00fctungsbericht\n\nErkl\u00e4rung zur Unter-\nnehmensf\u00fchrung\n\nWeitere \nInformationen\n\nDWS 2022 Gesch\u00e4ftsbericht\n\nDWS        \u00a0\n\nUm unsere Portfolien in Richtung Netto-Null zu steuern und damit die Realwirtschaft bei der \nReduzierung der"
+      },
+      {
+        "page": 55,
+        "text": "W\u00e4hrend Engagement das wichtigste Mittel zur Erreichung unserer Netto-Null-Ziele bleibt, \nsetzen wir zus\u00e4tzlich unter anderem auf Produktinnovationen und die Orientierung an SBTi."
+      },
+      {
+        "page": 55,
+        "text": "In \nunserer ersten j\u00e4hrlichen Offenlegung, die CDP im Juli 2022 vorgelegt wurde, meldeten wir \neinen R\u00fcckgang des inflationsbereinigten WACI um 6,3% gegen\u00fcber dem Vorjahr."
+      },
+      {
+        "page": 55,
+        "text": "Er entspricht weitgehend der durchschnittlichen j\u00e4hrlichen Reduzierung, die \nerforderlich ist, um unser vorl\u00e4ufiges Dekarbonisierungsziel von insgesamt 50% bis 2030 zu \nerreichen."
+      },
+      {
+        "page": 55,
+        "text": "Zum Vergleich: Der WACI des MSCI All-Country World Index verzeichnete im selben \nJahr einen inflationsbereinigten R\u00fcckgang von 0,3%."
+      },
+      {
+        "page": 55,
+        "text": "Verwaltetes Verm\u00f6gen im Rahmen der Netto-Null-\nVerpflichtung\n\n358,0 Mrd \u20ac oder 38,6% des verwalteten Verm\u00f6gens \n(Stand: 31."
+      },
+      {
+        "page": 55,
+        "text": "32\n\nZiel einer 50-prozentigen Reduzierung des \ninflationsbereinigten WACI bis 2030 gegen\u00fcber dem \nAusgangswert von 2019 f\u00fcr in den Geltungsbereich \nfallende Verm\u00f6genswerte\n\n6,3% Verringerung 2020 versus 2019 (Basisjahr)\n\nWir verwenden den inflationsbereinigten WACI, anstelle des Standard-WACI, um di"
+      },
+      {
+        "page": 56,
+        "text": "Unsere Verantwortung \u2014 Unser Einfluss auf den \nKlimawandel\n\nUnsere Verantwortung \u2014 Unser Anlageprozess\n\nRisikobericht \u2014 Nachhaltigkeitsrisiko\n\nUnsere Verantwortung \u2014 Unser Einfluss auf den \nKlimawandel\n\nRisikobericht \u2014 Nachhaltigkeitsrisiko\n\nRisikobericht \u2014 Nachhaltigkeitsrisiko\n\nRisiko-\nmanagement\n"
+      },
+      {
+        "page": 61,
+        "text": "60% im Vergleich zu 2021."
+      },
+      {
+        "page": 63,
+        "text": "Dies entspricht einem \nAnstieg von 19% im Vergleich zum Vorjahr."
+      },
+      {
+        "page": 63,
+        "text": "Generalversammlungen stellen etwa 92% unseres verwalteten \nAktienverm\u00f6gens in Europa und Asien dar."
+      },
+      {
+        "page": 64,
+        "text": "Die KPIs betreffen Umwelt-, Sozial- und \nGovernance-Fragen wie CO2-Fu\u00dfabdruck, Wasserverbrauch, Gesundheits- und \nSicherheitsindikatoren sowie Diversit\u00e4ts- und Integrationsmetriken sowohl auf Mitarbeiter- als \nauch auf Leitungsebene."
+      },
+      {
+        "page": 64,
+        "text": "Im Jahr 2022 meldeten wir 20 einzelne Portfolios, \ndie 87,9% unseres Immobilienverm\u00f6gens repr\u00e4sentieren, an die GRESB, die eine Fl\u00e4che von \n17,7 Millionen Quadratmetern und weltweit ein Verm\u00f6gen von 55 Mrd USD von insgesamt \n63\u00a0Mrd USD abdeckten."
+      },
+      {
+        "page": 196,
+        "text": "Juni 2022 mit einer \nMehrheit von 97,61% gem\u00e4\u00df \u00a7 120a Absatz 4 AktG gebilligt."
+      },
+      {
+        "page": 196,
+        "text": "Januar 2023 geh\u00f6ren nun drei Frauen der Gesch\u00e4ftsf\u00fchrung an, was 50% der \nMitglieder der Gesch\u00e4ftsf\u00fchrung entspricht."
+      },
+      {
+        "page": 198,
+        "text": "Der die Balanced \nScorecard umfassende Teil des Short-Term Award flie\u00dft mit einem Anteil von 20% in die \nLeistungsbemessung ein."
+      },
+      {
+        "page": 198,
+        "text": "Die Summe aus Balanced Scorecard und den zus\u00e4tzlichen \nindividuellen Zielen macht damit 40% der Zielgr\u00f6\u00dfe der gesamten variablen Verg\u00fctung aus."
+      },
+      {
+        "page": 198,
+        "text": "Die Zielbetr\u00e4ge des Short-Term Award liegen bezogen auf eine ganzj\u00e4hrige \nVollzeitbesch\u00e4ftigung bei 100% Zielerreichung zurzeit zwischen 200.000\u00a0\u20ac und 1.600.000\u00a0\u20ac."
+      },
+      {
+        "page": 198,
+        "text": "Der maximal m\u00f6gliche Zielerreichungsgrad ist einheitlich auf 150% begrenzt."
+      },
+      {
+        "page": 198,
+        "text": "Der \nAnteil des Long-Term Award an der gesamten variablen Zielverg\u00fctung betr\u00e4gt einheitlich \n60%."
+      },
+      {
+        "page": 198,
+        "text": "Diese Zielgr\u00f6\u00dfe bel\u00e4uft sich \ninsgesamt auf 50% der gesamten variablen Zielverg\u00fctung."
+      },
+      {
+        "page": 203,
+        "text": "Die Zielerreichungsgrade der individuellen Ziele betrugen im Gesch\u00e4ftsjahr 2022 zwischen \n95% und 135%."
+      },
+      {
+        "page": 203,
+        "text": "Gesamtzielerreichung Short-Term Award\n\nDer die Balanced Scorecard umfassende Teil des Short-Term Award sowie der die \nzus\u00e4tzlichen individuellen Ziele umfassende Teil des Short-Term Award flie\u00dfen mit einem \nAnteil von jeweils 50% in die Leistungsbemessung des Short-Term Award ein."
+      }
+    ]
   }
 }
