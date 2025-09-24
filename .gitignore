@@ -24,3 +24,13 @@ docs/img/**
 !docs/img/gw_series_dws.png
 !docs/img/vui_vs_1minus_spistar_dws.png
 !docs/img/gw_cross_section_latest_bar.png
+docs/eq/
+pitch_pack/
+src/nli_patched.py
+scripts/append_formula_slides.py
+scripts/fix_formula_slides.py
+scripts/make_pitch_pptx.py
+scripts/make_pub_charts.py
+scripts/make_simple_charts.py
+scripts/refresh_readme_results.py
+scripts/update_formula_slides.py
