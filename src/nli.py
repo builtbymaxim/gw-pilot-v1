@@ -1,4 +1,4 @@
-import regex as re
+﻿import regex as re
 from typing import List
 # torch is optional for CPU-only environments
 try:  # pragma: no cover - optional dependency
@@ -43,6 +43,8 @@ class NLIWrapper:
                     kwargs["device"] = -1
 
         self.pipe = pipe_fn("text-classification", **kwargs)
+        self.pipe.tokenizer.model_max_length = 512
+        self.pipe.tokenizer.truncation_side = "right"
 
     def _cache_path(self, sentence: str, tau: float) -> Path:
         key_raw = f"{sentence}|{self.model_id}|{tau}|{self.profile}"
@@ -67,7 +69,7 @@ class NLIWrapper:
 
         if to_run:
             for (idx, p, cache_file), res in zip(
-                to_run, self.pipe.pipe(run_inputs, batch_size=batch_size)
+                to_run, self.pipe(run_inputs, batch_size=batch_size, truncation=True, padding=True, max_length=512)
             ):
                 scores = {d["label"].lower(): float(d["score"]) for d in res}
                 prob = scores.get("entailment", 0.0)

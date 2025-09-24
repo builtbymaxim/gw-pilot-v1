@@ -1,6 +1,6 @@
 {
   "meta": {
-    "config_sha1": "cfe380aa59ac19e69972c96cc3d6849478156545",
+    "config_sha1": "90f44a391a29bcd4eaf8a889fef2ae438aebcca3",
     "effective_weights": {
       "vui": 0.5625,
       "r_spi": 0.43749999999999994,
@@ -9,7 +9,8 @@
     "winsor": [
       1,
       99
-    ]
+    ],
+    "warnings": []
   },
   "year": 2024,
   "included_sections": [
@@ -21,31 +22,31 @@
   "section_wordcounts": {
     "strategy": 84177,
     "governance": 61970,
-    "metrics_targets": 32129,
+    "metrics_targets": 24431,
     "risk_management": 1204
   },
   "vui": {
-    "vui_hits": 1974,
-    "words": 169236,
-    "vui_per_1000": 11.664184925193222,
-    "vui_norm": 0.3888061641731074
+    "vui_hits": 2013,
+    "words": 171782,
+    "vui_per_1000": 11.718340687615699,
+    "vui_norm": 0.3906113562538566
   },
   "spi_rule": {
-    "specific": 1132,
-    "total": 24933,
-    "spi_rule": 0.045401676493001246
+    "specific": 566,
+    "total": 4818,
+    "spi_rule": 0.11747613117476131
   },
   "ai_spi": {
-    "ai_spi": 0.0,
-    "positives": 0,
-    "evaluated": 1
+    "ai_spi": 0.8232323232323232,
+    "positives": 489,
+    "evaluated": 594
   },
-  "spi_hybrid": 0.027241005895800748,
+  "spi_hybrid": 0.3997786079977861,
   "ci_value": null,
   "ci_meta": null,
   "gw": {
-    "gw": 0.6442855272679601,
-    "band": "high",
+    "gw": 0.4823157468937629,
+    "band": "medium",
     "effective_weights": {
       "vui": 0.5625,
       "r_spi": 0.43749999999999994,
@@ -54,63 +55,63 @@
   },
   "per_section": {
     "strategy": {
-      "words": 81472,
-      "count_sentences": 11960,
+      "words": 84177,
+      "count_sentences": 2551,
       "vui": {
-        "vui_hits": 966,
-        "words": 81472,
-        "vui_per_1000": 11.856834249803613,
-        "vui_norm": 0.3952278083267871
+        "vui_hits": 1005,
+        "words": 84177,
+        "vui_per_1000": 11.93912826544068,
+        "vui_norm": 0.397970942181356
       },
       "spi_rule": {
-        "specific": 225,
-        "total": 11960,
-        "spi_rule": 0.018812709030100336
+        "specific": 151,
+        "total": 2551,
+        "spi_rule": 0.05919247353978832
       }
     },
     "governance": {
-      "words": 58857,
-      "count_sentences": 8443,
+      "words": 61970,
+      "count_sentences": 1604,
       "vui": {
-        "vui_hits": 748,
-        "words": 58857,
-        "vui_per_1000": 12.708768710603666,
-        "vui_norm": 0.42362562368678885
+        "vui_hits": 777,
+        "words": 61970,
+        "vui_per_1000": 12.53832499596579,
+        "vui_norm": 0.41794416653219296
       },
       "spi_rule": {
-        "specific": 321,
-        "total": 8443,
-        "spi_rule": 0.03801966125784674
+        "specific": 147,
+        "total": 1604,
+        "spi_rule": 0.09164588528678304
       }
     },
     "metrics_targets": {
-      "words": 27792,
-      "count_sentences": 4320,
+      "words": 24431,
+      "count_sentences": 625,
       "vui": {
-        "vui_hits": 251,
-        "words": 27792,
-        "vui_per_1000": 9.031375935521012,
-        "vui_norm": 0.3010458645173671
+        "vui_hits": 219,
+        "words": 24431,
+        "vui_per_1000": 8.964021120707297,
+        "vui_norm": 0.29880070402357656
       },
       "spi_rule": {
-        "specific": 582,
-        "total": 4320,
-        "spi_rule": 0.13472222222222222
+        "specific": 264,
+        "total": 625,
+        "spi_rule": 0.4224
       }
     },
     "risk_management": {
-      "words": 1115,
-      "count_sentences": 210,
+      "words": 1204,
+      "count_sentences": 38,
       "vui": {
-        "vui_hits": 9,
-        "words": 1115,
-        "vui_per_1000": 8.071748878923767,
-        "vui_norm": 0.26905829596412556
+        "vui_hits": 12,
+        "words": 1204,
+        "vui_per_1000": 9.966777408637874,
+        "vui_norm": 0.33222591362126247
       },
       "spi_rule": {
         "specific": 4,
-        "total": 210,
-        "spi_rule": 0.01904761904761905
+        "total": 38,
+        "spi_rule": 0.10526315789473684
       }
     }
   },
@@ -367,13 +368,10 @@
         9,
         10,
         11,
-        21,
         25,
         34,
         35,
         39,
-        136,
-        138,
         160,
         163,
         184,
@@ -403,42 +401,27 @@
         276,
         277,
         278,
-        279,
         280,
-        281,
         283,
         284,
         285,
-        286,
-        288,
         291,
         302,
         316,
         317,
         319,
-        356,
-        360,
-        362,
-        363,
-        364,
-        365,
         366,
         367,
         371,
         382,
-        385,
-        386,
         387,
         388,
-        389,
         416,
-        424,
-        425,
         442,
         443
       ],
-      "count_pages": 72,
-      "fallback_pages": 71,
+      "count_pages": 54,
+      "fallback_pages": 53,
       "heading_pages": 1
     },
     "risk_management": {
@@ -452,12 +435,128 @@
     }
   },
   "regex_gate": {
-    "total_sentences": 24933,
-    "gate_hits_count": 1,
+    "total_sentences": 4818,
+    "gate_hits_count": 594,
     "gate_hits_sample": [
       {
-        "page": 155,
-        "text": "ensure that, by 2030, CO2 emissions related to energy and"
+        "page": 23,
+        "text": "7\n\nFrom 2022, exclude from our portfolios companies \nthat generate over 30% of their activity from \nunconventional oil and gas sectors(3)."
+      },
+      {
+        "page": 23,
+        "text": "2\n\nOffer, in all asset classes(2), open funds with a \nNet Zero 2050 investment objective."
+      },
+      {
+        "page": 23,
+        "text": "\u2014 Four asset classes offer a minimum \n\nof one Net Zero 2050 Ambition solution."
+      },
+      {
+        "page": 23,
+        "text": "4\n\nEnsure that 40% of our ETF range is made up \nof ESG funds."
+      },
+      {
+        "page": 23,
+        "text": "\u2014 37% of the passive fund range is composed \n\nof ESG funds, versus 33% at end-2023."
+      },
+      {
+        "page": 23,
+        "text": "Set internal alignment goals that match \nthe commitment\n\n8\n\nTake into account the level of achievement of these \nESG objectives (weighting 20%) in the KPI calculation \nof performance shares for our 200 senior executives."
+      },
+      {
+        "page": 23,
+        "text": "\u2014 ESG objectives were incorporated in the annual \n\nobjectives of 99.6% of portfolio managers and sales \nrepresentatives and the implementation of the ESG \nAmbitions 2025 plan accounted for 20% of the \ncriteria supporting the performance share plan \nawarded to more than 200 Amundi senior \nexecutives "
+      },
+      {
+        "page": 23,
+        "text": "9\n\nReduce our own direct greenhouse gas emissions(4) \nby approximately 30% (vs 2018) per employee in 2025."
+      },
+      {
+        "page": 23,
+        "text": "\u2014 The action plan to reduce greenhouse gas \n\nemissions related to energy (scopes 1 and 2) \nand business travel (scope 3) has continued."
+      },
+      {
+        "page": 23,
+        "text": "At end-2024, emissions were reduced by 62% by \nemployee compared with 2018."
+      },
+      {
+        "page": 23,
+        "text": "\u2014 The progress report reporting on the \n\nimplementation of the climate strategy was \npresented to the shareholders at the Annual \nGeneral Meeting of May 24 2024 and approved \nat 96.73%."
+      },
+      {
+        "page": 23,
+        "text": "The level of progress at end-2024 is in line with the pace needed to achieve the targets set for the end of the plan, i.e. the end of 2025."
+      },
+      {
+        "page": 27,
+        "text": "FUND CHANNEL CONFIRMED AS THE BEST \nINSTITUTIONAL B2B PLATFORM IN EUROPE\n\nAt the end of December 2024, the Fund Channel fund distribution \nplatform had reached \u20ac521bn in assets under distribution, perfectly \npositioned to meet the Ambitions 2025 strategic plan target of \n\u20ac600bn by the end of 2025."
+      },
+      {
+        "page": 37,
+        "text": "12+1 \n\nDirectors(1)\n\n41.7% \n\nIndependent \nDirectors(2)\n\n1 \n\nNon-voting member\n\n4.8 years \n\nAverage time spent \non the Board\n\n58.4 years \n\nAverage age\n\n58%\n42%\n\n Women(2)\n\n Men(2)\n\nMATRIX OF BOARD MEMBERS\u2019\nCOMPETENCIES\n\nGovernance \nand \ncompensation\n\nAccounting \nand financial \nreporting\n\nSocial and \n"
+      },
+      {
+        "page": 38,
+        "text": "VAL\u00c9RIE BAUDSON\nChief Executive Officer\n\nNICOLAS CALCOEN\nDeputy Chief Executive Officer \nHead of Strategy, \nFinance and Control Division\n\n13\n\nmembers\n\n38.5%\n\nof women \non the General \nManagement Committee\n\nJEAN-JACQUES BARB\u00c9RIS\nHead of the Institutional and \nCorporate Clients Division and ESG\n\nC\u00c9LIN"
+      },
+      {
+        "page": 47,
+        "text": "Corporate governance\nThe Board of Directors and its Committees\n\n2\n\nParticipation and attendance at the meetings \n\nof the Specialised Board Committees\n\nBoard of Directors\n\nAudit\nCommittee\n\nRisk \nManagement\nCommittee\n\nStrategy \nand CSR \nCommittee\n\nCompensation\nCommittee\n\nAppointments\nCommittee\n\nAttend"
+      },
+      {
+        "page": 48,
+        "text": "It  has  therefore  defined  a  target  matrix\nin line with its needs."
+      },
+      {
+        "page": 49,
+        "text": "Corporate governance\nThe Board of Directors and its Committees\n\n2\n\nSkills matrix for members of the Board of Directors\n\nSkills matrix(1) for members of the Board of Directors\n\nGovernance \nand\u2029\n\nAccounting \n\nSocial and \n\nand financial \n\nenvironmental\n\ncompensation\n\ninformation\n\n issues\n\nRisk \n\nAsset "
+      },
+      {
+        "page": 49,
+        "text": "The Board nevertheless seeks to prioritise the profile of\nits members over their gender and the percentage of women on\nthe Board is 58.33%(2)."
+      },
+      {
+        "page": 49,
+        "text": "If  this  director  were  taken  into  account  in  this  calculation,  the\npercentage of women present on the Board would be 53.85%."
+      },
+      {
+        "page": 56,
+        "text": "The involvement of the directors was tangible, the\noverall  attendance  rate  at  33  meetings  /  written  consultations  of  the  Committees  and  Boards  during  the  year  being  97.34%."
+      },
+      {
+        "page": 56,
+        "text": "\u2022 Acquisition of Alpha Associates \n\nand aixigo\n\n\u2022 Partnership with Victory Capital\n\n\u2022 Monitoring progress on the 2025 \n\nMedium-Term Plan and Say on Climate\n\n\u2022 Monitoring of the business activity\n\n\u2022 Monitoring of quarterly results\n\n\u2022 Monitoring of performance of the \n\nproducts\n\n\u2022 Proposed appropriati"
+      },
+      {
+        "page": 56,
+        "text": "It\nthus noted that the share of ETFs meeting the ESG criteria of\nthe  SFDR  regulation  reached  37%  at  the  end  of  2024  and\nthat  scope  1,  2  and  3  greenhouse  gas  emissions  per\nemployee  have  fallen  by  -62%  since  2018."
+      },
+      {
+        "page": 56,
+        "text": "The  board  also  focused  on\nmonitorng the progression of ETFs (+30% year-on-year), driven\nby diversified inflows in terms of client segments and types of\nequity  and  bond  products."
+      },
+      {
+        "page": 56,
+        "text": "The  resolution  approved  with  96.73%  in  favour\nreflects the Board's desire to ensure total transparency on its\nprogress,  with  respect  to  its  shareholders  and  the  various\n\n56_\n\nAMUNDI \u2014 UNIVERSAL REGISTRATION DOCUMENT 2024"
+      },
+      {
+        "page": 59,
+        "text": "3\n\nMEMBERS\n\nName \n\nIndividual attendance rate\n\nLAURENCE \nDANON-ARNAUD\n\nChairman\n\n100%\n\nPHILIPPE \n\nBRASSAC\n\n100% \n\nVIRGINIE \n\nCAYATTE\n\n100%\n\n9\n\nMEETINGS\n\n100%\n\nOVERALL ATTENDANCE RATE\n\nStatus\n\nPosition\n\nOverview of the main areas of expertise\n\nIndependent \ndirector\n\nCompany manager\n\nChair of the Boar"
+      },
+      {
+        "page": 81,
+        "text": "It is recalled that the Executive Directors are subject to a retention\nobligation of 20% of the performance shares acquired, until the end\nof their duties, under the conditions described in sections 2.4.3.3.3\nand 2.4.4.4 below."
+      },
+      {
+        "page": 85,
+        "text": "\u2022 maintaining  the  percentage  of  women  within  the  Senior\n\nLeadership Team (33.7% as of end-December 2024)."
+      },
+      {
+        "page": 85,
+        "text": "The  Group  also  achieved  a  good  score  of  86  points  on  the\nGender  Equality  Index  and  39.3%  of  women  among  senior\nexecutives in accordance with the Rixain Law."
+      },
+      {
+        "page": 85,
+        "text": "In particular, it noted:\n\n\u2022 a proactive approach to talent pools with a target of 50% men\n\nand women;\n\n\u2022 ongoing  extension  of  paternity  leave  to  28  days  per  year  in\n\ninternational entities;\n\n\u2022 the continued increase in gender diversity within the Executive\nManagement Committee to 38.5% com"
       }
     ]
   }

@@ -9,6 +9,10 @@
     "winsor": [
       1,
       99
+    ],
+    "warnings": [
+      "large ΔVUI_per_1000 vs prior: +10.48",
+      "large ΔSPI_rule vs prior: -0.115"
     ]
   },
   "year": 2023,
