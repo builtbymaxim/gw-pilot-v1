@@ -35,3 +35,7 @@ scripts/make_simple_charts.py
 scripts/refresh_readme_results.py
 scripts/update_formula_slides.py
 scripts/plot_annotated_dws.py
+
+scripts/plot_annotated_dws.py
+
+scripts/local/
