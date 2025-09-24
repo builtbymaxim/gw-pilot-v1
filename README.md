@@ -101,3 +101,5 @@ Contains: curated PNGs, CSVs, and run manifest.
 ![DWS  GW series](docs/img/gw_series_dws.png)
 
 ![DWS – VUInorm vs 1 − SPI*](docs/img/vui_vs_1minus_spistar_dws.png)
+
+![GW  latest year per issuer](docs/img/gw_cross_section_latest_bar.png)
