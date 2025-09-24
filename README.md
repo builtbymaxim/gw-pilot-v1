@@ -96,3 +96,8 @@ Charts end up in docs/img.
 ## 9) Release
 Tagged: v0.2-mini-20250924 (see GitHub Releases)
 Contains: curated PNGs, CSVs, and run manifest.
+## Visual snapshot
+
+![DWS  GW series](docs/img/gw_series_dws.png)
+
+![DWS – VUInorm vs 1 − SPI*](docs/img/vui_vs_1minus_spistar_dws.png)
