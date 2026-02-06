@@ -1,0 +1,9 @@
+issuer,VUI_norm,SPI_rule,SPI_hybrid,GW,band
+amundi,0.389,0.045,0.027,0.644,high
+blackstone,0.406,0.107,0.064,0.638,high
+citic,0.296,0.063,0.038,0.588,medium
+dws,0.471,0.026,0.316,0.564,medium
+dws,0.601,0.043,0.026,0.764,high
+kkr,0.648,0.058,0.035,0.787,high
+schroders,0.406,0.042,0.225,0.568,medium
+testissuer,0.444,0.101,0.101,0.643,high

@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Pilot run output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "year",
+    "vui",
+    "spi_rule",
+    "ai_spi",
+    "spi_hybrid",
+    "ci_value",
+    "gw",
+    "meta"
+  ],
+  "properties": {
+    "year": {"type": "integer"},
+    "vui": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vui_hits", "words", "vui_per_1000", "vui_norm"],
+      "properties": {
+        "vui_hits": {"type": "integer"},
+        "words": {"type": "integer"},
+        "vui_per_1000": {"type": "number"},
+        "vui_norm": {"type": "number"}
+      }
+    },
+    "spi_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["specific", "total", "spi_rule"],
+      "properties": {
+        "specific": {"type": "integer"},
+        "total": {"type": "integer"},
+        "spi_rule": {"type": "number"}
+      }
+    },
+    "ai_spi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ai_spi", "positives", "evaluated"],
+      "properties": {
+        "ai_spi": {"type": "number"},
+        "positives": {"type": "integer"},
+        "evaluated": {"type": "integer"}
+      }
+    },
+    "spi_hybrid": {"type": "number"},
+    "ci_value": {"type": ["number", "null"]},
+    "gw": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gw", "band", "effective_weights"],
+      "properties": {
+        "gw": {"type": "number"},
+        "band": {"type": "string"},
+        "effective_weights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["vui", "r_spi", "r_ci"],
+          "properties": {
+            "vui": {"type": "number"},
+            "r_spi": {"type": "number"},
+            "r_ci": {"type": "number"}
+          }
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["config_sha1", "effective_weights", "winsor"],
+      "properties": {
+        "config_sha1": {"type": "string"},
+        "effective_weights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["vui", "r_spi", "r_ci"],
+          "properties": {
+            "vui": {"type": "number"},
+            "r_spi": {"type": "number"},
+            "r_ci": {"type": "number"}
+          }
+        },
+        "winsor": {
+          "type": "array",
+          "items": {"type": "number"},
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    }
+  }
+}

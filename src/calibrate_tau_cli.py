@@ -4,18 +4,41 @@ from typing import List, Dict
 import numpy as np
 from transformers import pipeline
 from src.calibration import calibrate_tau, confusion_at_tau
-from src.spi import is_specific  # optional: for diagnostics
+from src.spi import is_specific
+from src.utils import normalize_year_tokens  # normalize years for gating
 
-def load_gold(path:str):
-    rows=[]
+def load_gold(path: str):
+    rows = []
     with open(path, newline="", encoding="utf-8") as f:
-        r=csv.DictReader(f)
-        for row in r:
+        r = csv.DictReader(f)
+        for i, row in enumerate(r, start=2):
+            # accept either "sentence" or "text"
+            txt = (row.get("sentence") or row.get("text") or "").strip()
+            if not txt:
+                # skip empty/malformed lines
+                continue
+            # tolerate a few label names/encodings
+            lab_raw = (row.get("label_specific_target(0/1)") or
+                       row.get("label") or row.get("y"))
+            if lab_raw is None:
+                raise ValueError(f"Missing label at CSV row {i}")
+            lab_str = str(lab_raw).strip().lower()
+            if lab_str in {"1","true","yes","y"}:
+                label = 1
+            elif lab_str in {"0","false","no","n"}:
+                label = 0
+            else:
+                try:
+                    label = 1 if int(lab_str) > 0 else 0
+                except Exception:
+                    raise ValueError(f"Unparseable label '{lab_raw}' at row {i}")
             rows.append({
-                "text": row["sentence"].strip(),
-                "section": row.get("text_section","").strip(),
-                "label": int(row["label_specific_target(0/1)"])
+                "text": txt,
+                "section": (row.get("text_section") or "").strip(),
+                "label": label
             })
+    if not rows:
+        raise ValueError("No examples loaded from gold file.")
     return rows
 
 def main():
@@ -23,7 +46,8 @@ def main():
     ap.add_argument("--gold", required=True, help="calibration/gold60.csv")
     ap.add_argument("--config", default="config.yml")
     ap.add_argument("--tau-out", default="outputs/tau_calibration.json")
-    ap.add_argument("--strict-gating", action="store_true", help="Use config.nli.gated_regex; otherwise no gating")
+    ap.add_argument("--strict-gating", action="store_true",
+                    help="Use config.nli.gated_regex; otherwise no gating")
     args = ap.parse_args()
 
     cfg = yaml.safe_load(open(args.config))
@@ -32,21 +56,28 @@ def main():
     gate_re = re.compile(cfg["nli"]["gated_regex"], re.I)
 
     gold = load_gold(args.gold)
-    clf = pipeline("text-classification", model=model_id, return_all_scores=True)
 
-    entail_probs=[]; labels=[]; gated_flags=[]
+    # modern API (return_all_scores is deprecated)
+    clf = pipeline("text-classification", model=model_id, top_k=None)
+
+    entail_probs = []
+    labels = []
+    gated_flags = []
     for g in gold:
         txt = g["text"]
+        txt_norm = normalize_year_tokens(txt)  # match pilot behavior
         use_nli = True
-        if args.strict_gating and not gate_re.search(txt):
+        if args.strict_gating and not gate_re.search(txt_norm):
             use_nli = False
         if use_nli:
             result = clf(f"{txt} </s></s> {hyp}")
             scores = {d["label"].lower(): d["score"] for d in result[0]}
             p = float(scores.get("entailment", 0.0))
-            entail_probs.append(p); gated_flags.append(1)
+            entail_probs.append(p)
+            gated_flags.append(1)
         else:
-            entail_probs.append(0.0); gated_flags.append(0)
+            entail_probs.append(0.0)
+            gated_flags.append(0)
         labels.append(g["label"])
 
     labels = np.array(labels, dtype=int)
@@ -64,7 +95,8 @@ def main():
         "tpr": cal["tpr"],
         "fpr": cal["fpr"],
         "confusion_at_tau": cm,
-        "gating": "strict" if args.strict_gating else "off"
+        "gating": "strict" if args.strict_gating else "off",
+        "gate_regex": cfg["nli"]["gated_regex"]
     }
     os.makedirs(os.path.dirname(args.tau_out), exist_ok=True)
     json.dump(out, open(args.tau_out, "w"), indent=2)

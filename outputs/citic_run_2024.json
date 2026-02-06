@@ -1,0 +1,42 @@
+{
+  "year": 2024,
+  "vui": {
+    "vui_hits": 433,
+    "words": 48693,
+    "vui_per_1000": 8.892448606575893,
+    "vui_norm": 0.2964149535525298
+  },
+  "spi_rule": {
+    "specific": 362,
+    "total": 5765,
+    "spi_rule": 0.06279271465741544
+  },
+  "ai_spi": {
+    "ai_spi": 0.0,
+    "positives": 0,
+    "evaluated": 0
+  },
+  "spi_hybrid": 0.037675628794449266,
+  "ci_value": null,
+  "gw": {
+    "gw": 0.5877503237757264,
+    "band": "medium",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
+    }
+  },
+  "meta": {
+    "config_sha1": "cfe380aa59ac19e69972c96cc3d6849478156545",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
+    },
+    "winsor": [
+      1,
+      99
+    ]
+  }
+}
