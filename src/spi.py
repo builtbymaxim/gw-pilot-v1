@@ -1,8 +1,5 @@
 import regex as re
-
-def normalize_year_tokens(text: str) -> str:
-    # join split years like "20 30" or "2-0-3-0" -> "2030"
-    return re.sub(r'(?i)(?<!\d)2\W*0\W*([0-9])\W*([0-9])(?!\d)', r'20\1\2', text)
+from src.utils import normalize_year_tokens
 
 def is_specific(sentence:str, cfg) -> bool:
     txt = normalize_year_tokens(sentence)

@@ -1,5 +1,22 @@
 {
-  "total_sentences": 4210,
-  "gate_hits_count": 0,
-  "gate_hits_sample": []
+  "total_sentences": 16222,
+  "gate_hits_count": 4,
+  "gate_hits_sample": [
+    {
+      "page": 66,
+      "text": "by 2030 compared to the base year 2019 (in line with the net zero interim target)."
+    },
+    {
+      "page": 119,
+      "text": "2 In support of our ambition to become climate neutral by 2050 in line with the Paris Agreement, for certain in-scope assets and operational activities we have set interim net zero targets for 2030."
+    },
+    {
+      "page": 119,
+      "text": "4 Our interim target emission values by 2030 are to be less than 3,165 tCO2e across scope 1 and 2 combined (market-based), and to be less than 4,704 tCO2e across scope 3 \u2013 Category 6."
+    },
+    {
+      "page": 119,
+      "text": "2 In support of our ambition to become climate neutral by 2050 in line with the Paris Agreement, for certain in-scope assets and operational activities we have set interim net zero targets for 2030."
+    }
+  ]
 }

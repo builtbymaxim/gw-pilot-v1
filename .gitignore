@@ -11,3 +11,9 @@ data/*.pdf
 ~/.cache/huggingface/
 # Optional: ignore heavy images
 outputs/*.png
+outputs/cache/
+
+.DS_Store
+!outputs/overlay_2022_2024.png
+!outputs/cross_issuer_scatter_noCI.png
+!outputs/cross_issuer_scatter_noCI.png
