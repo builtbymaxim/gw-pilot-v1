@@ -21,22 +21,22 @@ vui:
   hedges: ['expect','expects','expected','planning','plan','plans','intend','seeks','target','ambition','aspire','significant','material','endeavor','aim','over the coming years','over time','in due course']
 
 spi:
-  unit_patterns: ['%','tco2e','tco₂e','gwh','mwh','kt','mt','€','\\bmn\\b','\\bbn\\b','million','billion']
+  unit_patterns: ['%','tco2e','tco₂e','gwh','mwh','kt','mt','€','\bmn\b','\bbn\b','million','billion']
   target_patterns:
-    - '\\bby\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
-    - '\\buntil\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
-    - '\\bno\\s+later\\s+than\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
-    - '\\bat\\s+the\\s+latest\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
-    - '\\bby\\s+(?:year[-\\s]?end|YE)\\s*(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
-    - '\\bby\\s+end[-\\s]?of\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
-    - '\\bthrough\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
-  baseline_patterns: ['\\bbase year\\s+20\\d{2}\\b','\\bbaseline\\s+20\\d{2}\\b','\\bvs\\.?\\b','\\brelative to\\s+20\\d{2}\\b']
-  strict_excludes: ['\\bFY\\s?20\\d{2}\\b','\\bQ[1-4]\\s?20\\d{2}\\b','\\b(in|during|as of)\\s+20\\d{2}\\b']
+    - '\bby\s+(?:20\d{2}|2\W*0\W*\d\W*\d)\b'
+    - '\buntil\s+(?:20\d{2}|2\W*0\W*\d\W*\d)\b'
+    - '\bno\s+later\s+than\s+(?:20\d{2}|2\W*0\W*\d\W*\d)\b'
+    - '\bat\s+the\s+latest\s+(?:20\d{2}|2\W*0\W*\d\W*\d)\b'
+    - '\bby\s+(?:year[-\s]?end|YE)\s*(?:20\d{2}|2\W*0\W*\d\W*\d)\b'
+    - '\bby\s+end[-\s]?of\s+(?:20\d{2}|2\W*0\W*\d\W*\d)\b'
+    - '\bthrough\s+(?:20\d{2}|2\W*0\W*\d\W*\d)\b'
+  baseline_patterns: ['\bbase year\s+20\d{2}\b','\bbaseline\s+20\d{2}\b','\bvs\.?\b','\brelative to\s+20\d{2}\b']
+  strict_excludes: ['\bFY\s?20\d{2}\b','\bQ[1-4]\s?20\d{2}\b','\b(in|during|as of)\s+20\d{2}\b']
 
 nli:
   model: 'facebook/bart-large-mnli'
   hypothesis: 'This sentence states a measurable target.'
-  gated_regex: '(?ix)\\b(by|until|no\\s+later\\s+than|at\\s+the\\s+latest)\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b|\\bby\\s+(?:year[-\\s]?end|YE)\\s*(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b|\\bby\\s+end[-\\s]?of\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b|\\bthrough\\s+(?:20\\d{2}|2\\W*0\\W*\\d\\W*\\d)\\b'
+  gated_regex: '(?ix)\b(by|until|no\s+later\s+than|at\s+the\s+latest)\s+(?:20\d{2}|2\W*0\W*\d\W*\d)\b|\bby\s+(?:year[-\s]?end|YE)\s*(?:20\d{2}|2\W*0\W*\d\W*\d)\b|\bby\s+end[-\s]?of\s+(?:20\d{2}|2\W*0\W*\d\W*\d)\b|\bthrough\s+(?:20\d{2}|2\W*0\W*\d\W*\d)\b'
   tau: null
 
 
@@ -52,3 +52,7 @@ bands:
   med: 0.60
 logging:
   include_regex_hits: true
+
+keywords:
+  esg: ['emission', 'climate', 'carbon', 'net zero', 'ghg', 'scope 1', 'scope 2', 'scope 3', 'sustainab', 'environment', 'transition', 'renewable', 'energy', 'diversity', 'inclusion', 'women', 'board', 'governance', 'female', 'human rights', 'safety', 'waste', 'water', 'plastic', 'esg', 'tcfd', 'csr', 'green', 'social', 'biodiversity']
+  finance_noise: ['ebitda', 'aum', 'assets under management', 'liquidity', 'amortization', 'tax rate', 'dividend', 'repurchase', 'class a', 'common stock', 'solvency', 'eps', 'earnings', 'carried interest', 'fee related']

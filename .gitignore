@@ -5,9 +5,25 @@ __pycache__/
 .ipynb_checkpoints/
 .cache/
 .env
-# PDFs & large binaries
+.DS_Store
+
+# PDFs (confidential documents)
+inputs/*.pdf
 data/*.pdf
-# Model caches (leave out of repo)
+
+# Large intermediate CSVs (regenerable)
+fresh_candidates*.csv
+prolific_items*.csv
+prolific_survey*.csv
+
+# Model caches
 ~/.cache/huggingface/
-# Optional: ignore heavy images
+
+# Apple Numbers binary files
+*.numbers
+
+# Heavy images
 outputs/*.png
+
+# Mock test data (regenerable)
+inputs/mock_sosci_export.csv

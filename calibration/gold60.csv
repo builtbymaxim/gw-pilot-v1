@@ -1,6 +1,61 @@
-sentence,text_section,label_specific_target(0/1)
-S1: We will reduce Scope 1 and 2 emissions by 50% by 2030 from a 2019 baseline.,metrics_targets,1
-S2: We expect to make significant progress on climate initiatives over the coming years.,strategy,0
-S3: Scope 1+2 emissions (tCO2e): 150,000 in 2023 versus 200,000 in 2022.,metrics_targets,1
-S4: By 2035, suppliers must disclose Scope 3 categories 1–4.,governance,1
-S5: FY2024 saw continued integration of ESG into governance structures.,governance,0
+item_id,text,label_specific_target(0/1)
+GOLD_000,We are committed to operating our business in a sustainable manner for the long term.,0
+GOLD_001,Our ambition is to reduce our environmental footprint significantly over the coming years.,0
+GOLD_002,We aim to explore opportunities to improve our energy efficiency across global operations.,0
+GOLD_003,Management intends to assess climate-related risks as part of the broader risk framework.,0
+GOLD_004,We believe that sustainability is a core component of our long-term strategic vision.,0
+GOLD_005,We strive to foster a culture of inclusion and diversity throughout our workforce.,0
+GOLD_006,The company is focused on transitioning towards a lower-carbon business model.,0
+GOLD_007,We are currently evaluating the potential impact of climate change on our portfolio.,0
+GOLD_008,Our goal is to support the transition to a net-zero economy through responsible investing.,0
+GOLD_009,We expect to continue engaging with stakeholders on various ESG topics.,0
+GOLD_010,We plan to enhance our disclosure regarding climate-related matters in future reports.,0
+GOLD_011,We are making progress on our journey to become a more sustainable organization.,0
+GOLD_012,We aspire to be a leader in corporate social responsibility within our industry.,0
+GOLD_013,We are looking into ways to optimize our resource consumption and waste management.,0
+GOLD_014,We anticipate that regulatory changes may impact our sustainability strategy.,0
+GOLD_015,We seek to align our investment activities with broader environmental objectives.,0
+GOLD_016,Our approach involves continuous monitoring of emerging ESG trends and risks.,0
+GOLD_017,We are dedicated to maintaining high standards of corporate governance.,0
+GOLD_018,We hope to achieve further improvements in our carbon intensity metrics over time.,0
+GOLD_019,We are working towards integrating sustainability factors into our decision-making processes.,0
+GOLD_020,We aim to minimize potential adverse impacts on the environment where feasible.,0
+GOLD_021,We are considering the adoption of science-based targets in the near future.,0
+GOLD_022,We endeavor to promote sustainable practices across our entire supply chain.,0
+GOLD_023,We pledge to keep sustainability at the heart of our corporate values.,0
+GOLD_024,We are taking steps to better understand our Scope 3 emissions profile.,0
+GOLD_025,We intend to collaborate with industry peers to address common climate challenges.,0
+GOLD_026,We are exploring the possibility of sourcing more renewable energy.,0
+GOLD_027,Our strategy focuses on long-term value creation through sustainable growth.,0
+GOLD_028,We aim to maintain open and transparent communication with our shareholders.,0
+GOLD_029,We are committed to continuous improvement in all areas of environmental performance.,0
+GOLD_030,We will reduce absolute Scope 1 and 2 GHG emissions by 50% by 2030 from a 2019 base year.,1
+GOLD_031,The company commits to sourcing 100% renewable electricity for its operations by 2025.,1
+GOLD_032,We aim to achieve Net Zero emissions across our entire value chain by 2050.,1
+GOLD_033,Our target is to reduce water intensity by 20% per unit of production by the end of 2025.,1
+GOLD_034,"We have invested €500 million in green bonds as of December 31, 2023.",1
+GOLD_035,"By 2030, we will reduce our Scope 3 emissions from purchased goods by 25%.",1
+GOLD_036,"We generated 450 GWh of renewable energy in 2023, an increase of 10% vs. 2022.",1
+GOLD_037,Our Board comprises 40% female directors as of the 2024 Annual General Meeting.,1
+GOLD_038,We pledge to eliminate single-use plastics from our packaging by 2026.,1
+GOLD_039,"Scope 1 emissions were 12,500 tCO2e in 2023, down from 14,000 tCO2e in 2022.",1
+GOLD_040,We target a 30% reduction in fleet emissions by 2027 compared to 2020 levels.,1
+GOLD_041,We will engage with 70% of our suppliers by spend to set science-based targets by 2028.,1
+GOLD_042,The fund's carbon footprint is 120 tCO2e per $1 million invested as of Q4 2023.,1
+GOLD_043,We aim to recycle 90% of our operational waste by the year 2025.,1
+GOLD_044,Our executive remuneration policy links 15% of the annual bonus to ESG targets.,1
+GOLD_045,We will plant 1 million trees in verified reforestation projects by 2030.,1
+GOLD_046,We achieved a 5% reduction in energy consumption in 2023 compared to the previous year.,1
+GOLD_047,Our goal is to have 50% of assets under management in Article 8 or 9 funds by 2025.,1
+GOLD_048,We will audit 100% of our high-risk suppliers for human rights compliance by 2024.,1
+GOLD_049,We target a reduction of methane intensity to 0.2% by 2025.,1
+GOLD_050,"By 2040, we aim to be fully carbon neutral across Scope 1, 2, and 3.",1
+GOLD_051,"We reduced our total waste to landfill by 2,000 metric tonnes in 2023.",1
+GOLD_052,We will install 500 electric vehicle charging stations at our facilities by 2026.,1
+GOLD_053,Our renewable energy capacity will increase to 5 GW by 2030.,1
+GOLD_054,We target a 15% reduction in paper usage across all offices by 2025.,1
+GOLD_055,We will invest $1 billion in climate transition technologies by 2030.,1
+GOLD_056,"Our portfolio temperature alignment is currently 2.5°C, targeting 1.5°C by 2050.",1
+GOLD_057,"We trained 3,000 employees on data privacy and security in 2023.",1
+GOLD_058,We will reduce business travel emissions by 40% by 2025 vs. 2019.,1
+GOLD_059,We target zero fatalities and a TRIR of less than 0.5 by 2025.,1
