@@ -1,16 +1,29 @@
 import regex as re
+from src.text_utils import normalize_year_tokens
 
-def normalize_year_tokens(text: str) -> str:
-    # join split years like "20 30" or "2-0-3-0" -> "2030"
-    return re.sub(r'(?i)(?<!\d)2\W*0\W*([0-9])\W*([0-9])(?!\d)', r'20\1\2', text)
+_COMPILED_CACHE = {}
 
-def is_specific(sentence:str, cfg) -> bool:
+def _get_compiled(cfg):
+    cache_key = id(cfg)
+    if cache_key not in _COMPILED_CACHE:
+        _COMPILED_CACHE[cache_key] = {
+            "unit": [re.compile(p, re.I) for p in cfg["spi"]["unit_patterns"]],
+            "target": [re.compile(p, re.I | re.X) for p in cfg["spi"]["target_patterns"]],
+            "baseline": [re.compile(p, re.I) for p in cfg["spi"]["baseline_patterns"]],
+            "strict_excludes": [re.compile(p, re.I) for p in cfg["spi"]["strict_excludes"]],
+        }
+    return _COMPILED_CACHE[cache_key]
+
+def is_specific(sentence: str, cfg) -> bool:
     txt = normalize_year_tokens(sentence)
+    pats = _get_compiled(cfg)
     num = bool(re.search(r"\d", txt))
-    unit = any(re.search(p, txt, flags=re.I) for p in cfg["spi"]["unit_patterns"])
-    target = any(re.search(p, txt, flags=re.I | re.X) for p in cfg["spi"]["target_patterns"])
-    baseline = any(re.search(p, txt, flags=re.I) for p in cfg["spi"]["baseline_patterns"])
-    if num and any(re.search(p, txt, flags=re.I) for p in cfg["spi"]["strict_excludes"]):
+    unit = any(p.search(txt) for p in pats["unit"])
+    target = any(p.search(txt) for p in pats["target"])
+    baseline = any(p.search(txt) for p in pats["baseline"])
+    excluded = num and any(p.search(txt) for p in pats["strict_excludes"])
+    # Fix #6: strict_excludes only reject if there is NO forward-looking target/baseline
+    if excluded and not (target or baseline):
         return False
     if num and (unit or target or baseline):
         return True
@@ -19,4 +32,4 @@ def is_specific(sentence:str, cfg) -> bool:
 
 def compute_spi_rule(sentences, cfg):
     flags = [is_specific(s["text"], cfg) for s in sentences]
-    return {"specific": sum(flags), "total": len(flags), "spi_rule": sum(flags)/max(1,len(flags))}
+    return {"specific": sum(flags), "total": len(flags), "spi_rule": sum(flags) / max(1, len(flags))}

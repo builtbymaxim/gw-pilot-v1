@@ -22,7 +22,10 @@ prolific_survey*.csv
 # Apple Numbers binary files
 *.numbers
 
-# Heavy images
+# Generated outputs (regenerable by pipeline)
+outputs/*.json
+outputs/*.csv
+outputs/*.txt
 outputs/*.png
 
 # Mock test data (regenerable)

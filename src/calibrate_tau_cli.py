@@ -26,13 +26,14 @@ def main():
     ap.add_argument("--strict-gating", action="store_true", help="Use config.nli.gated_regex; otherwise no gating")
     args = ap.parse_args()
 
-    cfg = yaml.safe_load(open(args.config))
+    with open(args.config) as f:
+        cfg = yaml.safe_load(f)
     hyp = cfg["nli"]["hypothesis"]
     model_id = cfg["nli"]["model"]
     gate_re = re.compile(cfg["nli"]["gated_regex"], re.I)
 
     gold = load_gold(args.gold)
-    clf = pipeline("text-classification", model=model_id, return_all_scores=True)
+    clf = pipeline("text-classification", model=model_id, top_k=None)
 
     entail_probs=[]; labels=[]; gated_flags=[]
     for g in gold:
@@ -67,7 +68,8 @@ def main():
         "gating": "strict" if args.strict_gating else "off"
     }
     os.makedirs(os.path.dirname(args.tau_out), exist_ok=True)
-    json.dump(out, open(args.tau_out, "w"), indent=2)
+    with open(args.tau_out, "w") as f:
+        json.dump(out, f, indent=2)
     print(json.dumps(out, indent=2))
 
 if __name__ == "__main__":

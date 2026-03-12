@@ -9,16 +9,16 @@ sectioning:
     metrics_targets: ['TCFD Metrics & Targets','Metrics and Targets','Climate Metrics and Targets','Emissions Metrics and Targets']
     risk_management: ['Climate Risk','TCFD Risk Management','TCFD – Risk Management','Risk management (TCFD)']
   keyword_fallback:
-    strategy: ['strategy','approach','materiality','roadmap']
-    governance: ['board','committee','oversight','remuneration','governance']
-    metrics_targets: ['target','by 20','tco2e','%','kpi','scope','gwh','mwh','kt','mt','€','mn','bn','million','billion']
-    risk_management: ['climate risk','transition risk','physical risk','scenario analysis','TCFD']
+    strategy: ['\bstrategy\b','\bapproach\b','\bmateriality\b','\broadmap\b']
+    governance: ['\bboard\b','\bcommittee\b','\boversight\b','\bremuneration\b','\bgovernance\b']
+    metrics_targets: ['\btarget\b','\bby 20','\btco2e\b','%','\bkpi\b','\bscope\b','\bgwh\b','\bmwh\b','\bkt\b','\bmt\b','€','\bmn\b','\bbn\b','\bmillion\b','\bbillion\b']
+    risk_management: ['\bclimate risk\b','\btransition risk\b','\bphysical risk\b','\bscenario analysis\b','\bTCFD\b']
   min_density: 0.02
   min_words_per_section: 100
 vui:
   divisor_per_1000: 30.0
-  lm_uncertainty: ['may','might','could','uncertain','uncertainty','possible','possibly','potential','potentially','estimate','estimated','approximately','about','around']
-  hedges: ['expect','expects','expected','planning','plan','plans','intend','seeks','target','ambition','aspire','significant','material','endeavor','aim','over the coming years','over time','in due course']
+  lm_uncertainty: ['\bmay\b','\bmight\b','\bcould\b','\buncertain\b','\buncertainty\b','\bpossible\b','\bpossibly\b','\bpotential\b','\bpotentially\b','\bestimate\b','\bestimated\b','\bapproximately\b','\babout\b','\baround\b']
+  hedges: ['\bexpect(?:s|ed)?\b','\bplann?(?:ing|s)?\b','\bintend\b','\bseeks?\b','\bambition\b','\baspire\b','\bsignificant\b','\bmaterial\b','\bendeavou?r\b','\baim\b','\bover the coming years\b','\bover time\b','\bin due course\b']
 
 spi:
   unit_patterns: ['%','tco2e','tco₂e','gwh','mwh','kt','mt','€','\bmn\b','\bbn\b','million','billion']

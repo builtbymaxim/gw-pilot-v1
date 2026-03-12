@@ -6,7 +6,8 @@ import regex as re
 from src.parsing import extract_pages, split_sentences, split_sentences_loose
 from src.sectioning import section_by_headings, keyword_fallback, collect_section_sentences
 from src.vui import compute_vui
-from src.spi import compute_spi_rule, normalize_year_tokens
+from src.spi import compute_spi_rule
+from src.text_utils import normalize_year_tokens
 from src.ci import ci_light
 from src.gw import aggregate_gw
 
@@ -24,12 +25,13 @@ def summarize_buckets(buckets: Dict[str, List[Dict]]) -> Dict:
             out[sec] = {"pages": [], "count_pages": 0, "fallback_pages": 0, "heading_pages": 0}
             continue
         pages_set = sorted({p["page"] for p in pages})
-        fb_count = sum(1 for p in pages if p.get("fallback"))
+        fb_pages = {p["page"] for p in pages if p.get("fallback")}
+        heading_pages = {p["page"] for p in pages if not p.get("fallback")}
         out[sec] = {
             "pages": pages_set,
             "count_pages": len(pages_set),
-            "fallback_pages": fb_count,
-            "heading_pages": len(pages) - fb_count,
+            "fallback_pages": len(fb_pages),
+            "heading_pages": len(heading_pages),
         }
     return out
 
@@ -40,15 +42,17 @@ def main():
     ap.add_argument("--year", type=int, required=True)
     ap.add_argument("--config", default="config.yml")
     ap.add_argument("--outdir", default="outputs")
-    ap.add_argument("--rule-only", action="store_true")
-    ap.add_argument("--enable-nli", action="store_true")
+    mode_group = ap.add_mutually_exclusive_group()
+    mode_group.add_argument("--rule-only", action="store_true")
+    mode_group.add_argument("--enable-nli", action="store_true")
     ap.add_argument("--tau", type=float, default=None)
     ap.add_argument("--ci-values", default=None, help='Comma list: e.g. "2021:2694,2022:2194,2023:2126"')
     ap.add_argument("--loose-sentences", action="store_true", help="Use regex/newline-based splitting for messy PDFs")
     args = ap.parse_args()
 
     os.makedirs(args.outdir, exist_ok=True)
-    cfg = yaml.safe_load(open(args.config))
+    with open(args.config) as f:
+        cfg = yaml.safe_load(f)
 
     # 1) Parse & section
     pages = extract_pages(args.pdf)
@@ -107,13 +111,15 @@ def main():
     # 6) Optional AI assist (lazy import)
     ai_spi = {"ai_spi": 0.0, "positives": 0, "evaluated": 0}
     spi_hybrid = spi_rule["spi_rule"]
-    if args.enable_nli and not args.rule_only:
+    if args.enable_nli:
         tau = args.tau if args.tau is not None else cfg["nli"]["tau"]
         if tau is not None:
             from src.nli import NLIWrapper, compute_ai_spi  # lazy import
             nli = NLIWrapper(cfg["nli"]["model"], cfg["nli"]["hypothesis"])
             ai_spi = compute_ai_spi(all_sents, nli, tau, cfg["nli"]["gated_regex"])
-            spi_hybrid = 0.6 * spi_rule["spi_rule"] + 0.4 * ai_spi["ai_spi"]
+            # Fix #13: only blend if NLI actually evaluated sentences
+            if ai_spi["evaluated"] > 0:
+                spi_hybrid = 0.6 * spi_rule["spi_rule"] + 0.4 * ai_spi["ai_spi"]
 
     # 7) CI_light (robust parsing of --ci-values)
     ci_val = None

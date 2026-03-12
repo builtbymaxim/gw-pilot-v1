@@ -14,5 +14,12 @@ def ci_light(series_by_year:dict, winsor=(1,99), restated_flags:dict=None):
     ci = {}
     for i in range(1, len(years)):
         vt, vp = w[i], w[i-1]
-        ci[years[i]] = max(0.0, 1.0 - abs(vt - vp) / max(vt, vp))
+        # Fix #9: guard against division by zero when both values are 0
+        if vt == 0 and vp == 0:
+            ci[years[i]] = 1.0
+            continue
+        # Fix #3: only penalize emission *increases* (vt > vp).
+        # Reductions (vt < vp) yield CI = 1.0 (fully consistent / good).
+        change = max(0.0, vt - vp) / max(abs(vt), abs(vp), 1e-9)
+        ci[years[i]] = max(0.0, 1.0 - change)
     return {"ci_by_year": ci, "winsor_bounds": (float(np.min(w)), float(np.max(w))), "restated": restated_flags or {}}

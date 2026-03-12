@@ -24,8 +24,6 @@ def calibrate_tau(entail_probs, labels):
     }
 
 def confusion_at_tau(entail_probs, labels, tau):
-    import numpy as np
-    from sklearn.metrics import confusion_matrix
     yhat = (np.asarray(entail_probs) >= tau).astype(int)
     tn, fp, fn, tp = confusion_matrix(labels, yhat).ravel()
     return {"tp":int(tp),"fp":int(fp),"tn":int(tn),"fn":int(fn)}
