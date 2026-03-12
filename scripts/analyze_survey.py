@@ -48,14 +48,44 @@ DEFAULT_GOLD_THRESHOLD = 0.60
 # Helpers
 # ---------------------------------------------------------------------------
 
-def _col(prefix: str, i: int) -> str:
-    """Generate SoSci column name: e.g. FD03_01, FD03_20."""
-    return f"{prefix}_{i:02d}"
+EXCLUDE_PARTICIPANT_IDS = {"68cc89207b80249319b83dd6"}  # manual test runs
 
 
 def load_sosci_export(path: str) -> pd.DataFrame:
-    """Load raw SoSci CSV export, drop empty rows."""
-    df = pd.read_csv(path, dtype=str)
+    """Load raw SoSci CSV export, drop empty rows.
+
+    Handles common SoSci/Mac quirks:
+    - Encoding: tries utf-8, falls back to latin1
+    - Separator: tries tab, semicolon, comma (C engine, tolerant of malformed quotes)
+    """
+    df = None
+    used_enc = None
+    used_sep = None
+
+    for encoding in ("utf-8", "utf-16", "latin1"):
+        for sep, sep_name in [("\t", "tab"), (";", "semicolon"), (",", "comma")]:
+            try:
+                df = pd.read_csv(path, dtype=str, sep=sep, encoding=encoding,
+                                 on_bad_lines="skip")
+                # Sanity check: a correct separator should yield multiple columns
+                if len(df.columns) >= 3:
+                    used_enc = encoding
+                    used_sep = sep_name
+                    break
+                df = None
+            except UnicodeDecodeError:
+                df = None
+                break  # wrong encoding, try next one
+            except Exception:
+                df = None
+                continue
+        if df is not None:
+            break
+
+    if df is None:
+        sys.exit(f"Error: could not parse '{path}' with any encoding/separator combination.")
+
+    print(f"  Encoding: {used_enc}, separator: {used_sep}")
 
     # SoSci sometimes includes metadata rows — drop rows without a participant ID
     if PARTICIPANT_ID_COL not in df.columns:
@@ -63,6 +93,14 @@ def load_sosci_export(path: str) -> pd.DataFrame:
                  f"Available columns: {list(df.columns)[:20]}...")
 
     df = df[df[PARTICIPANT_ID_COL].notna() & (df[PARTICIPANT_ID_COL].str.strip() != "")]
+
+    # Drop known test runs
+    before = len(df)
+    df = df[~df[PARTICIPANT_ID_COL].str.strip().isin(EXCLUDE_PARTICIPANT_IDS)]
+    excluded = before - len(df)
+    if excluded:
+        print(f"  Excluded {excluded} test-run participant(s)")
+
     df = df.reset_index(drop=True)
     return df
 
@@ -77,24 +115,42 @@ def load_item_mapping(path: str) -> pd.DataFrame:
     return mapping
 
 
+def _resolve_col(columns: pd.Index, prefix: str, i: int) -> str | None:
+    """Find the actual column name for a SoSci variable.
+
+    SoSci uses mixed separators: 'x' for urn draws (FD03x01), '_' for
+    ratings (FD01_01). We try all variants.
+    """
+    for sep in ("x", "_"):
+        for fmt in (f"{prefix}{sep}{i:02d}", f"{prefix}{sep}{i}"):
+            if fmt in columns:
+                return fmt
+    return None
+
+
 def reshape_wide_to_long(df_wide: pd.DataFrame, mapping: pd.DataFrame) -> pd.DataFrame:
     """
     Reshape SoSci wide-format export into long-format:
       participant_id × item → specificity_rating, greenwashing_rating
     """
+    # Debug: show available FD columns so mismatches are obvious
+    fd_cols = [c for c in df_wide.columns if "FD" in c.upper()]
+    print(f"  Available FD columns ({len(fd_cols)}): {fd_cols[:15]}{'...' if len(fd_cols) > 15 else ''}")
+
     records = []
     mapping_dict = mapping.set_index("sosci_index").to_dict("index")
+    wide_cols = df_wide.columns
 
     for _, row in df_wide.iterrows():
         pid = row[PARTICIPANT_ID_COL].strip()
 
         for i in range(1, N_ITEMS_PER_PARTICIPANT + 1):
-            urn_col = _col(URN_PREFIX, i)
-            spec_col = _col(SPEC_PREFIX, i)
-            gw_col = _col(GW_PREFIX, i)
+            urn_col = _resolve_col(wide_cols, URN_PREFIX, i)
+            spec_col = _resolve_col(wide_cols, SPEC_PREFIX, i)
+            gw_col = _resolve_col(wide_cols, GW_PREFIX, i)
 
-            # Skip if columns are missing or values are empty
-            if urn_col not in row.index or pd.isna(row[urn_col]) or str(row[urn_col]).strip() == "":
+            # Skip if urn column is missing or value is empty
+            if urn_col is None or pd.isna(row[urn_col]) or str(row[urn_col]).strip() == "":
                 continue
 
             try:
@@ -109,8 +165,8 @@ def reshape_wide_to_long(df_wide: pd.DataFrame, mapping: pd.DataFrame) -> pd.Dat
                 continue
 
             # Parse ratings (may be empty if participant skipped)
-            spec_raw = row.get(spec_col, None)
-            gw_raw = row.get(gw_col, None)
+            spec_raw = row.get(spec_col) if spec_col is not None else None
+            gw_raw = row.get(gw_col) if gw_col is not None else None
 
             try:
                 spec_rating = int(float(spec_raw)) if pd.notna(spec_raw) and str(spec_raw).strip() != "" else None
@@ -135,6 +191,23 @@ def reshape_wide_to_long(df_wide: pd.DataFrame, mapping: pd.DataFrame) -> pd.Dat
             })
 
     df_long = pd.DataFrame(records)
+
+    if df_long.empty:
+        # Build diagnostic: which prefixes were actually found?
+        found = {prefix: [] for prefix in (URN_PREFIX, SPEC_PREFIX, GW_PREFIX)}
+        for c in df_wide.columns:
+            for prefix in found:
+                if c.startswith(prefix):
+                    found[prefix].append(c)
+        sys.exit(
+            f"Error: reshape produced 0 observations.\n"
+            f"  Expected column prefixes: {URN_PREFIX}_*, {SPEC_PREFIX}_*, {GW_PREFIX}_*\n"
+            f"  Found urn columns ({URN_PREFIX}): {found[URN_PREFIX][:10]}\n"
+            f"  Found spec columns ({SPEC_PREFIX}): {found[SPEC_PREFIX][:10]}\n"
+            f"  Found gw columns ({GW_PREFIX}): {found[GW_PREFIX][:10]}\n"
+            f"  All columns: {list(df_wide.columns)}"
+        )
+
     return df_long
 
 

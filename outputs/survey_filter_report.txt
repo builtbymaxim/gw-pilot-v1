@@ -1,0 +1,17 @@
+=== Gold-Item Attention Check Report ===
+Threshold: 60%
+Total participants: 4
+Participants with gold items: 4
+  Passing (>= 60%): 4
+  Failing (< 60%): 0
+Retained participants: 4
+
+--- Passing participants ---
+  5a5f7c21ac56240001543340: 6/6 (100%)
+  67e0870d582edce0a2764d1f: 5/6 (83%)
+  693c78e3dc12dfc44f76b868: 4/5 (80%)
+  696022a73bbea428db035ba4: 3/5 (60%)
+
+=== Inter-Rater Reliability ===
+Krippendorff's alpha (specificity):  nan
+Krippendorff's alpha (greenwashing): nan
