@@ -36,8 +36,8 @@ spi:
 nli:
   model: 'facebook/bart-large-mnli'
   hypothesis: 'This sentence states a measurable target.'
-  gated_regex: '(?ix)\b(by|until|no\s+later\s+than|at\s+the\s+latest)\s+(?:20\d{2}|2\W*0\W*\d\W*\d)\b|\bby\s+(?:year[-\s]?end|YE)\s*(?:20\d{2}|2\W*0\W*\d\W*\d)\b|\bby\s+end[-\s]?of\s+(?:20\d{2}|2\W*0\W*\d\W*\d)\b|\bthrough\s+(?:20\d{2}|2\W*0\W*\d\W*\d)\b'
-  tau: null
+  gated_regex: '\b(?:by|until|in|for|through|no\s+later\s+than|at\s+the\s+latest)\s+20\d{2}\b'
+  tau: 0.8
 
 
 ci:

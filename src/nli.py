@@ -23,7 +23,7 @@ class NLIWrapper:
         return scores.get("entailment", 0.0)
 
 def compute_ai_spi(sentences, nli: NLIWrapper, tau: float, gated_regex: str):
-    gate = re.compile(gated_regex, re.I | re.X)
+    gate = re.compile(gated_regex, re.I)
     positives = 0
     evaluated = 0
     for s in sentences:

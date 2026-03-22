@@ -92,7 +92,7 @@ def main():
     all_sents = [s for sec in included_sections for s in section_sentences.get(sec, [])]
 
     # --- Diagnostic: gated-regex hits BEFORE running NLI ---
-    gate_pat = re.compile(cfg["nli"]["gated_regex"], re.I | re.X)
+    gate_pat = re.compile(cfg["nli"]["gated_regex"], re.I)
     gate_hits = []
     for s in all_sents:
         txt = normalize_year_tokens(s["text"])
