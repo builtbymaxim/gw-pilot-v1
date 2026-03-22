@@ -1,0 +1,191 @@
+{
+  "year": 2021,
+  "included_sections": [
+    "strategy",
+    "governance",
+    "metrics_targets"
+  ],
+  "section_wordcounts": {
+    "strategy": 5898,
+    "governance": 19901,
+    "metrics_targets": 25819
+  },
+  "vui": {
+    "vui_hits": 350,
+    "words": 51618,
+    "vui_per_1000": 6.780580417683754,
+    "vui_norm": 0.22601934725612513
+  },
+  "spi_rule": {
+    "specific": 275,
+    "total": 1981,
+    "spi_rule": 0.13881877839475013
+  },
+  "ai_spi": {
+    "ai_spi": 0.6842105263157895,
+    "positives": 91,
+    "evaluated": 133
+  },
+  "spi_hybrid": 0.3569754775631659,
+  "ci_value": null,
+  "ci_meta": null,
+  "gw": {
+    "gw": 0.4084591113976852,
+    "band": "medium",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
+    }
+  },
+  "per_section": {
+    "strategy": {
+      "words": 5898,
+      "count_sentences": 275,
+      "vui": {
+        "vui_hits": 48,
+        "words": 5898,
+        "vui_per_1000": 8.138351983723297,
+        "vui_norm": 0.2712783994574432
+      },
+      "spi_rule": {
+        "specific": 11,
+        "total": 275,
+        "spi_rule": 0.04
+      }
+    },
+    "governance": {
+      "words": 19901,
+      "count_sentences": 810,
+      "vui": {
+        "vui_hits": 152,
+        "words": 19901,
+        "vui_per_1000": 7.637807145369579,
+        "vui_norm": 0.2545935715123193
+      },
+      "spi_rule": {
+        "specific": 25,
+        "total": 810,
+        "spi_rule": 0.030864197530864196
+      }
+    },
+    "metrics_targets": {
+      "words": 25819,
+      "count_sentences": 896,
+      "vui": {
+        "vui_hits": 150,
+        "words": 25819,
+        "vui_per_1000": 5.809675045509121,
+        "vui_norm": 0.19365583485030405
+      },
+      "spi_rule": {
+        "specific": 239,
+        "total": 896,
+        "spi_rule": 0.26674107142857145
+      }
+    }
+  },
+  "section_map": {
+    "strategy": {
+      "pages": [
+        2,
+        8,
+        17,
+        20,
+        28,
+        38,
+        39,
+        50,
+        63,
+        67,
+        89
+      ],
+      "count_pages": 11,
+      "fallback_pages": 0,
+      "heading_pages": 11
+    },
+    "governance": {
+      "pages": [
+        51,
+        55,
+        58,
+        60,
+        61,
+        62,
+        64,
+        65,
+        66,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        88,
+        90,
+        91,
+        95,
+        100,
+        102,
+        105
+      ],
+      "count_pages": 28,
+      "fallback_pages": 19,
+      "heading_pages": 9
+    },
+    "metrics_targets": {
+      "pages": [
+        7,
+        10,
+        24,
+        25,
+        26,
+        27,
+        29,
+        30,
+        31,
+        34,
+        36,
+        37,
+        43,
+        82,
+        84,
+        85,
+        86,
+        87,
+        92,
+        93,
+        94,
+        96,
+        97,
+        126,
+        141,
+        154,
+        157,
+        158,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        180,
+        183
+      ],
+      "count_pages": 41,
+      "fallback_pages": 41,
+      "heading_pages": 0
+    }
+  }
+}

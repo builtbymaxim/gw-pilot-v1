@@ -1,0 +1,236 @@
+{
+  "year": 2023,
+  "included_sections": [
+    "strategy",
+    "governance",
+    "metrics_targets",
+    "risk_management"
+  ],
+  "section_wordcounts": {
+    "strategy": 14372,
+    "governance": 25432,
+    "metrics_targets": 20150,
+    "risk_management": 4065
+  },
+  "vui": {
+    "vui_hits": 614,
+    "words": 64019,
+    "vui_per_1000": 9.590902700760711,
+    "vui_norm": 0.31969675669202374
+  },
+  "spi_rule": {
+    "specific": 216,
+    "total": 1931,
+    "spi_rule": 0.11185914034179181
+  },
+  "ai_spi": {
+    "ai_spi": 0.7932960893854749,
+    "positives": 142,
+    "evaluated": 179
+  },
+  "spi_hybrid": 0.38443391995926507,
+  "ci_value": null,
+  "ci_meta": null,
+  "gw": {
+    "gw": 0.4491395856570849,
+    "band": "medium",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
+    }
+  },
+  "per_section": {
+    "strategy": {
+      "words": 14372,
+      "count_sentences": 470,
+      "vui": {
+        "vui_hits": 265,
+        "words": 14372,
+        "vui_per_1000": 18.43863067074868,
+        "vui_norm": 0.6146210223582893
+      },
+      "spi_rule": {
+        "specific": 9,
+        "total": 470,
+        "spi_rule": 0.019148936170212766
+      }
+    },
+    "governance": {
+      "words": 25432,
+      "count_sentences": 716,
+      "vui": {
+        "vui_hits": 146,
+        "words": 25432,
+        "vui_per_1000": 5.740798993394149,
+        "vui_norm": 0.19135996644647163
+      },
+      "spi_rule": {
+        "specific": 16,
+        "total": 716,
+        "spi_rule": 0.0223463687150838
+      }
+    },
+    "metrics_targets": {
+      "words": 20150,
+      "count_sentences": 611,
+      "vui": {
+        "vui_hits": 168,
+        "words": 20150,
+        "vui_per_1000": 8.337468982630273,
+        "vui_norm": 0.27791563275434245
+      },
+      "spi_rule": {
+        "specific": 176,
+        "total": 611,
+        "spi_rule": 0.28805237315875615
+      }
+    },
+    "risk_management": {
+      "words": 4065,
+      "count_sentences": 134,
+      "vui": {
+        "vui_hits": 35,
+        "words": 4065,
+        "vui_per_1000": 8.61008610086101,
+        "vui_norm": 0.2870028700287003
+      },
+      "spi_rule": {
+        "specific": 15,
+        "total": 134,
+        "spi_rule": 0.11194029850746269
+      }
+    }
+  },
+  "section_map": {
+    "strategy": {
+      "pages": [
+        3,
+        17,
+        19,
+        44,
+        45,
+        46,
+        50,
+        61,
+        62,
+        63,
+        66,
+        69,
+        70,
+        71,
+        72,
+        166,
+        176,
+        204,
+        229
+      ],
+      "count_pages": 19,
+      "fallback_pages": 0,
+      "heading_pages": 19
+    },
+    "governance": {
+      "pages": [
+        14,
+        15,
+        43,
+        53,
+        99,
+        100,
+        102,
+        104,
+        151,
+        152,
+        179,
+        180,
+        181,
+        184,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        198,
+        199,
+        200,
+        201,
+        202,
+        206,
+        208,
+        209,
+        210,
+        212,
+        218,
+        224,
+        230,
+        231,
+        232,
+        251,
+        252,
+        263,
+        264,
+        265,
+        285,
+        362,
+        426
+      ],
+      "count_pages": 44,
+      "fallback_pages": 22,
+      "heading_pages": 22
+    },
+    "risk_management": {
+      "pages": [
+        48,
+        137,
+        138,
+        142,
+        143,
+        145,
+        146
+      ],
+      "count_pages": 7,
+      "fallback_pages": 3,
+      "heading_pages": 4
+    },
+    "metrics_targets": {
+      "pages": [
+        6,
+        11,
+        21,
+        32,
+        38,
+        40,
+        49,
+        83,
+        84,
+        86,
+        87,
+        89,
+        90,
+        93,
+        114,
+        117,
+        141,
+        157,
+        197,
+        226,
+        233,
+        236,
+        240,
+        241,
+        246,
+        247,
+        320,
+        352,
+        360,
+        370,
+        386
+      ],
+      "count_pages": 31,
+      "fallback_pages": 31,
+      "heading_pages": 0
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "year": 2022,
+  "included_sections": [
+    "governance",
+    "metrics_targets"
+  ],
+  "section_wordcounts": {
+    "governance": 1032,
+    "metrics_targets": 14929
+  },
+  "vui": {
+    "vui_hits": 25,
+    "words": 15962,
+    "vui_per_1000": 1.5662197719584012,
+    "vui_norm": 0.05220732573194671
+  },
+  "spi_rule": {
+    "specific": 295,
+    "total": 817,
+    "spi_rule": 0.36107711138310894
+  },
+  "ai_spi": {
+    "ai_spi": 1.0,
+    "positives": 9,
+    "evaluated": 9
+  },
+  "spi_hybrid": 0.6166462668298653,
+  "ci_value": null,
+  "ci_meta": {
+    "ci_by_year": {
+      "2023": 1.0,
+      "2024": 1.0
+    },
+    "winsor_bounds": [
+      1509.58,
+      2682.64
+    ],
+    "restated": {}
+  },
+  "gw": {
+    "gw": 0.19708387898615393,
+    "band": "low",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
+    }
+  },
+  "per_section": {
+    "governance": {
+      "words": 1032,
+      "count_sentences": 53,
+      "vui": {
+        "vui_hits": 0,
+        "words": 1032,
+        "vui_per_1000": 0.0,
+        "vui_norm": 0.0
+      },
+      "spi_rule": {
+        "specific": 3,
+        "total": 53,
+        "spi_rule": 0.05660377358490566
+      }
+    },
+    "metrics_targets": {
+      "words": 14930,
+      "count_sentences": 764,
+      "vui": {
+        "vui_hits": 25,
+        "words": 14930,
+        "vui_per_1000": 1.6744809109176155,
+        "vui_norm": 0.055816030363920514
+      },
+      "spi_rule": {
+        "specific": 292,
+        "total": 764,
+        "spi_rule": 0.38219895287958117
+      }
+    }
+  },
+  "section_map": {
+    "metrics_targets": {
+      "pages": [
+        3,
+        4,
+        6,
+        13,
+        22,
+        34,
+        39,
+        40,
+        41,
+        43,
+        44,
+        54,
+        110,
+        133,
+        137,
+        140,
+        143,
+        145,
+        149,
+        155,
+        156,
+        159,
+        170,
+        200,
+        204,
+        205,
+        206,
+        213,
+        214,
+        215,
+        216,
+        217,
+        263,
+        264,
+        265
+      ],
+      "count_pages": 35,
+      "fallback_pages": 35,
+      "heading_pages": 0
+    },
+    "governance": {
+      "pages": [
+        229,
+        245,
+        260
+      ],
+      "count_pages": 3,
+      "fallback_pages": 3,
+      "heading_pages": 0
+    }
+  }
+}

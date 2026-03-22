@@ -1,0 +1,93 @@
+{
+  "year": 2024,
+  "included_sections": [
+    "governance",
+    "metrics_targets"
+  ],
+  "section_wordcounts": {
+    "governance": 1014,
+    "metrics_targets": 2151
+  },
+  "vui": {
+    "vui_hits": 12,
+    "words": 3165,
+    "vui_per_1000": 3.7914691943127963,
+    "vui_norm": 0.1263823064770932
+  },
+  "spi_rule": {
+    "specific": 34,
+    "total": 137,
+    "spi_rule": 0.24817518248175183
+  },
+  "ai_spi": {
+    "ai_spi": 0.8235294117647058,
+    "positives": 14,
+    "evaluated": 17
+  },
+  "spi_hybrid": 0.4783168741949334,
+  "ci_value": null,
+  "ci_meta": null,
+  "gw": {
+    "gw": 0.29932641493308154,
+    "band": "low",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
+    }
+  },
+  "per_section": {
+    "governance": {
+      "words": 1014,
+      "count_sentences": 41,
+      "vui": {
+        "vui_hits": 10,
+        "words": 1014,
+        "vui_per_1000": 9.861932938856016,
+        "vui_norm": 0.3287310979618672
+      },
+      "spi_rule": {
+        "specific": 4,
+        "total": 41,
+        "spi_rule": 0.0975609756097561
+      }
+    },
+    "metrics_targets": {
+      "words": 2151,
+      "count_sentences": 96,
+      "vui": {
+        "vui_hits": 2,
+        "words": 2151,
+        "vui_per_1000": 0.9298000929800093,
+        "vui_norm": 0.03099333643266698
+      },
+      "spi_rule": {
+        "specific": 30,
+        "total": 96,
+        "spi_rule": 0.3125
+      }
+    }
+  },
+  "section_map": {
+    "metrics_targets": {
+      "pages": [
+        4,
+        7,
+        24
+      ],
+      "count_pages": 3,
+      "fallback_pages": 3,
+      "heading_pages": 0
+    },
+    "governance": {
+      "pages": [
+        8,
+        32,
+        37
+      ],
+      "count_pages": 3,
+      "fallback_pages": 3,
+      "heading_pages": 0
+    }
+  }
+}

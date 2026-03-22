@@ -1,0 +1,82 @@
+{
+  "governance": {
+    "pages": [
+      3,
+      9,
+      39,
+      42,
+      55,
+      56,
+      70,
+      71,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      83,
+      84,
+      85,
+      87,
+      89,
+      96,
+      107,
+      149
+    ],
+    "count_pages": 22,
+    "fallback_pages": 12,
+    "heading_pages": 10
+  },
+  "strategy": {
+    "pages": [
+      25,
+      26,
+      28,
+      35,
+      46,
+      52,
+      62,
+      63,
+      64
+    ],
+    "count_pages": 9,
+    "fallback_pages": 2,
+    "heading_pages": 7
+  },
+  "risk_management": {
+    "pages": [
+      59
+    ],
+    "count_pages": 1,
+    "fallback_pages": 0,
+    "heading_pages": 1
+  },
+  "metrics_targets": {
+    "pages": [
+      12,
+      14,
+      18,
+      19,
+      21,
+      22,
+      27,
+      29,
+      41,
+      47,
+      48,
+      49,
+      58,
+      60,
+      92,
+      109,
+      115,
+      121,
+      138,
+      140
+    ],
+    "count_pages": 20,
+    "fallback_pages": 20,
+    "heading_pages": 0
+  }
+}
