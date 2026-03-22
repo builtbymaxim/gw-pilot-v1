@@ -1,0 +1,2 @@
+# Keep cell outputs in the batch runner notebook (thesis results)
+scripts/run_all.ipynb !filter !diff
