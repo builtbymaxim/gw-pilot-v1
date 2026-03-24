@@ -1,0 +1,61 @@
+{
+  "strategy": {
+    "pages": [
+      7,
+      64
+    ],
+    "count_pages": 2,
+    "fallback_pages": 0,
+    "heading_pages": 2
+  },
+  "governance": {
+    "pages": [
+      65,
+      136
+    ],
+    "count_pages": 2,
+    "fallback_pages": 0,
+    "heading_pages": 2
+  },
+  "metrics_targets": {
+    "pages": [
+      14,
+      17,
+      18,
+      19,
+      20,
+      21,
+      57,
+      67,
+      70,
+      71,
+      74,
+      75,
+      77,
+      78,
+      79,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      112,
+      113,
+      118,
+      120,
+      129,
+      131,
+      134
+    ],
+    "count_pages": 34,
+    "fallback_pages": 34,
+    "heading_pages": 0
+  }
+}

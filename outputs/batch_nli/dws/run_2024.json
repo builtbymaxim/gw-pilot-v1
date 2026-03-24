@@ -1,0 +1,234 @@
+{
+  "year": 2024,
+  "included_sections": [
+    "strategy",
+    "governance",
+    "metrics_targets"
+  ],
+  "section_wordcounts": {
+    "strategy": 1053,
+    "governance": 31720,
+    "metrics_targets": 30450
+  },
+  "vui": {
+    "vui_hits": 323,
+    "words": 63223,
+    "vui_per_1000": 5.108900242000538,
+    "vui_norm": 0.17029667473335128
+  },
+  "spi_rule": {
+    "specific": 312,
+    "total": 1909,
+    "spi_rule": 0.16343635411210058
+  },
+  "ai_spi": {
+    "ai_spi": 0.6518518518518519,
+    "positives": 88,
+    "evaluated": 135
+  },
+  "spi_hybrid": 0.35880255320800114,
+  "ci_value": 1.0,
+  "ci_meta": {
+    "ci_by_year": {
+      "2023": 1.0,
+      "2024": 1.0
+    },
+    "winsor_bounds": [
+      1509.58,
+      2682.64
+    ],
+    "restated": {}
+  },
+  "gw": {
+    "gw": 0.3010526100072077,
+    "band": "low",
+    "effective_weights": {
+      "vui": 0.45,
+      "r_spi": 0.35,
+      "r_ci": 0.2
+    }
+  },
+  "per_section": {
+    "strategy": {
+      "words": 1053,
+      "count_sentences": 48,
+      "vui": {
+        "vui_hits": 16,
+        "words": 1053,
+        "vui_per_1000": 15.194681861348528,
+        "vui_norm": 0.5064893953782843
+      },
+      "spi_rule": {
+        "specific": 0,
+        "total": 48,
+        "spi_rule": 0.0
+      }
+    },
+    "governance": {
+      "words": 31720,
+      "count_sentences": 1081,
+      "vui": {
+        "vui_hits": 159,
+        "words": 31720,
+        "vui_per_1000": 5.012610340479193,
+        "vui_norm": 0.16708701134930642
+      },
+      "spi_rule": {
+        "specific": 74,
+        "total": 1081,
+        "spi_rule": 0.06845513413506013
+      }
+    },
+    "metrics_targets": {
+      "words": 30450,
+      "count_sentences": 780,
+      "vui": {
+        "vui_hits": 148,
+        "words": 30450,
+        "vui_per_1000": 4.860426929392447,
+        "vui_norm": 0.16201423097974824
+      },
+      "spi_rule": {
+        "specific": 238,
+        "total": 780,
+        "spi_rule": 0.30512820512820515
+      }
+    }
+  },
+  "section_map": {
+    "strategy": {
+      "pages": [
+        24,
+        79
+      ],
+      "count_pages": 2,
+      "fallback_pages": 1,
+      "heading_pages": 1
+    },
+    "governance": {
+      "pages": [
+        2,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        49,
+        64,
+        65,
+        67,
+        68,
+        69,
+        70,
+        140,
+        201,
+        213,
+        214,
+        215,
+        216,
+        228,
+        236,
+        237,
+        238,
+        240,
+        241,
+        242,
+        243,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259,
+        260,
+        261,
+        262,
+        263,
+        264,
+        265,
+        266,
+        277
+      ],
+      "count_pages": 57,
+      "fallback_pages": 57,
+      "heading_pages": 0
+    },
+    "metrics_targets": {
+      "pages": [
+        3,
+        13,
+        22,
+        23,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        66,
+        73,
+        93,
+        94,
+        95,
+        97,
+        98,
+        99,
+        100,
+        101,
+        109,
+        111,
+        115,
+        116,
+        117,
+        118,
+        119,
+        147,
+        162,
+        165,
+        168,
+        169,
+        171,
+        172,
+        175,
+        178,
+        182,
+        184,
+        193,
+        195,
+        217,
+        218,
+        219,
+        220,
+        222,
+        223,
+        224,
+        234,
+        235,
+        239,
+        270,
+        271
+      ],
+      "count_pages": 54,
+      "fallback_pages": 54,
+      "heading_pages": 0
+    }
+  }
+}

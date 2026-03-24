@@ -9,5 +9,9 @@ def aggregate_gw(vui_norm, spi_hybrid, ci_or_none, weights, bands):
         r_ci = 1.0 - ci_or_none
         gw = weights["vui"]*vui_norm + weights["r_spi"]*r_spi + weights["r_ci"]*r_ci
         eff = dict(weights)
-    band = "low" if gw <= bands["low"] else ("medium" if gw <= bands["med"] else "high")
+    band = "very_high"
+    for label in ["very_low", "low", "medium", "high"]:
+        if gw <= bands[label]:
+            band = label
+            break
     return {"gw": float(gw), "band": band, "effective_weights": eff}

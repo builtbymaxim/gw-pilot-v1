@@ -48,8 +48,10 @@ weights:
   r_spi: 0.35
   r_ci: 0.20
 bands:
-  low: 0.30
-  med: 0.60
+  very_low: 0.20
+  low: 0.40
+  medium: 0.60
+  high: 0.80
 logging:
   include_regex_hits: true
 

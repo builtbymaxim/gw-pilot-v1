@@ -1,0 +1,23 @@
+{
+  "governance": {
+    "pages": [
+      7,
+      8,
+      37,
+      38
+    ],
+    "count_pages": 4,
+    "fallback_pages": 3,
+    "heading_pages": 1
+  },
+  "metrics_targets": {
+    "pages": [
+      4,
+      6,
+      25
+    ],
+    "count_pages": 3,
+    "fallback_pages": 3,
+    "heading_pages": 0
+  }
+}

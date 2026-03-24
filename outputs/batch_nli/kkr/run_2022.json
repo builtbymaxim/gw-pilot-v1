@@ -1,0 +1,139 @@
+{
+  "year": 2022,
+  "included_sections": [
+    "governance",
+    "metrics_targets"
+  ],
+  "section_wordcounts": {
+    "governance": 5746,
+    "metrics_targets": 24768
+  },
+  "vui": {
+    "vui_hits": 180,
+    "words": 30514,
+    "vui_per_1000": 5.898931637936685,
+    "vui_norm": 0.1966310545978895
+  },
+  "spi_rule": {
+    "specific": 223,
+    "total": 834,
+    "spi_rule": 0.2673860911270983
+  },
+  "ai_spi": {
+    "ai_spi": 0.36363636363636365,
+    "positives": 4,
+    "evaluated": 11
+  },
+  "spi_hybrid": 0.3058862001308045,
+  "ci_value": null,
+  "ci_meta": null,
+  "gw": {
+    "gw": 0.4142797556540858,
+    "band": "medium",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
+    }
+  },
+  "per_section": {
+    "governance": {
+      "words": 5746,
+      "count_sentences": 176,
+      "vui": {
+        "vui_hits": 35,
+        "words": 5746,
+        "vui_per_1000": 6.091193873999304,
+        "vui_norm": 0.2030397957999768
+      },
+      "spi_rule": {
+        "specific": 5,
+        "total": 176,
+        "spi_rule": 0.028409090909090908
+      }
+    },
+    "metrics_targets": {
+      "words": 24768,
+      "count_sentences": 658,
+      "vui": {
+        "vui_hits": 145,
+        "words": 24768,
+        "vui_per_1000": 5.854328165374677,
+        "vui_norm": 0.19514427217915592
+      },
+      "spi_rule": {
+        "specific": 218,
+        "total": 658,
+        "spi_rule": 0.331306990881459
+      }
+    }
+  },
+  "section_map": {
+    "governance": {
+      "pages": [
+        212,
+        367,
+        369,
+        370,
+        372,
+        373,
+        374,
+        386,
+        389,
+        398
+      ],
+      "count_pages": 10,
+      "fallback_pages": 7,
+      "heading_pages": 3
+    },
+    "metrics_targets": {
+      "pages": [
+        11,
+        17,
+        18,
+        19,
+        23,
+        24,
+        25,
+        28,
+        33,
+        133,
+        159,
+        171,
+        184,
+        188,
+        189,
+        190,
+        191,
+        277,
+        281,
+        285,
+        286,
+        289,
+        290,
+        306,
+        307,
+        308,
+        309,
+        310,
+        318,
+        321,
+        323,
+        326,
+        327,
+        328,
+        338,
+        341,
+        343,
+        346,
+        347,
+        349,
+        411,
+        671
+      ],
+      "count_pages": 42,
+      "fallback_pages": 42,
+      "heading_pages": 0
+    }
+  }
+}

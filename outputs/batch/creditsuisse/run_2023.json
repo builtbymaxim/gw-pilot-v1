@@ -20,16 +20,16 @@
     "spi_rule": 0.1
   },
   "ai_spi": {
-    "ai_spi": 1.0,
-    "positives": 1,
-    "evaluated": 1
+    "ai_spi": 0.0,
+    "positives": 0,
+    "evaluated": 0
   },
-  "spi_hybrid": 0.46,
+  "spi_hybrid": 0.1,
   "ci_value": null,
   "ci_meta": null,
   "gw": {
-    "gw": 0.49581284153005467,
-    "band": "medium",
+    "gw": 0.6533128415300546,
+    "band": "high",
     "effective_weights": {
       "vui": 0.5625,
       "r_spi": 0.43749999999999994,

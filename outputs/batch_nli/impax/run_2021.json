@@ -1,0 +1,187 @@
+{
+  "year": 2021,
+  "included_sections": [
+    "strategy",
+    "governance",
+    "metrics_targets",
+    "risk_management"
+  ],
+  "section_wordcounts": {
+    "strategy": 3280,
+    "governance": 7307,
+    "metrics_targets": 7095,
+    "risk_management": 479
+  },
+  "vui": {
+    "vui_hits": 88,
+    "words": 18161,
+    "vui_per_1000": 4.845548152634767,
+    "vui_norm": 0.16151827175449224
+  },
+  "spi_rule": {
+    "specific": 100,
+    "total": 769,
+    "spi_rule": 0.13003901170351106
+  },
+  "ai_spi": {
+    "ai_spi": 0.6,
+    "positives": 12,
+    "evaluated": 20
+  },
+  "spi_hybrid": 0.31802340702210663,
+  "ci_value": null,
+  "ci_meta": null,
+  "gw": {
+    "gw": 0.3892187872897302,
+    "band": "low",
+    "effective_weights": {
+      "vui": 0.5625,
+      "r_spi": 0.43749999999999994,
+      "r_ci": 0.0
+    }
+  },
+  "per_section": {
+    "strategy": {
+      "words": 3280,
+      "count_sentences": 155,
+      "vui": {
+        "vui_hits": 18,
+        "words": 3280,
+        "vui_per_1000": 5.487804878048781,
+        "vui_norm": 0.1829268292682927
+      },
+      "spi_rule": {
+        "specific": 15,
+        "total": 155,
+        "spi_rule": 0.0967741935483871
+      }
+    },
+    "governance": {
+      "words": 7307,
+      "count_sentences": 330,
+      "vui": {
+        "vui_hits": 33,
+        "words": 7307,
+        "vui_per_1000": 4.5162173258519225,
+        "vui_norm": 0.15054057752839742
+      },
+      "spi_rule": {
+        "specific": 8,
+        "total": 330,
+        "spi_rule": 0.024242424242424242
+      }
+    },
+    "metrics_targets": {
+      "words": 7095,
+      "count_sentences": 262,
+      "vui": {
+        "vui_hits": 34,
+        "words": 7095,
+        "vui_per_1000": 4.792107117688513,
+        "vui_norm": 0.15973690392295042
+      },
+      "spi_rule": {
+        "specific": 73,
+        "total": 262,
+        "spi_rule": 0.2786259541984733
+      }
+    },
+    "risk_management": {
+      "words": 479,
+      "count_sentences": 22,
+      "vui": {
+        "vui_hits": 3,
+        "words": 479,
+        "vui_per_1000": 6.263048016701461,
+        "vui_norm": 0.20876826722338204
+      },
+      "spi_rule": {
+        "specific": 4,
+        "total": 22,
+        "spi_rule": 0.18181818181818182
+      }
+    }
+  },
+  "section_map": {
+    "governance": {
+      "pages": [
+        3,
+        9,
+        39,
+        42,
+        55,
+        56,
+        70,
+        71,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        83,
+        84,
+        85,
+        87,
+        89,
+        96,
+        107,
+        149
+      ],
+      "count_pages": 22,
+      "fallback_pages": 12,
+      "heading_pages": 10
+    },
+    "strategy": {
+      "pages": [
+        25,
+        26,
+        28,
+        35,
+        46,
+        52,
+        62,
+        63,
+        64
+      ],
+      "count_pages": 9,
+      "fallback_pages": 2,
+      "heading_pages": 7
+    },
+    "risk_management": {
+      "pages": [
+        59
+      ],
+      "count_pages": 1,
+      "fallback_pages": 0,
+      "heading_pages": 1
+    },
+    "metrics_targets": {
+      "pages": [
+        12,
+        14,
+        18,
+        19,
+        21,
+        22,
+        27,
+        29,
+        41,
+        47,
+        48,
+        49,
+        58,
+        60,
+        92,
+        109,
+        115,
+        121,
+        138,
+        140
+      ],
+      "count_pages": 20,
+      "fallback_pages": 20,
+      "heading_pages": 0
+    }
+  }
+}

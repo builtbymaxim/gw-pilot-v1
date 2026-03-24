@@ -17,20 +17,20 @@
     "vui_norm": 0.12966658773917847
   },
   "spi_rule": {
-    "specific": 198,
+    "specific": 196,
     "total": 914,
-    "spi_rule": 0.21663019693654267
+    "spi_rule": 0.21444201312910285
   },
   "ai_spi": {
-    "ai_spi": 0.8571428571428571,
-    "positives": 54,
-    "evaluated": 63
+    "ai_spi": 0.0,
+    "positives": 0,
+    "evaluated": 0
   },
-  "spi_hybrid": 0.4728352610190685,
+  "spi_hybrid": 0.21444201312910285,
   "ci_value": null,
   "ci_meta": null,
   "gw": {
-    "gw": 0.3035720289074454,
+    "gw": 0.4166190748593054,
     "band": "medium",
     "effective_weights": {
       "vui": 0.5625,
@@ -79,9 +79,9 @@
         "vui_norm": 0.09782749137087694
       },
       "spi_rule": {
-        "specific": 191,
+        "specific": 189,
         "total": 511,
-        "spi_rule": 0.37377690802348335
+        "spi_rule": 0.3698630136986301
       }
     }
   },
