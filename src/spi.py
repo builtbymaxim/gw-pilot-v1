@@ -25,8 +25,13 @@ def is_specific(sentence: str, cfg) -> bool:
     # Fix #6: strict_excludes only reject if there is NO forward-looking target/baseline
     if excluded and not (target or baseline):
         return False
-    if num and (unit or target or baseline):
+    # Explicit temporal commitment always qualifies
+    if num and (target or baseline):
         return True
+    # Substantive sentence with number + unit (≥8 words filters bare "50%" fragments)
+    if num and unit:
+        return len(txt.split()) >= 8
+    # Fallback (rare edge cases: unit+target without explicit number, etc.)
     signals = sum([num, unit, target, baseline])
     return signals >= 2
 
