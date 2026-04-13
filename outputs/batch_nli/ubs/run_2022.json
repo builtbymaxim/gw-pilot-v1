@@ -20,19 +20,19 @@
   },
   "spi_rule": {
     "specific": 273,
-    "total": 1952,
-    "spi_rule": 0.1398565573770492
+    "total": 1955,
+    "spi_rule": 0.13964194373401534
   },
   "ai_spi": {
     "ai_spi": 0.7908496732026143,
     "positives": 121,
     "evaluated": 153
   },
-  "spi_hybrid": 0.40025380370727526,
+  "spi_hybrid": 0.40012503552145495,
   "ci_value": null,
   "ci_meta": null,
   "gw": {
-    "gw": 0.404188558576528,
+    "gw": 0.40424489465782437,
     "band": "medium",
     "effective_weights": {
       "vui": 0.5625,
@@ -73,7 +73,7 @@
     },
     "metrics_targets": {
       "words": 29942,
-      "count_sentences": 958,
+      "count_sentences": 961,
       "vui": {
         "vui_hits": 154,
         "words": 29942,
@@ -82,8 +82,8 @@
       },
       "spi_rule": {
         "specific": 251,
-        "total": 958,
-        "spi_rule": 0.2620041753653445
+        "total": 961,
+        "spi_rule": 0.2611862643080125
       }
     },
     "risk_management": {

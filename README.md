@@ -1,6 +1,6 @@
 # Greenwashing Detection Pipeline
 
-Automated NLP pipeline for detecting greenwashing signals in ESG and sustainability PDF reports. Scores each report on three dimensions — vague language (VUI), specificity (SPI), and emission consistency (CI) — and aggregates them into a GW score aligned with a 5-point human survey scale.
+Automated NLP pipeline for detecting greenwashing signals in ESG and sustainability PDF reports. Scores each report on three dimensions — vague language (VUI), specificity (SPI), and emission consistency (CI) — and aggregates them into a GW score aligned with a 5-point human survey scale. The repo also contains the **Part B human validation study** ([scripts/survey_analysis.ipynb](scripts/survey_analysis.ipynb)), in which 42 domain-knowledgeable participants rated 220 paragraphs from these same reports on specificity and greenwashing perception.
 
 ---
 
@@ -103,6 +103,44 @@ Set `ENABLE_NLI = False` for a fast pass or `True` for full NLI scoring.
 
 ---
 
+## Human Validation Study (Part B)
+
+Expert-survey validation of the pipeline's VUI and SPI scores against human judgement on 200 real + 20 gold-standard paragraphs, drawn from the 46 batch reports.
+
+**Design:** Prolific + SoSci Survey, 5-point Likert ratings on specificity and greenwashing perception. Each participant saw 20 randomly drawn paragraphs from a 220-item pool (urn-draw design, counterbalanced).
+
+**Sample:** 44 finished → 42 retained after speed-based QC (2 excluded <3 min), 840 ratings, 220/220 items covered, median 4 raters per item.
+
+### Key Findings
+
+| Metric | Result | Interpretation |
+|---|---|---|
+| Krippendorff α — Specificity | **0.46** | Fair agreement |
+| Krippendorff α — Greenwashing perception | **0.31** | Slight agreement |
+| Spearman ρ — Human specificity ↔ Pipeline SPI | **+0.01** (p = 0.87) | No correlation |
+| Spearman ρ — Human GW perception ↔ Pipeline VUI | **+0.01** (p = 0.92) | No correlation |
+| SFDR sub-sample (Mann–Whitney U) | all p > 0.62 | No discrimination between focused / mixed profiles |
+| Order / counterbalance effects | all p > 0.26 | No fatigue or condition bias |
+
+### Interpretation
+
+The null correlation between paragraph-level human ratings and firm-year pipeline scores is explained by a **granularity mismatch**: the pipeline aggregates an entire report into one (VUI, SPI) pair, collapsing paragraph variance. This is a measurement-design finding, not a pipeline failure — it precisely characterises the caveats Eisinger flags in Part A §§ 8.1, 8.4.
+
+**Qualitative divergence patterns** (see [survey_analysis.ipynb](scripts/survey_analysis.ipynb) Cell 7) identify systematic pipeline behaviours:
+- SPI **under-counts** nominal specificity (named institutions, governance roles) lacking numeric anchors
+- SPI **over-counts** numeric content in non-ESG boilerplate (corporate-governance routines)
+- VUI **over-penalises** hedge words around concrete targets (e.g. *"approximately 30% by 2025"*)
+
+### Reproducing
+
+```bash
+jupyter lab scripts/survey_analysis.ipynb
+```
+
+**Inputs:** [data/sosci_export.csv](data/sosci_export.csv), [data/prolific_demographics.csv](data/prolific_demographics.csv), [archive_survey_drafts/prolific_survey_key.csv](archive_survey_drafts/prolific_survey_key.csv), [outputs/batch/](outputs/batch/)`*/run_*.json`.
+
+---
+
 ## File Structure
 
 ```
@@ -120,9 +158,15 @@ gw-pilot-v1/
 ├── inputs/               # PDF reports (not tracked)
 ├── outputs/
 │   ├── batch/            # Rule-only batch results (JSON per company/year)
-│   └── batch_nli/        # NLI-enhanced batch results
+│   ├── batch_nli/        # NLI-enhanced batch results
+│   └── figures/          # Exported thesis figures (PDF/PNG)
 ├── scripts/
-│   └── run_all.ipynb     # Batch runner + visualisation notebook
+│   ├── run_all.ipynb          # Batch runner + visualisation (Part A)
+│   └── survey_analysis.ipynb  # Human validation study (Part B)
+├── data/
+│   ├── sosci_export.csv       # SoSci Survey responses (UTF-16)
+│   └── prolific_demographics.csv
+├── archive_survey_drafts/     # Survey construction artefacts + 220-item key
 ├── config.yml            # All thresholds, patterns, weights
 └── requirements.txt
 ```

@@ -17,20 +17,20 @@
     "vui_norm": 0.1003771395416304
   },
   "spi_rule": {
-    "specific": 462,
-    "total": 1474,
-    "spi_rule": 0.31343283582089554
+    "specific": 461,
+    "total": 1473,
+    "spi_rule": 0.31296673455532925
   },
   "ai_spi": {
     "ai_spi": 0.9,
     "positives": 72,
     "evaluated": 80
   },
-  "spi_hybrid": 0.5480597014925374,
+  "spi_hybrid": 0.5477800407331976,
   "ci_value": null,
   "ci_meta": null,
   "gw": {
-    "gw": 0.25418602158918197,
+    "gw": 0.2543083731713931,
     "band": "low",
     "effective_weights": {
       "vui": 0.5625,
@@ -71,7 +71,7 @@
     },
     "metrics_targets": {
       "words": 44258,
-      "count_sentences": 1024,
+      "count_sentences": 1023,
       "vui": {
         "vui_hits": 99,
         "words": 44258,
@@ -79,9 +79,9 @@
         "vui_norm": 0.07456279090785847
       },
       "spi_rule": {
-        "specific": 452,
-        "total": 1024,
-        "spi_rule": 0.44140625
+        "specific": 451,
+        "total": 1023,
+        "spi_rule": 0.44086021505376344
       }
     }
   },

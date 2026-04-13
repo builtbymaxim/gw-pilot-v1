@@ -30,3 +30,8 @@ outputs/*.png
 
 # Mock test data (regenerable)
 inputs/mock_sosci_export.csv
+
+# Exception: survey construction artefacts (Part B thesis — tracked).
+# Must come AFTER all general patterns to override them.
+!archive_survey_drafts/
+!archive_survey_drafts/**
