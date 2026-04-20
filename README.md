@@ -1,6 +1,6 @@
 # Greenwashing Detection Pipeline
 
-Automated NLP pipeline for detecting greenwashing signals in ESG and sustainability PDF reports. Scores each report on three dimensions — vague language (VUI), specificity (SPI), and emission consistency (CI) — and aggregates them into a GW score aligned with a 5-point human survey scale. The repo also contains the **Part B human validation study** ([scripts/survey_analysis.ipynb](scripts/survey_analysis.ipynb)), in which 42 domain-knowledgeable participants rated 220 paragraphs from these same reports on specificity and greenwashing perception.
+Automated NLP pipeline for detecting greenwashing signals in ESG and sustainability PDF reports. Scores each report on three dimensions — vague language (VUI), specificity (SPI), and emission consistency (CI) — and aggregates them into a GW score aligned with a 5-point human survey scale. The repo also contains the **Part B human validation study** ([scripts/survey_analysis.ipynb](scripts/survey_analysis.ipynb)), in which 42 domain-knowledgeable participants rated 220 sentences from these same reports on specificity and greenwashing perception.
 
 ---
 
@@ -105,9 +105,9 @@ Set `ENABLE_NLI = False` for a fast pass or `True` for full NLI scoring.
 
 ## Human Validation Study (Part B)
 
-Expert-survey validation of the pipeline's VUI and SPI scores against human judgement on 200 real + 20 gold-standard paragraphs, drawn from the 46 batch reports.
+Expert-survey validation of the pipeline's VUI and SPI scores against human judgement on 200 real + 20 gold-standard sentences, drawn from the 46 batch reports.
 
-**Design:** Prolific + SoSci Survey, 5-point Likert ratings on specificity and greenwashing perception. Each participant saw 20 randomly drawn paragraphs from a 220-item pool (urn-draw design, counterbalanced).
+**Design:** Prolific + SoSci Survey, 5-point Likert ratings on specificity and greenwashing perception. Each participant saw 20 randomly drawn sentences from a 220-item pool (urn-draw design, counterbalanced).
 
 **Sample:** 44 finished → 42 retained after speed-based QC (2 excluded <3 min), 840 ratings, 220/220 items covered, median 4 raters per item.
 
@@ -122,9 +122,11 @@ Expert-survey validation of the pipeline's VUI and SPI scores against human judg
 | SFDR sub-sample (Mann–Whitney U) | all p > 0.62 | No discrimination between focused / mixed profiles |
 | Order / counterbalance effects | all p > 0.26 | No fatigue or condition bias |
 
+> **Robustness:** Repeating the analysis without the speed-based exclusion (N=44) shifts all correlations by |Δρ| < 0.014 and Krippendorff's α by |Δα| < 0.012, confirming the results are not driven by the 2 flagged participants (see [survey_analysis.ipynb](scripts/survey_analysis.ipynb) § 6d).
+
 ### Interpretation
 
-The null correlation between paragraph-level human ratings and firm-year pipeline scores is explained by a **granularity mismatch**: the pipeline aggregates an entire report into one (VUI, SPI) pair, collapsing paragraph variance. This is a measurement-design finding, not a pipeline failure — it precisely characterises the caveats Eisinger flags in Part A §§ 8.1, 8.4.
+The null correlation between sentence-level human ratings and firm-year pipeline scores is explained by a **granularity mismatch**: the pipeline aggregates an entire report into one (VUI, SPI) pair, collapsing sentence-level variance. This is a measurement-design finding, not a pipeline failure — it precisely characterises the caveats Eisinger flags in Part A §§ 8.1, 8.4.
 
 **Qualitative divergence patterns** (see [survey_analysis.ipynb](scripts/survey_analysis.ipynb) Cell 7) identify systematic pipeline behaviours:
 - SPI **under-counts** nominal specificity (named institutions, governance roles) lacking numeric anchors
