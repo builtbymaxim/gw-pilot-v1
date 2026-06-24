@@ -35,3 +35,9 @@ inputs/mock_sosci_export.csv
 # Must come AFTER all general patterns to override them.
 !archive_survey_drafts/
 !archive_survey_drafts/**
+
+# Participant data — must NOT be tracked (privacy/GDPR). Kept locally only.
+# Listed LAST so it overrides the archive_survey_drafts exception above.
+data/sosci_export.csv
+data/prolific_demographics.csv
+archive_survey_drafts/prolific_survey_key.csv
