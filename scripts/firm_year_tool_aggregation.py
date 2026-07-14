@@ -64,6 +64,12 @@ real["year"] = [t[1] for t in fy]
 real = real.dropna(subset=["firm", "year"])
 real["year"] = real["year"].astype(int)
 
+# Item-level human means first (each survey sentence weighted equally),
+# so that firm-years/items seen by more raters are not over-weighted.
+item = (real.groupby(["firm", "year", "item_id"])
+        .agg(item_spec=("specificity", "mean"), item_gw=("greenwashing", "mean"))
+        .reset_index())
+
 agg = (real.groupby(["firm", "year"])
        .agg(
            # tool-conform: share of ratings classified "specific"/"greenwashing"
@@ -71,13 +77,18 @@ agg = (real.groupby(["firm", "year"])
            spec_share_ge4=("specificity",  lambda s: (s >= 4).mean()),
            gw_share_ge3=("greenwashing",   lambda s: (s >= 3).mean()),
            gw_share_ge4=("greenwashing",   lambda s: (s >= 4).mean()),
-           # reference: previous aggregation
-           mean_spec=("specificity", "mean"),
-           mean_gw=("greenwashing", "mean"),
            n_ratings=("specificity", "count"),
            n_items=("item_id", "nunique"),
        )
        .reset_index())
+
+# Reference: mean of the per-item human means (each sentence weighted equally).
+# This is the firm-year figure reported in the thesis (spec -0.012, gw -0.19);
+# NOT a mean over raw ratings, which would over-weight items with more raters.
+item_means = (item.groupby(["firm", "year"])
+              .agg(mean_spec=("item_spec", "mean"), mean_gw=("item_gw", "mean"))
+              .reset_index())
+agg = agg.merge(item_means, on=["firm", "year"])
 
 merged = agg.merge(batch_df, on=["firm", "year"], how="inner")
 
@@ -86,7 +97,7 @@ PAIRS = [
     # (human col, pipeline col, expected sign)
     ("spec_share_ge3", "spi_rule", "+"),
     ("spec_share_ge4", "spi_rule", "+"),
-    ("mean_spec",      "spi_rule", "+  (reference: mean-of-means)"),
+    ("mean_spec",      "spi_rule", "+  (reference: mean of item-means, thesis value)"),
     ("gw_share_ge3",   "vui_norm", "+"),
     ("gw_share_ge4",   "vui_norm", "+"),
     ("mean_gw",        "vui_norm", "+  (reference)"),
