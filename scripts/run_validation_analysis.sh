@@ -22,5 +22,5 @@ if "risk_hybrid" in M.columns: pr("risk_hybrid")
 print("\n== using inverted human scale (6 - score) ==")
 M["q_overall_inv"] = 6 - M["q_overall_consensus"]
 pr("risk_rules", "q_overall_inv")
-if "risk_hybrid" in M.columns: pr("risk_hybrid", "q_overall_inv"
+if "risk_hybrid" in M.columns: pr("risk_hybrid", "q_overall_inv")
 PY

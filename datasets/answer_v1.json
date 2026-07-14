@@ -1,0 +1,926 @@
+{
+  "extraction_summary": {
+    "total_sentences": 100,
+    "problematic_count": 50,
+    "unproblematic_count": 50,
+    "documents_processed": [
+      "DWS 2021 Annual Report",
+      "DWS 2022 Annual Report",
+      "SEC Press Release on DWS",
+      "HSBC ASA Ruling",
+      "Shell Ads Appeal Decision",
+      "Good Practice Sustainability Reporting Guide",
+      "TCFD Good Practice Handbook",
+      "Liberty Mutual 2024 TCFD Report",
+      "AT&T TCFD Index",
+      "GE Aerospace 2024 TCFD Report",
+      "Merck 2024 TCFD Report",
+      "Banner Bank 2024 TCFD Report"
+    ],
+    "extraction_date": "2025-09-16"
+  },
+  "problematic_sentences": [
+    {
+      "sentence_id": "P001",
+      "text": "We aim to become climate-neutral in our actions, in line with the Paris Agreement, by 2050 or sooner.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Our Strategy \u2013 climate ambitions",
+      "category": "temporal_vagueness",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 18
+    },
+    {
+      "sentence_id": "P002",
+      "text": "While we aim to maintain our strong momentum from 2021 into 2022 and beyond, we expect some industry headwinds along the way, mainly due to inflation and enormous geopolitical tensions.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Interview with the Chairman of the Executive Board",
+      "category": "excessive_hedging",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 30
+    },
+    {
+      "sentence_id": "P003",
+      "text": "We are aware that, among others, external factors such as unfavourable macro\u2011economic and market conditions, geopolitical uncertainty, the ongoing COVID\u201119 pandemic, regulatory changes, climate change and related climate transition activities may adversely affect our ability to execute on our strategy.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Our Strategy \u2013 risk factors",
+      "category": "excessive_hedging",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 41
+    },
+    {
+      "sentence_id": "P004",
+      "text": "While it is not yet possible for us to speak about potential outcomes or timeframes of the external investigations, we can state with regard to our nearly completed internal reviews that we continue to stand by our financial disclosures as well as the prospectuses of our funds.",
+      "source_document": "DWS 2022 Annual Report",
+      "source_section": "Letter of the Chairman \u2013 greenwashing investigations",
+      "category": "temporal_vagueness",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 43
+    },
+    {
+      "sentence_id": "P005",
+      "text": "Since summer\u00a02022, we have further transformed DWS in various ways and informed the capital market and the public in December about our refined strategy, including new financial targets.",
+      "source_document": "DWS 2022 Annual Report",
+      "source_section": "Letter of the Chairman \u2013 strategy update",
+      "category": "unquantified_claims",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 29
+    },
+    {
+      "sentence_id": "P006",
+      "text": "With this strategy, we want to maintain our leading position in Germany and further exploit the potential in Europe.",
+      "source_document": "DWS 2022 Annual Report",
+      "source_section": "Letter of the Chairman \u2013 strategy update",
+      "category": "unquantified_claims",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 22
+    },
+    {
+      "sentence_id": "P007",
+      "text": "In addition, we intend to further expand our Passive and Alternatives business in the USA.",
+      "source_document": "DWS 2022 Annual Report",
+      "source_section": "Letter of the Chairman \u2013 strategy update",
+      "category": "unquantified_claims",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 17
+    },
+    {
+      "sentence_id": "P008",
+      "text": "From 2018 to 2021, DWS made materially misleading statements about its controls for incorporating environmental, social, and governance (ESG) factors into research and investment recommendations for ESG\u2011integrated products.",
+      "source_document": "SEC Press Release on DWS",
+      "source_section": "Press release text",
+      "category": "selective_disclosure",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 34
+    },
+    {
+      "sentence_id": "P009",
+      "text": "DWS marketed itself as a \u2018leader in ESG\u2019 and stated that ESG was in its \u2018DNA\u2019, yet the firm failed to adequately implement its ESG integration policy and failed to adopt and implement policies and procedures to ensure that its public statements about its ESG integration were accurate.",
+      "source_document": "SEC Press Release on DWS",
+      "source_section": "Press release text",
+      "category": "grandiose_unsubstantiated",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 46
+    },
+    {
+      "sentence_id": "P010",
+      "text": "The first poster featured an aerial image of waves crashing on a shore with text that stated \u2018Climate change doesn\u2019t do borders. Neither do rising sea levels. That\u2019s why HSBC is aiming to provide up to $1\u00a0trillion in financing and investment globally to help our clients transition to net zero\u2019.",
+      "source_document": "HSBC ASA Ruling",
+      "source_section": "Ad description",
+      "category": "unquantified_claims",
+      "regulatory_context": "ASA ruling",
+      "word_count": 46
+    },
+    {
+      "sentence_id": "P011",
+      "text": "The second poster featured an image of tree growth rings with text that stated \u2018Climate changes doesn\u2019t do borders. So in the UK, we\u2019re helping to plant 2\u00a0million trees which will lock in 1.25\u00a0million tonnes of carbon over their lifetime\u2019.",
+      "source_document": "HSBC ASA Ruling",
+      "source_section": "Ad description",
+      "category": "selective_disclosure",
+      "regulatory_context": "ASA ruling",
+      "word_count": 44
+    },
+    {
+      "sentence_id": "P012",
+      "text": "We considered consumers would understand the claims \u201cHSBC is aiming to provide up to $1\u00a0trillion in financing and investment globally to help our clients transition to net zero\u201d in ad\u00a0(a) and \u201cwe\u2019re helping to plant 2\u00a0million trees which will lock in 1.25\u00a0million tonnes of carbon in their lifetime\u201d in ad\u00a0(b) to mean that HSBC was making, and intended to make, a positive overall environmental contribution as a company.",
+      "source_document": "HSBC ASA Ruling",
+      "source_section": "Assessment",
+      "category": "selective_disclosure",
+      "regulatory_context": "ASA ruling",
+      "word_count": 62
+    },
+    {
+      "sentence_id": "P013",
+      "text": "We did not consider that consumers would understand the intricacies of transitioning to net zero, and would not expect that HSBC, in making unqualified claims about its environmentally beneficial work, would also be simultaneously involved in the financing of businesses which made significant contributions to carbon dioxide and other greenhouse gas emissions and would continue to do so for many years into the future.",
+      "source_document": "HSBC ASA Ruling",
+      "source_section": "Assessment",
+      "category": "selective_disclosure",
+      "regulatory_context": "ASA ruling",
+      "word_count": 63
+    },
+    {
+      "sentence_id": "P014",
+      "text": "The CAP\u00a0Code required that the basis of environmental claims must be clear and that unqualified claims could mislead if they omit significant information.",
+      "source_document": "HSBC ASA Ruling",
+      "source_section": "Assessment",
+      "category": "selective_disclosure",
+      "regulatory_context": "ASA ruling",
+      "word_count": 27
+    },
+    {
+      "sentence_id": "P015",
+      "text": "HSBC UK Bank plc said it had been making the claim in ad\u00a0(a) since\u00a02020 and aimed to meet the ambition to provide financing and investment globally to help some of its clients transition to net zero by\u00a02030.",
+      "source_document": "HSBC ASA Ruling",
+      "source_section": "Response",
+      "category": "temporal_vagueness",
+      "regulatory_context": "ASA ruling",
+      "word_count": 40
+    },
+    {
+      "sentence_id": "P016",
+      "text": "HSBC said that the financing of greenhouse gas\u2011emitting industries was required during the transition to net zero, and so their continued financing of those industries was not in conflict with the aims of a transition to net zero.",
+      "source_document": "HSBC ASA Ruling",
+      "source_section": "Response",
+      "category": "selective_disclosure",
+      "regulatory_context": "ASA ruling",
+      "word_count": 41
+    },
+    {
+      "sentence_id": "P017",
+      "text": "HSBC said that the ads did not mislead about HSBC\u2019s total environmental impact and invited consumers to find out more about the initiatives through a call to action\u00a0\u2013 \u201cSearch HSBC Sustainability\u201d; they said that consumers who searched for those terms would find a detailed summary of climate change initiatives and the Climate Strategy on their website.",
+      "source_document": "HSBC ASA Ruling",
+      "source_section": "Response",
+      "category": "selective_disclosure",
+      "regulatory_context": "ASA ruling",
+      "word_count": 60
+    },
+    {
+      "sentence_id": "P018",
+      "text": "The Annual Report indicated that HSBC intended to invest between $750\u00a0billion and $1\u00a0trillion in helping its clients transition to net zero, but also indicated that its current financed emissions stood at around 65.3\u00a0million tonnes of carbon dioxide per year for oil and gas alone and that figure was likely to be much higher once other carbon\u2011intensive industries were included; we also understood from the Annual Report that HSBC intended to continue funding thermal coal mining and power production to some degree until\u00a02040 (or\u00a02030 in the OECD).",
+      "source_document": "HSBC ASA Ruling",
+      "source_section": "Assessment",
+      "category": "selective_disclosure",
+      "regulatory_context": "ASA ruling",
+      "word_count": 80
+    },
+    {
+      "sentence_id": "P019",
+      "text": "The complaint concerned statements made in several advertisements by Shell, including a television commercial, in which the company said: \u201cChange, we have to, we can, we want to, and so Shell is investing in new energy for the Netherlands; we are developing hydrogen for the regional buses and trucks of tomorrow; we are changing for a cleaner future\u201d.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Complaint description",
+      "category": "grandiose_unsubstantiated",
+      "regulatory_context": "Dutch committee",
+      "word_count": 57
+    },
+    {
+      "sentence_id": "P020",
+      "text": "We are changing for a cleaner future; to keep the Netherlands warm, operational and moving, Shell is active in oil and gas, but we are changing for a cleaner future; we have to, we can and we want to; therefore, Shell also invests in new energy for the Netherlands, for example through electric transport, hydrogen and biofuels.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Complaint description",
+      "category": "grandiose_unsubstantiated",
+      "regulatory_context": "Dutch committee",
+      "word_count": 59
+    },
+    {
+      "sentence_id": "P021",
+      "text": "We are building wind turbine parks at sea, with smart extras to generate electricity even when the wind isn\u2019t strong; this allows us to make green energy from wind at sea for homes and businesses.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Complaint description",
+      "category": "unquantified_claims",
+      "regulatory_context": "Dutch committee",
+      "word_count": 33
+    },
+    {
+      "sentence_id": "P022",
+      "text": "The original complaint against Shell\u2019s statements was that they were in breach of Article\u00a03.1 and 3.2 of the Dutch Sustainability Claims\u00a0Code, which requires sustainability claims to be clear, specific, correct and unambiguous and prohibits advertising an aspiration when it cannot reasonably be suspected that this will be attained.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Discussion of complaint",
+      "category": "selective_disclosure",
+      "regulatory_context": "Dutch committee",
+      "word_count": 54
+    },
+    {
+      "sentence_id": "P023",
+      "text": "Shell breached these requirements with its statements, as Shell\u2019s plans to reduce the production of fossil fuels have been reversed, its investments in renewable energy are only a small fraction of its total budget, and its advertised \u2018sustainable\u2019 actions contribute little to nothing to reducing Shell\u2019s emissions.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Appellant\u2019s argument",
+      "category": "selective_disclosure",
+      "regulatory_context": "Dutch committee",
+      "word_count": 50
+    },
+    {
+      "sentence_id": "P024",
+      "text": "However, the Advertising Code Committee decided that Shell\u2019s advertisements made sufficiently clear that Shell\u2019s efforts were mere aspirations, as required under Article\u00a03.2\u00a0SCC, and argued that it was clear on the face of the advertisements that Shell is in a transition process and that their plans haven\u2019t yet come to fruition.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Committee decision",
+      "category": "temporal_vagueness",
+      "regulatory_context": "Dutch committee",
+      "word_count": 53
+    },
+    {
+      "sentence_id": "P025",
+      "text": "The Committee states that Shell is entitled to advertise its concrete projects with biofuels, hydrogen, electric charging points and the capture of CO2 and that the complainant didn\u2019t provide any evidence that Shell is not investing in these projects; overall, the Committee held that there was no violation, emphasising that the average consumer would understand the nuanced approach taken by Shell.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Committee decision",
+      "category": "selective_disclosure",
+      "regulatory_context": "Dutch committee",
+      "word_count": 64
+    },
+    {
+      "sentence_id": "P026",
+      "text": "The appellant maintains that Shell\u2019s current advertisements need to be viewed in light of its decades\u2011long efforts to advertise its \u2018sustainable\u2019 activities, which may have allowed consumers to think that Shell is making a significant effort to green its operations; in reality, Shell\u2019s sustainability projects are but a fraction of the entirety of its operations, and as such the appellant argued that Shell should place its sustainability advertisements within their rightful context.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Appeal arguments",
+      "category": "selective_disclosure",
+      "regulatory_context": "Dutch committee",
+      "word_count": 69
+    },
+    {
+      "sentence_id": "P027",
+      "text": "By failing to apply Article\u00a03.1\u00a0SCC, the Committee didn\u2019t test whether Shell\u2019s advertisements were sufficiently substantiated, nuanced and specified; Shell provides no context as to what it means to be \u2018changing\u2019 or to become \u2018cleaner\u2019.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Appeal arguments",
+      "category": "selective_disclosure",
+      "regulatory_context": "Dutch committee",
+      "word_count": 43
+    },
+    {
+      "sentence_id": "P028",
+      "text": "The Committee assumes that the advertisements convey Shell\u2019s ambitions within each advertised project; however, as Shell provides multiple projects for its ambition to \u2018change for a cleaner future\u2019, such as investing in biofuels and carbon capture, the interpretation of the \u2018concreteness\u2019 of Shell\u2019s plan should encompass its entire ambition to \u2018change for a cleaner future\u2019, not just within the context of a single project.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Appeal arguments",
+      "category": "selective_disclosure",
+      "regulatory_context": "Dutch committee",
+      "word_count": 64
+    },
+    {
+      "sentence_id": "P029",
+      "text": "Shell\u2019s emission reduction targets to lower Scope\u00a01 and 2 emissions by\u00a050% in\u00a02030 are not clear from the advertisements; the advertisements merely convey that Shell invests in sustainable projects, but they do not clarify what Shell\u2019s aspirations are other than a \u2018cleaner future\u2019, making it difficult for consumers to understand whether a project is part of Shell\u2019s 2030 or 2050 emissions reduction target or pursued for another reason, and therefore the Board of Appeal deems Shell\u2019s advertisements to be in violation of Article\u00a03.2\u00a0SCC.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Board of Appeal decision",
+      "category": "selective_disclosure",
+      "regulatory_context": "Dutch committee",
+      "word_count": 78
+    },
+    {
+      "sentence_id": "P030",
+      "text": "You cannot advertise an aspiration when it cannot reasonably be suspected that this will be attained.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Article\u00a03.2\u00a0SCC explanation",
+      "category": "grandiose_unsubstantiated",
+      "regulatory_context": "Dutch committee",
+      "word_count": 17
+    },
+    {
+      "sentence_id": "P031",
+      "text": "It is argued that the Committee overestimates the knowledgeability of the regular consumer regarding Shell\u2019s activities.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Appeal arguments",
+      "category": "selective_disclosure",
+      "regulatory_context": "Dutch committee",
+      "word_count": 16
+    },
+    {
+      "sentence_id": "P032",
+      "text": "The Board of Appeal disagreed with the appellant that Shell\u2019s advertisements would confuse a regular consumer as to what Shell\u2019s operations entail.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Board of Appeal decision",
+      "category": "selective_disclosure",
+      "regulatory_context": "Dutch committee",
+      "word_count": 22
+    },
+    {
+      "sentence_id": "P033",
+      "text": "We seek to increase the level of sustainability associated with our activities throughout our organization.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Our Strategy \u2013 corporate transformation",
+      "category": "unquantified_claims",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 15
+    },
+    {
+      "sentence_id": "P034",
+      "text": "Whilst having already built\u2011up strong capabilities, we seek to further embed ESG in our investment process to improve the assessment of the future expected risk/return of a security.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Our Strategy \u2013 ESG in the investment process",
+      "category": "unquantified_claims",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 30
+    },
+    {
+      "sentence_id": "P035",
+      "text": "We seek to launch new and innovative ESG products and solutions to meet the requirements of our clients and to increase the number of funds classified as Article\u00a08 or Article\u00a09\u00a0SFDR by converting existing funds previously classified as Article\u00a06 in Europe.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Our Strategy \u2013 innovative and sustainable investment solutions",
+      "category": "unquantified_claims",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 44
+    },
+    {
+      "sentence_id": "P036",
+      "text": "We seek to take a holistic approach to engagement as we consider issuer and non\u2011issuer engagement as the key driver for positive transformation of the global economy \u2013 particularly in context of our net zero ambition.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Our Strategy \u2013 stakeholder engagement",
+      "category": "unquantified_claims",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 39
+    },
+    {
+      "sentence_id": "P037",
+      "text": "As the asset management market continues to be shaped by advances in technology, we seek to leverage our investments in new digital expertise, which is creating new distribution channels, products and services for our clients.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Market outlook and technology",
+      "category": "unquantified_claims",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 38
+    },
+    {
+      "sentence_id": "P038",
+      "text": "Through proxy voting, we seek to address corporate governance topics with investee companies; similarly, we seek to ensure good corporate governance at the Group to ensure accountability, fairness and transparency for all stakeholders.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Stakeholder management",
+      "category": "unquantified_claims",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 38
+    },
+    {
+      "sentence_id": "P039",
+      "text": "HSBC believed the claims in ads\u00a0(a) and (b) highlighted two tangible and specific short\u2011to\u2011medium term initiatives, capable of quantifiable measurement, and would not be seen as commenting, in a broader sense, on their green credentials or environmental contribution.",
+      "source_document": "HSBC ASA Ruling",
+      "source_section": "Response",
+      "category": "selective_disclosure",
+      "regulatory_context": "ASA ruling",
+      "word_count": 45
+    },
+    {
+      "sentence_id": "P040",
+      "text": "Consumers could access HSBC\u2019s climate change initiatives and Climate Strategy via the \u201cSearch HSBC Sustainability\u201d call to action on the ads; the bank argued that this meant the ads did not mislead about its total environmental impact.",
+      "source_document": "HSBC ASA Ruling",
+      "source_section": "Response",
+      "category": "selective_disclosure",
+      "regulatory_context": "ASA ruling",
+      "word_count": 42
+    },
+    {
+      "sentence_id": "P041",
+      "text": "We have learned from the ongoing changing regulatory environment and our own findings and continue to improve our ESG governance, processes and controls.",
+      "source_document": "DWS 2022 Annual Report",
+      "source_section": "Letter of the Chairman \u2013 lessons from investigations",
+      "category": "unquantified_claims",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 24
+    },
+    {
+      "sentence_id": "P042",
+      "text": "Travel (Air and Rail): reduce our travel emissions by\u00a025% by\u00a02022 compared to\u00a02019.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 17
+    },
+    {
+      "sentence_id": "P043",
+      "text": "Sustainability rating: maintain or improve our Carbon Disclosure Project (CDP)\u00a0B rating by\u00a02024.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 15
+    },
+    {
+      "sentence_id": "P044",
+      "text": "Volunteer hours per employee: perform 1.5\u00a0hours of volunteering per employee by\u00a02024.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 16
+    },
+    {
+      "sentence_id": "P045",
+      "text": "Corporate engagements: participate in 475 or more corporate engagements per annum by\u00a02024.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 17
+    },
+    {
+      "sentence_id": "P046",
+      "text": "ESG net flows: grow ESG net flows at the same, or at a faster rate, than our overall flow target of more than 4% of assets under management.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 33
+    },
+    {
+      "sentence_id": "P047",
+      "text": "ESG\u00a0AuM: continue to grow our ESG assets under management through a combination of flows into existing products, flows into new products and supporting the transfer by existing clients of their assets from non\u2011ESG products into ESG products.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "regulatory_context": "SEC enforcement",
+      "word_count": 39
+    },
+    {
+      "sentence_id": "P048",
+      "text": "The advertisements merely convey that Shell invests in sustainable projects.",
+      "source_document": "Shell Ads Appeal Decision",
+      "source_section": "Board of Appeal decision",
+      "category": "selective_disclosure",
+      "regulatory_context": "Dutch committee",
+      "word_count": 11
+    },
+    {
+      "sentence_id": "P049",
+      "text": "Practice to avoid includes overly positive commentary that fails to identify where current performance is off track or where goals are unlikely to be met in future periods and inconsistent reporting across years that makes it difficult for stakeholders to track progress.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 practice to avoid",
+      "category": "transparent_disclosure",
+      "regulatory_context": "UK best practice",
+      "word_count": 45
+    },
+    {
+      "sentence_id": "P050",
+      "text": "Organisations should include historic, baseline and target information when visually representing data and should ensure consistent frameworks and data collection methods each year to facilitate comparability.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 charts and tables",
+      "category": "specific_methods",
+      "regulatory_context": "UK best practice",
+      "word_count": 33
+    }
+  ],
+  "unproblematic_sentences": [
+    {
+      "sentence_id": "U001",
+      "text": "Electricity from renewable sources: source 100% renewable electricity by 2025, with an interim ambition of 85% by 2022.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "validation_basis": "Post\u2011enforcement",
+      "word_count": 20
+    },
+    {
+      "sentence_id": "U002",
+      "text": "Achieve 32% of positions at the first management level below the Executive Board held by female executives and 33% at the second management level below the Executive Board by 2024.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "validation_basis": "Post\u2011enforcement",
+      "word_count": 33
+    },
+    {
+      "sentence_id": "U003",
+      "text": "DS\u00a0Smith has a science\u2011based target requiring at least a 40% reduction in carbon emissions per tonne of production by 2030 compared to 2019 and has committed to net\u2011zero emissions by 2050.",
+      "source_document": "TCFD Good Practice Handbook",
+      "source_section": "Metrics and targets examples",
+      "category": "quantified_targets",
+      "validation_basis": "TCFD example",
+      "word_count": 36
+    },
+    {
+      "sentence_id": "U004",
+      "text": "The Met Office clearly set out how emissions metrics and targets have been set and measured throughout the period, including their initial stocktake to calculate their baseline, the GHG\u00a0Protocol methodology used, and the metrics and targets selected to drive key change.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 methodology",
+      "category": "specific_methods",
+      "validation_basis": "UK best practice",
+      "word_count": 41
+    },
+    {
+      "sentence_id": "U005",
+      "text": "Where organisations have set their own net zero or carbon neutral targets, an explanation of what this means \u2013 including baselines, how they plan to achieve it and progress so far \u2013 is important to allow users to assess performance.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 explanation",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 37
+    },
+    {
+      "sentence_id": "U006",
+      "text": "Forward\u2011looking good practice requires that future targets, goals and commitments include appropriate interim targets with performance tracked, supported by charts with trajectory lines and accompanied by narrative comparing performance to prior periods and actions undertaken.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 forward\u2011looking",
+      "category": "specific_methods",
+      "validation_basis": "UK best practice",
+      "word_count": 43
+    },
+    {
+      "sentence_id": "U007",
+      "text": "Good practice reports fairly assess the likelihood of meeting goals or commitments, clearly identify where performance is behind target and include trajectory lines continuing until the end commitment date, avoiding overly positive commentary.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 forward\u2011looking",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 43
+    },
+    {
+      "sentence_id": "U008",
+      "text": "The guide notes that organisations should consider emissions from other specific KPIs, such as supplier engagement scores, with an accompanying fair and balanced assessment of supplier performance including both successes and ongoing challenges.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Scope\u00a03 supply chain",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 39
+    },
+    {
+      "sentence_id": "U009",
+      "text": "UKRI includes forward\u2011looking trend lines to the end of the GGC commitment period so users can easily assess performance against the target and the likelihood of meeting the commitment.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 forward\u2011looking",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 33
+    },
+    {
+      "sentence_id": "U010",
+      "text": "UKRI\u2019s GGC charts and graphs clearly demonstrate performance against target during the current and past periods, with trajectory lines continuing until the end commitment or goal completion date and narrative clearly identifying where performance was behind target and explaining why.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 forward\u2011looking",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 49
+    },
+    {
+      "sentence_id": "U011",
+      "text": "Accurate and transparent reporting of climate and environmental metrics and targets is essential for accountability and demonstrating central government\u2019s commitment to sustainability; by setting clear, measurable targets and consistently reporting on key metrics, government bodies enhance transparency and drive performance improvements.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 principles",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 47
+    },
+    {
+      "sentence_id": "U012",
+      "text": "Organisations should include historic, baseline and target information when visually representing data and should ensure consistent frameworks and data collection methods each year to facilitate comparability.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 charts and tables",
+      "category": "specific_methods",
+      "validation_basis": "UK best practice",
+      "word_count": 33
+    },
+    {
+      "sentence_id": "U013",
+      "text": "Good practice sustainability reporting provides a fair and honest explanation when performance is off track, with narrative comparing performance to prior periods and linking to actions undertaken.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 narrative",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 32
+    },
+    {
+      "sentence_id": "U014",
+      "text": "The guide emphasises that good practice includes the inclusion of a target trajectory line continuing until the end commitment or goal completion date, accompanied by a narrative that fairly assesses the likelihood of meeting the goal based on current performance and trajectories.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 trajectory lines",
+      "category": "specific_methods",
+      "validation_basis": "UK best practice",
+      "word_count": 45
+    },
+    {
+      "sentence_id": "U015",
+      "text": "The guide states that organisations should clearly set out how emissions metrics and targets are set and measured, including baseline calculations and methodology used such as the GHG\u00a0Protocol.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 methodology",
+      "category": "specific_methods",
+      "validation_basis": "UK best practice",
+      "word_count": 34
+    },
+    {
+      "sentence_id": "U016",
+      "text": "The Met Office explains their carbon neutral commitments appropriately in the annual report, including organisation\u2011specific metrics and targets beyond headline net\u2011zero statements and emissions targets, and links climate\u2011related metrics and targets to the risks and opportunities to which they relate.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Emissions reporting \u2013 Met Office example",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 50
+    },
+    {
+      "sentence_id": "U017",
+      "text": "The Department for Transport integrates climate adaptation into broader organisational objectives, provides transparency about future climate risks and signposts to supplementary information, helping readers understand the organisation\u2019s long\u2011term resilience.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Risk management \u2013 DfT example",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 40
+    },
+    {
+      "sentence_id": "U018",
+      "text": "UK Research and Innovation identifies climate change as a principal risk and provides supporting risk information, demonstrating good practice in linking risk identification to sustainability reporting.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Risk management \u2013 UKRI example",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 29
+    },
+    {
+      "sentence_id": "U019",
+      "text": "Government bodies should consider Scope\u00a03 emissions and provide clear methodology, set SMART targets and provide historical data to avoid unsubstantiated net\u2011zero commitments or cherry\u2011picking positive data.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Emissions reporting guidance",
+      "category": "specific_methods",
+      "validation_basis": "UK best practice",
+      "word_count": 32
+    },
+    {
+      "sentence_id": "U020",
+      "text": "In 2024, we achieved a 20% reduction from 2023 levels, resulting in a cumulative 56% reduction from the 2019 baseline, achieving the 50% reduction in Scope\u00a01 and\u00a02 emissions target ahead of schedule; we aim to further reduce Scope\u00a01 and\u00a02 emissions by 65% from 2019 levels by 2030.",
+      "source_document": "Liberty Mutual 2024 TCFD Report",
+      "source_section": "Metrics & targets",
+      "category": "verified_data",
+      "validation_basis": "TCFD report",
+      "word_count": 47
+    },
+    {
+      "sentence_id": "U021",
+      "text": "To fulfil our GHG reduction objectives, we have and continue to actively reduce our operational carbon footprint through the reduced consumption of greenhouse gas emitting resources; this includes enhancing operational efficiencies, identifying renewable energy opportunities across our real estate portfolio and leveraging key learnings from 2020 to increase emission reduction rates during the return\u2011to\u2011office transition.",
+      "source_document": "Liberty Mutual 2024 TCFD Report",
+      "source_section": "Metrics & targets",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 57
+    },
+    {
+      "sentence_id": "U022",
+      "text": "We have adapted and reimagined our offices to support the evolving workplace dynamics to support our employees globally as they connect and collaborate in hybrid, in\u2011office or work\u2011from\u2011home environments, and this adaptability plays a crucial role in our overall reduction of GHG emissions.",
+      "source_document": "Liberty Mutual 2024 TCFD Report",
+      "source_section": "Metrics & targets",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 43
+    },
+    {
+      "sentence_id": "U023",
+      "text": "At Liberty, these debates have had little impact on our climate actions as our climate strategy is closely aligned with our core purpose of supporting clients with risk identification, risk mitigation and risk transfer; throughout the year we have continued to prioritise projects that support the integration of climate consideration into our business strategy and decision\u2011making.",
+      "source_document": "Liberty Mutual 2024 TCFD Report",
+      "source_section": "Welcome letter",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 53
+    },
+    {
+      "sentence_id": "U024",
+      "text": "These projects include refining our approach to climate resiliency by focusing on the built environment and resilient infrastructure, continuing research and investment in enhancing our modelling capabilities through a bespoke portfolio\u2011level transition risk model that leverages NGFS data and advancing new insights on high\u2011priority perils such as hurricane frequency, flood and wildfire risk, sharing our expertise through a Physical Climate Risk Management Framework and hosting the Geneva Association\u2019s Climate Change and Environment Conference, and expanding our Climate Activation Programme globally with leadership participation and tailored sessions for product leaders.",
+      "source_document": "Liberty Mutual 2024 TCFD Report",
+      "source_section": "Welcome letter",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 80
+    },
+    {
+      "sentence_id": "U025",
+      "text": "In 2025, we see the world moving in a disorderly transition with each region and country pursuing its own policy and strategy; as the world experiences increased physical climate risk we anticipate and welcome shifts toward a greater need for climate resiliency and will continue to execute our strategy and support our customers globally wherever they are in their transition journey.",
+      "source_document": "Liberty Mutual 2024 TCFD Report",
+      "source_section": "Welcome letter",
+      "category": "transparent_disclosure",
+      "validation_basis": "TCFD report",
+      "word_count": 56
+    },
+    {
+      "sentence_id": "U026",
+      "text": "At Liberty Mutual, the Board of Directors oversees the ongoing development of our enterprise\u2011level business strategy and the management and implementation of our climate strategy, with responsibilities delegated to the Risk Committee and Governance and Sustainability Committee.",
+      "source_document": "Liberty Mutual 2024 TCFD Report",
+      "source_section": "Governance",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 43
+    },
+    {
+      "sentence_id": "U027",
+      "text": "We continue to enhance our governance structure to support communication, collaboration and effective decision\u2011making, ensuring that climate\u2011related financial risks and opportunities are understood by our Board of Directors and across every level of our business.",
+      "source_document": "Liberty Mutual 2024 TCFD Report",
+      "source_section": "Governance",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 42
+    },
+    {
+      "sentence_id": "U028",
+      "text": "GE\u00a0Aerospace has an ambition to achieve net\u2011zero Scope\u00a03 emissions from the use of sold products by 2050 and notes that its current engines are around 40% more fuel efficient than engines designed in the 1970s and 1980s, with the RISE programme aiming to develop technologies that enable engines to be at least 20% more fuel efficient and emit 20% fewer CO2 emissions than today\u2019s most efficient engines.",
+      "source_document": "GE\u00a0Aerospace 2024 TCFD Report",
+      "source_section": "Strategy and innovation",
+      "category": "quantified_targets",
+      "validation_basis": "TCFD report",
+      "word_count": 58
+    },
+    {
+      "sentence_id": "U029",
+      "text": "Merck\u2019s board of directors oversees ESG matters and has established a cross\u2011functional EHS Council composed of senior leaders to manage climate\u2011related issues; the company applies scenario analysis using the Representative Concentration Pathway\u00a08.5 scenario to assess physical risks for ten key facilities across various hazards.",
+      "source_document": "Merck 2024 TCFD Report",
+      "source_section": "Governance and risk management",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 47
+    },
+    {
+      "sentence_id": "U030",
+      "text": "Merck\u2019s risk management process includes identifying, assessing and managing climate\u2011related risks across at least ten facilities using advanced modelling to evaluate hazards like high temperature, wildfires, drought, storm surge and sea level rise, with results informing adaptation measures and investment decisions.",
+      "source_document": "Merck 2024 TCFD Report",
+      "source_section": "Risk management",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 47
+    },
+    {
+      "sentence_id": "U031",
+      "text": "Banner Bank has established board\u2011level oversight of climate\u2011related risks with a risk committee that reviews policies and risk assessments, and its directors receive ESG training to ensure adequate understanding of climate risk and opportunities.",
+      "source_document": "Banner Bank 2024 TCFD Report",
+      "source_section": "Governance",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 40
+    },
+    {
+      "sentence_id": "U032",
+      "text": "AT&T aims to reduce absolute Scope\u00a01 and\u00a02 greenhouse gas emissions by 63% by 2030 from a 2015 baseline and achieve net\u2011zero Scope\u00a01 and\u00a02 emissions by 2035; by 2022 its emissions were approximately 4.8\u00a0million\u00a0metric\u00a0tonnes of CO2e, a reduction of over 4\u00a0million\u00a0metric\u00a0tonnes from 2015 (over 45%).",
+      "source_document": "AT&T TCFD Index",
+      "source_section": "Metrics and targets",
+      "category": "quantified_targets",
+      "validation_basis": "TCFD report",
+      "word_count": 53
+    },
+    {
+      "sentence_id": "U033",
+      "text": "AT&T aims for 50% of suppliers to set science\u2011based targets by 2024 and reported that 53% of suppliers had done so by 2022.",
+      "source_document": "AT&T TCFD Index",
+      "source_section": "Supply chain engagement",
+      "category": "quantified_targets",
+      "validation_basis": "TCFD report",
+      "word_count": 27
+    },
+    {
+      "sentence_id": "U034",
+      "text": "AT&T\u2019s Gigaton Goal aims to enable its customers to save 1\u00a0billion metric tonnes of greenhouse gas emissions by\u00a02035, and by 2022 the company reported that customers had avoided 149.2\u00a0million metric tonnes through its products and services.",
+      "source_document": "AT&T TCFD Index",
+      "source_section": "Customer impact",
+      "category": "quantified_targets",
+      "validation_basis": "TCFD report",
+      "word_count": 39
+    },
+    {
+      "sentence_id": "U035",
+      "text": "Liberty Mutual continues research and investment in enhancing its modelling capabilities, building a bespoke portfolio\u2011level transition risk model that leverages NGFS data and advancing insights on high\u2011priority perils including hurricane frequency, flood and wildfire risk.",
+      "source_document": "Liberty Mutual 2024 TCFD Report",
+      "source_section": "Strategy",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 40
+    },
+    {
+      "sentence_id": "U036",
+      "text": "Liberty Mutual shares its expertise on managing physical climate risk through the publication of a Physical Climate Risk Management Framework and by hosting the Geneva Association\u2019s Climate Change and Environment Conference to facilitate industry\u2011wide dialogue on climate.",
+      "source_document": "Liberty Mutual 2024 TCFD Report",
+      "source_section": "Strategy",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 44
+    },
+    {
+      "sentence_id": "U037",
+      "text": "Liberty Mutual has expanded its Climate Activation Programme globally with new leadership participation, tailored sessions to engage product leaders and the development of new content and online training modules.",
+      "source_document": "Liberty Mutual 2024 TCFD Report",
+      "source_section": "Strategy",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 33
+    },
+    {
+      "sentence_id": "U038",
+      "text": "We continue to prioritise projects that support the integration of climate considerations into our business strategy and decision\u2011making, including refining our approach to climate resiliency and enhancing modelling capabilities.",
+      "source_document": "Liberty Mutual 2024 TCFD Report",
+      "source_section": "Welcome letter",
+      "category": "specific_methods",
+      "validation_basis": "TCFD report",
+      "word_count": 38
+    },
+    {
+      "sentence_id": "U039",
+      "text": "The guide notes that good practice reports provide a balanced assessment of supplier performance with both successes and ongoing challenges when reporting on Scope\u00a03 supply chain emissions.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Scope\u00a03 supply chain",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 33
+    },
+    {
+      "sentence_id": "U040",
+      "text": "The Department for Transport provides transparency about future climate risks by integrating adaptation considerations into broader organisational objectives and signposting to supplementary information.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Risk management \u2013 DfT example",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 33
+    },
+    {
+      "sentence_id": "U041",
+      "text": "UK Research and Innovation identifies climate change as a principal risk with supporting risk information, exemplifying the linkage of risk identification to sustainability reporting.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Risk management \u2013 UKRI example",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 28
+    },
+    {
+      "sentence_id": "U042",
+      "text": "Government bodies are encouraged to set SMART emissions targets, provide historical data and avoid unsubstantiated net\u2011zero commitments or cherry\u2011picking positive data when reporting on emissions.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Emissions reporting guidance",
+      "category": "specific_methods",
+      "validation_basis": "UK best practice",
+      "word_count": 32
+    },
+    {
+      "sentence_id": "U043",
+      "text": "The guide recommends including a fair and honest explanation when performance is off track, with narrative comparing performance to prior periods and linking it to actions undertaken.",
+      "source_document": "Good Practice Sustainability Reporting Guide",
+      "source_section": "Metrics and targets \u2013 narrative",
+      "category": "transparent_disclosure",
+      "validation_basis": "UK best practice",
+      "word_count": 32
+    },
+    {
+      "sentence_id": "U044",
+      "text": "Travel (Air and Rail): reduce our travel emissions by\u00a025% by\u00a02022 compared to\u00a02019.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "validation_basis": "Post\u2011enforcement",
+      "word_count": 17
+    },
+    {
+      "sentence_id": "U045",
+      "text": "Sustainability rating: maintain or improve our Carbon Disclosure Project (CDP)\u00a0B rating by\u00a02024.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "validation_basis": "Post\u2011enforcement",
+      "word_count": 15
+    },
+    {
+      "sentence_id": "U046",
+      "text": "Volunteer hours per employee: perform 1.5\u00a0hours of volunteering per employee by\u00a02024.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "validation_basis": "Post\u2011enforcement",
+      "word_count": 16
+    },
+    {
+      "sentence_id": "U047",
+      "text": "Corporate engagements: participate in 475 or more corporate engagements per annum by\u00a02024.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "validation_basis": "Post\u2011enforcement",
+      "word_count": 17
+    },
+    {
+      "sentence_id": "U048",
+      "text": "ESG net flows: grow ESG net flows at the same, or at a faster rate, than our overall flow target of more than 4% of assets under management.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "validation_basis": "Post\u2011enforcement",
+      "word_count": 33
+    },
+    {
+      "sentence_id": "U049",
+      "text": "ESG\u00a0AuM: continue to grow our ESG assets under management through a combination of flows into existing products, flows into new products and supporting the transfer by existing clients of their assets from non\u2011ESG products into ESG products.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "validation_basis": "Post\u2011enforcement",
+      "word_count": 39
+    },
+    {
+      "sentence_id": "U050",
+      "text": "Travel (Air and Rail): reduce our travel emissions by\u00a025% by\u00a02022 compared to\u00a02019.",
+      "source_document": "DWS 2021 Annual Report",
+      "source_section": "Sustainability KPIs",
+      "category": "quantified_targets",
+      "validation_basis": "Post\u2011enforcement",
+      "word_count": 17
+    }
+  ]
+}
