@@ -51,18 +51,29 @@ for firm_dir in sorted(BATCH_DIR.iterdir()):
 df = pd.DataFrame(rows).sort_values(["firm", "year"])
 
 # ── Figure A: GW by firm, faceted by region (replaces Table 2) ───────────────
-fig, axes = plt.subplots(2, 2, figsize=(13, 8), sharex=True, sharey=True)
+years = sorted(df["year"].unique())
+fig, axes = plt.subplots(2, 2, figsize=(12, 8), sharex=True, sharey=True)
 for ax, region in zip(axes.flat, REGION_ORDER):
     sub = df[df["region"] == region]
+    # shade the "medium" GW band (0.40-0.60) for visual reference
+    ax.axhspan(0.40, 0.60, color="0.92", zorder=0)
+    ax.axhline(0.40, color="grey", ls=":", lw=0.8, zorder=1)
+    ax.axhline(0.60, color="grey", ls=":", lw=0.8, zorder=1)
     for firm, g in sub.groupby("firm"):
-        ax.plot(g["year"], g["gw"], marker="o", lw=1.8, label=firm.title())
-    for b in (0.40, 0.60):  # low/medium/high band edges in view
-        ax.axhline(b, color="grey", ls=":", lw=0.7, alpha=0.6)
-    ax.set_title(region)
-    ax.set_xticks(sorted(df["year"].unique()))
-    ax.legend(fontsize=8, ncol=2)
-    ax.set_ylabel("GW-Score")
-fig.suptitle("Composite GW-Score by asset manager and year (by region)", fontweight="bold")
+        ax.plot(g["year"], g["gw"], marker="o", lw=1.8, markersize=5,
+                label=firm.title(), zorder=3)
+    ax.set_title(region, fontweight="bold")
+    ax.set_xticks(years)
+    ax.set_ylim(0.30, 0.70)
+    ax.legend(fontsize=8, ncol=2, loc="upper left", framealpha=0.9)
+# axis labels on outer facets only
+for ax in axes[:, 0]:
+    ax.set_ylabel("Composite GW-Score")
+for ax in axes[1, :]:
+    ax.set_xlabel("Year")
+fig.suptitle("GW-Score by asset manager and year, grouped by region\n"
+             "(shaded band = ``medium'' range 0.40--0.60; higher = more greenwashing)",
+             fontweight="bold", fontsize=12)
 fig.tight_layout()
 figA = FIGDIR / "fig_gw_by_firm_region.pdf"
 fig.savefig(figA, bbox_inches="tight")
@@ -72,19 +83,24 @@ print(f"Wrote {figA}")
 region_year = (df.groupby(["region", "year"])
                .agg(gw=("gw", "mean"), vui=("vui_norm", "mean"), spi=("spi_rule", "mean"))
                .reset_index())
-fig, axes = plt.subplots(1, 3, figsize=(16, 4.8))
-for ax, col, title in [(axes[0], "gw", "Mean GW-Score"),
-                       (axes[1], "vui", "Mean VUI"),
-                       (axes[2], "spi", "Mean SPI")]:
+fig, axes = plt.subplots(1, 3, figsize=(15, 4.8))
+MARKERS = {"Europe (excl. CH)": "o", "Switzerland": "s",
+           "North America": "^", "Asia": "D"}
+for ax, col, title, ylab in [(axes[0], "gw", "GW-Score", "Mean GW-Score"),
+                             (axes[1], "vui", "VUI (vague language)", "Mean VUI\\textsubscript{norm}"),
+                             (axes[2], "spi", "SPI (specificity)", "Mean SPI\\textsubscript{rule}")]:
     for region in REGION_ORDER:
         g = region_year[region_year["region"] == region]
-        ax.plot(g["year"], g[col], marker="o", lw=2, label=region)
-    ax.set_title(title)
-    ax.set_xticks(sorted(df["year"].unique()))
+        ax.plot(g["year"], g[col], marker=MARKERS[region], lw=2, markersize=6, label=region)
+    ax.set_title(title, fontweight="bold")
+    ax.set_xticks(years)
     ax.set_xlabel("Year")
-axes[0].set_ylabel("Score")
-axes[0].legend(fontsize=8)
-fig.suptitle("Mean pipeline scores by region over time", fontweight="bold")
+    ax.set_ylabel(ylab.replace("\\textsubscript{norm}", "").replace("\\textsubscript{rule}", ""))
+    ax.grid(True, alpha=0.3)
+axes[0].legend(fontsize=8, loc="best")
+fig.suptitle("Mean GW-Score and sub-indices by region over time "
+             "(higher GW/VUI = more greenwashing/vagueness; higher SPI = more specific)",
+             fontweight="bold", fontsize=12)
 fig.tight_layout()
 figB = FIGDIR / "fig_region_means.pdf"
 fig.savefig(figB, bbox_inches="tight")
