@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Greenwashing Detection Pipeline (gw-pilot-v1)"
+type: software
+license: MIT
+authors:
+  - family-names: Eisinger
+    given-names: Florian
+  - family-names: Gómez Valverde
+    given-names: Maxim
+repository-code: "https://github.com/builtbymaxim/gw-pilot-v1"
