@@ -61,12 +61,23 @@ CI is only computed for firms with a disclosed year-on-year Scope 1+2 emissions 
 
 ## Quickstart
 
-**Single PDF:**
+Tested with Python 3.13. The source PDFs are not included in the repository (see [Source Reports](#source-reports)); place them in `inputs/` first.
+
+**Setup:**
 ```bash
 python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements.txt        # or requirements-dev.txt for pytest + jupyterlab
 python -m spacy download en_core_web_sm
+```
 
+**Tests:**
+```bash
+pip install -r requirements-dev.txt
+pytest tests/
+```
+
+**Single PDF:**
+```bash
 # Rule-only (fast)
 python -m src.pilot --pdf inputs/dws-2024.pdf --year 2024 --outdir outputs/
 
@@ -158,7 +169,9 @@ Inter-rater reliability is part of the story too: agreement on greenwashing perc
 jupyter lab scripts/survey_analysis.ipynb
 ```
 
-**Inputs:** `data/sosci_export.csv`, `data/prolific_demographics.csv`, `archive_survey_drafts/prolific_survey_key.csv` (all local-only, gitignored — participant data; request access, see below), plus `outputs/batch/*/run_*.json` from the batch run above.
+**Inputs:** `data/sosci_export.csv`, `data/prolific_demographics.csv`, `archive_survey_drafts/prolific_survey_key.csv` (participant data, not included in this repository), plus `outputs/batch/*/run_*.json` from the batch run above.
+
+> **Note:** Part B cannot be re-run from this repository alone, because the participant-level survey data is not published (see [Data Availability](#data-availability)). The item pool, sentence-level pipeline scores and all aggregate results are included.
 
 ---
 
@@ -186,11 +199,15 @@ gw-pilot-v1/
 │   ├── run_all.ipynb            # Batch runner + visualisation (Part A)
 │   └── survey_analysis.ipynb    # Human validation study (Part B)
 ├── data/
-│   ├── sosci_export.csv         # SoSci Survey responses (UTF-16, local-only)
-│   └── prolific_demographics.csv  # (local-only)
-├── archive_survey_drafts/     # Survey construction artefacts + 220-item key
+│   ├── sosci_export.csv         # SoSci Survey responses (UTF-16, not published)
+│   └── prolific_demographics.csv  # (not published)
+├── archive_survey_drafts/     # Survey construction artefacts (item pool, review files)
+├── tests/                 # pytest suite (pipeline regression tests)
 ├── config.yml             # All thresholds, patterns, weights
-└── requirements.txt
+├── requirements.txt
+├── requirements-dev.txt   # + pytest, jupyterlab
+├── CITATION.cff
+└── LICENSE
 ```
 
 ---
@@ -210,6 +227,38 @@ gw-pilot-v1/
 
 ---
 
-## Replication & Data Access
+## Source Reports
 
-The technical implementation is jointly copyrighted (Part A: Florian Eisinger; Part B validation study: Maxim Gómez Valverde) and this repository is private. Source code and the de-identified survey export are available on reasonable request for academic verification. Participant-level survey data (`data/`, `archive_survey_drafts/prolific_survey_key.csv`) is gitignored and kept local-only.
+The 46 input documents are publicly available sustainability / ESG / annual reports, downloaded from each firm's investor-relations or sustainability website. They are not redistributed here. To reproduce the batch results, save them to `inputs/` using the naming scheme `<company>-<year>.pdf`:
+
+| Company | Years | Filenames |
+|---------|-------|-----------|
+| Amundi | 2021–2024 | `amundi-2021.pdf` … `amundi-2024.pdf` |
+| BlackRock | 2021–2023 | `blackrock-2021.pdf` … `blackrock-2023.pdf` |
+| Blackstone | 2021–2024 | `blackstone-2021.pdf` … `blackstone-2024.pdf` |
+| CITIC | 2021–2024 | `citic-2021.pdf` … `citic-2024.pdf` |
+| Credit Suisse | 2021–2023 | `creditsuisse-2021.pdf` … `creditsuisse-2023.pdf` |
+| DWS | 2021–2024 | `dws-2021.pdf` … `dws-2024.pdf` |
+| Impax | 2021–2024 | `impax-2021.pdf` … `impax-2024.pdf` |
+| KKR | 2021–2024 | `KKR-2021.pdf` … `KKR-2024.pdf` |
+| Schroders | 2021–2024 | `schroders-2021.pdf` … `schroders-2024.pdf` |
+| State Street | 2021–2024 | `state-street-2021.pdf` … `state-street-2024.pdf` |
+| Triodos | 2021–2024 | `triodos-2021.pdf` … `triodos-2024.pdf` |
+| UBS | 2021–2024 | `UBS-2021.pdf` … `UBS-2024.pdf` |
+
+The precomputed results for all 46 documents are included in `outputs/batch/` and `outputs/batch_nli/`, so the figures and tables can be inspected without the PDFs.
+
+---
+
+## Data Availability
+
+Participant-level survey data (`data/sosci_export.csv`, `data/prolific_demographics.csv`, `archive_survey_drafts/prolific_survey_key.csv`) is not published, for privacy/GDPR reasons. A de-identified export is available on reasonable request for academic verification. The survey item pool and construction artefacts are in `archive_survey_drafts/`.
+
+---
+
+## Authors & License
+
+- Part A (pipeline): Florian Eisinger
+- Part B (human validation study): Maxim Gómez Valverde
+
+Released under the [MIT License](LICENSE). If you use this work, please cite it (see [`CITATION.cff`](CITATION.cff)).
