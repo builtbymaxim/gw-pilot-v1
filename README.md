@@ -1,8 +1,28 @@
 # Greenwashing Detection Pipeline
 
-Automated NLP pipeline for detecting greenwashing signals in ESG and sustainability PDF reports. Each report is scored on three dimensions — vague language (VUI), specificity (SPI), and emission consistency (CI) — which are combined into a single GW score on a 0–1 scale.
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python 3.13](https://img.shields.io/badge/python-3.13-blue.svg)](requirements.txt)
+[![Tests: pytest](https://img.shields.io/badge/tests-28%20passing-brightgreen.svg)](tests/)
+[![Corpus: 46 reports](https://img.shields.io/badge/corpus-46%20reports%20%C2%B7%2012%20asset%20managers-informational.svg)](#source-reports)
 
-The repo also contains **Part B, a human validation study**: 42 finance-literate participants rated 200 real sentences plus 20 gold-standard anchors, drawn from the same 46 reports, on specificity and perceived greenwashing. The honest headline: the pipeline's sentence-level SPI and VUI scores do **not** correlate with how these readers judged the same sentences (all |ρ| ≤ 0.07, none significant). That null result, why it survives a granularity fix, and what it implies for the pipeline's design are the main subject of the [Human Validation Study](#human-validation-study-part-b) section below.
+**Can an algorithm tell when a sustainability report is all talk?** This repository is an end-to-end, fully transparent attempt to answer that, and an honest test of whether the answer holds up against human judgement.
+
+It combines two things that are rarely found together:
+
+1. **Part A: a deterministic, explainable NLP pipeline.** It reads ESG and sustainability PDF reports, splits them into TCFD sections and scores each report on three dimensions: vague language (VUI), specificity (SPI) and emission consistency (CI). These are combined into a single greenwashing score (GW, 0–1). Every score traces back to concrete sentences, regex hits and config values.
+2. **Part B: a human validation study.** 42 finance-literate participants rated 200 real sentences from the same reports plus 20 gold-standard anchors on specificity and perceived greenwashing.
+
+**The headline is a null result, reported in full.** The rule-based scores fire exactly as designed on the gold anchors (mean SPI 0.90 for specific vs. 0.00 for vague anchors), but on authentic corporate prose they do **not** correlate with how readers judged the same sentences (all |ρ| ≤ 0.07, none significant). Even the human raters agree only weakly with one another (α = 0.31). The [Human Validation Study](#human-validation-study-part-b) section explains why this happens, which rule patterns break, and what a better design would look like.
+
+### At a glance
+
+| | |
+|---|---|
+| **Corpus** | 46 annual / sustainability reports, 12 global asset managers (BlackRock, UBS, Amundi, KKR, …), 2021–2024 |
+| **Method** | Rule-based scoring (regex + spaCy), optional zero-shot NLI (`bart-large-mnli`), fully driven by [`config.yml`](config.yml) |
+| **Validation** | 42 raters, 840 ratings, 220 sentences, Krippendorff's α, Spearman ρ, counterbalanced presentation orders |
+| **Reproducibility** | One command per report or for the whole batch; all 46 results included in `outputs/` |
+| **Key insight** | Lexical rules capture *form* (numbers, hedge words); human readers judge *substance*. The gap is measurable and documented. |
 
 ---
 
@@ -227,6 +247,28 @@ gw-pilot-v1/
 
 ---
 
+## Ideas & Extensions
+
+The pipeline is deliberately simple and modular: each index is a small, self-contained module in `src/`, and every threshold lives in `config.yml`. That makes it a good starting point for further work. Some directions that follow directly from the findings:
+
+**Improve the method**
+- **Sentence-level re-architecture.** Score every sentence first and aggregate afterwards, so that pipeline and human judgement operate on the same unit (the main recommendation from Part B).
+- **Learn from the human ratings.** Use the 840 ratings and the gold anchors as a small training / calibration set for a fine-tuned classifier (e.g. a ClimateBERT- or DeBERTa-based specificity model), and compare it to the rules.
+- **Fix the four documented failure patterns.** Recognise named bodies and roles as specific, filter numeric boilerplate, detect rhetorical vagueness without hedge words, and stop penalising hedges next to a concrete target.
+- **LLM-as-annotator.** Have an LLM rate the same 220 sentences and measure whether it agrees with human raters better than the rules do, and better than raters agree with each other.
+- **More CI coverage.** Extract Scope 1–3 emission tables automatically from the PDFs, so the consistency index works for every firm instead of one.
+
+**Apply it elsewhere**
+- **Other sectors.** Banks, insurers, energy and consumer goods companies publish the same kind of reports; only the keyword lists and section patterns need adjusting.
+- **Regulatory disclosures.** SFDR pre-contractual documents, EU Taxonomy reports, CSRD / ESRS sustainability statements or fund prospectuses.
+- **Monitoring over time.** Run the batch every reporting season and track how a firm's language changes, for example after a regulatory event or a greenwashing allegation.
+- **Screening tool for analysts.** Use the per-sentence hits as a reading aid: highlight the most vague and the most specific passages of a 200-page report in seconds.
+- **Teaching material.** A compact, real-world example of how to build, validate and honestly report an NLP measurement instrument, including inter-rater reliability and a null result.
+
+Contributions, forks and follow-up studies are welcome. If you build on this work, please cite it (see [`CITATION.cff`](CITATION.cff)).
+
+---
+
 ## Source Reports
 
 The 46 input documents are publicly available sustainability / ESG / annual reports, downloaded from each firm's investor-relations or sustainability website. They are not redistributed here. To reproduce the batch results, save them to `inputs/` using the naming scheme `<company>-<year>.pdf`:
@@ -261,4 +303,4 @@ Participant-level survey data (`data/sosci_export.csv`, `data/prolific_demograph
 - Part A (pipeline): Florian Eisinger
 - Part B (human validation study): Maxim Gómez Valverde
 
-Released under the [MIT License](LICENSE). If you use this work, please cite it (see [`CITATION.cff`](CITATION.cff)).
+Released under the [MIT License](LICENSE).
