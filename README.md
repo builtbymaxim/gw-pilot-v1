@@ -1,6 +1,6 @@
 # Greenwashing Detection Pipeline
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey.svg)](LICENSE)
 [![Python 3.13](https://img.shields.io/badge/python-3.13-blue.svg)](requirements.txt)
 [![Tests: pytest](https://img.shields.io/badge/tests-28%20passing-brightgreen.svg)](tests/)
 [![Corpus: 46 reports](https://img.shields.io/badge/corpus-46%20reports%20%C2%B7%2012%20asset%20managers-informational.svg)](#source-reports)
@@ -303,4 +303,4 @@ Participant-level survey data (`data/sosci_export.csv`, `data/prolific_demograph
 - Part A (pipeline): Florian Eisinger
 - Part B (human validation study): Maxim Gómez Valverde
 
-Released under the [MIT License](LICENSE).
+Released under the [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](LICENSE). You may share and adapt this work for non-commercial purposes, with attribution to the authors. For commercial use, please contact the authors.

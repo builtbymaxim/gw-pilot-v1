@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 title: "Greenwashing Detection Pipeline (gw-pilot-v1)"
 type: software
-license: MIT
+license: CC-BY-NC-4.0
 authors:
   - family-names: Eisinger
     given-names: Florian
